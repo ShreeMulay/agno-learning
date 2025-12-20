@@ -16,54 +16,47 @@ sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 from agno.agent import Agent
 from agno.db.sqlite import SqliteDb
-from agno.memory import AgentMemory
 
 from shared.model_config import get_model, add_model_args
 from shared.utils import print_header, print_section
 
 
-def create_personal_agent(model, user_id: str):
+# Database path
+PROJECT_ROOT = Path(__file__).parent.parent.parent
+DB_DIR = PROJECT_ROOT / "tmp"
+
+
+def get_agent(model=None, user_id: str = "default"):
     """Create an agent with personal memory capabilities."""
-    
-    # Ensure tmp directory exists
-    Path("tmp").mkdir(exist_ok=True)
-    
-    # Database for persistence
-    db = SqliteDb(
-        id=f"personal_kb_{user_id}",
-        db_file=f"tmp/personal_{user_id}.db",
-    )
-    
-    # Create agent with memory features
-    agent = get_agent(model)
-    
-    return agent
-
-
-
-def get_agent(model=None):
     if model is None:
         from shared.model_config import get_model
         model = get_model()
+    
+    # Ensure tmp directory exists
+    DB_DIR.mkdir(exist_ok=True)
+    
+    # Database for persistence
+    db = SqliteDb(
+        db_file=str(DB_DIR / f"personal_{user_id}.db"),
+    )
+    
     return Agent(
         name="PersonalAssistant",
-model=model,
-db=db,
-# Enable conversation history
-add_history_to_context=True,
-num_history_runs=10,
-# Enable user memories
-add_memories_to_context=True,
-create_user_memories=True,  # Automatically create memories
-update_user_memories_after_run=True,
-instructions=[
-"You are a personal assistant that remembers user information.",
-"Pay attention to personal details shared by the user.",
-"Use what you know about the user to personalize responses.",
-"When asked what you know, summarize stored information.",
-"Be conversational and build rapport over time.",
-],
-markdown=True,
+        model=model,
+        db=db,
+        # Enable conversation history
+        add_history_to_context=True,
+        num_history_runs=10,
+        # Enable user memories (agent learns about the user)
+        enable_user_memories=True,
+        instructions=[
+            "You are a personal assistant that remembers user information.",
+            "Pay attention to personal details shared by the user.",
+            "Use what you know about the user to personalize responses.",
+            "When asked what you know, summarize stored information.",
+            "Be conversational and build rapport over time.",
+        ],
+        markdown=True,
     )
 
 
@@ -89,7 +82,7 @@ def main():
     print()
     
     model = get_model(args.provider, args.model, temperature=args.temperature)
-    agent = create_personal_agent(model, user_id)
+    agent = get_agent(model, user_id)
     
     print_section("Interactive Mode")
     print("  Share information about yourself!")
