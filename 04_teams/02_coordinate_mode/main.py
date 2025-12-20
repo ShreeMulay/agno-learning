@@ -14,6 +14,21 @@ from shared.model_config import get_model, add_model_args
 from shared.utils import print_header, print_section
 
 
+
+def get_agent(model=None):
+    if model is None:
+        from shared.model_config import get_model
+        model = get_model()
+    return Team(
+        name="Strategy Team",
+        agents=[analyst, strategist],
+        model=model,
+        # Coordinate mode is the default
+        show_tool_calls=True,
+        markdown=True,
+    )
+
+
 def main():
     parser = argparse.ArgumentParser(description="Coordinate Mode Demo")
     add_model_args(parser)
@@ -26,14 +41,7 @@ def main():
     analyst = Agent(name="Analyst", role="Data analyst", model=model)
     strategist = Agent(name="Strategist", role="Business strategist", model=model)
 
-    team = Team(
-        name="Strategy Team",
-        agents=[analyst, strategist],
-        model=model,
-        # Coordinate mode is the default
-        show_tool_calls=True,
-        markdown=True,
-    )
+    team = get_agent(model)
 
     print_section("Coordinated Task")
     team.print_response("Analyze the market for electric vehicles and suggest a strategy.")

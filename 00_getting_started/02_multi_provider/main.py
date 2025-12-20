@@ -39,10 +39,7 @@ def run_with_provider(provider: str, model: str = None, prompt: str = "") -> tup
     """
     try:
         llm = get_model(provider, model)
-        agent = Agent(
-            model=llm,
-            instructions="You are a helpful assistant. Be concise.",
-        )
+        agent = get_agent(model)
         
         start = time.time()
         response = agent.run(prompt)
@@ -51,6 +48,17 @@ def run_with_provider(provider: str, model: str = None, prompt: str = "") -> tup
         return response.content, elapsed
     except Exception as e:
         return f"Error: {e}", 0.0
+
+
+
+def get_agent(model=None):
+    if model is None:
+        from shared.model_config import get_model
+        model = get_model()
+    return Agent(
+        model=llm,
+instructions="You are a helpful assistant. Be concise.",
+    )
 
 
 def main():

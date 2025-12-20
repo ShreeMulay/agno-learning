@@ -122,6 +122,18 @@ def compare_streaming_modes(agent: Agent, prompt: str) -> None:
     print("  even though total time is similar.")
 
 
+
+def get_agent(model=None):
+    if model is None:
+        from shared.model_config import get_model
+        model = get_model()
+    return Agent(
+        model=model,
+instructions="You are a creative writer. Be expressive but concise.",
+markdown=True,
+    )
+
+
 def main():
     """Demonstrate streaming responses."""
     parser = argparse.ArgumentParser(
@@ -165,11 +177,7 @@ def main():
         print(f"Error: {e}")
         sys.exit(1)
 
-    agent = Agent(
-        model=model,
-        instructions="You are a creative writer. Be expressive but concise.",
-        markdown=True,
-    )
+    agent = get_agent(model)
 
     print(f"Provider: {args.provider}")
     print(f"Model: {args.model or 'default'}")

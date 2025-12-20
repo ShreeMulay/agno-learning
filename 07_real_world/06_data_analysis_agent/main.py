@@ -90,6 +90,14 @@ def load_data(file_path: str) -> dict:
         raise ValueError(f"Unsupported format: {path.suffix}")
 
 
+
+def get_agent(model=None):
+    if model is None:
+        from shared.model_config import get_model
+        model = get_model()
+    return create_data_agent(model)
+
+
 def main():
     parser = argparse.ArgumentParser(description="Data Analysis Agent")
     add_model_args(parser)

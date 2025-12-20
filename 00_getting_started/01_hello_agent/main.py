@@ -24,6 +24,22 @@ from shared.model_config import get_model, add_model_args
 from shared.utils import print_header
 
 
+
+def get_agent(model=None):
+    if model is None:
+        from shared.model_config import get_model
+        model = get_model()
+    return Agent(
+        model=model,
+instructions=[
+"You are a friendly and helpful AI assistant.",
+"Keep your responses concise but informative.",
+"Always be encouraging and positive.",
+],
+markdown=True,  # Format responses as markdown
+    )
+
+
 def main():
     """Run the Hello Agent example."""
     # Parse command line arguments
@@ -61,15 +77,7 @@ def main():
         sys.exit(1)
 
     # Step 2: Create the agent with instructions
-    agent = Agent(
-        model=model,
-        instructions=[
-            "You are a friendly and helpful AI assistant.",
-            "Keep your responses concise but informative.",
-            "Always be encouraging and positive.",
-        ],
-        markdown=True,  # Format responses as markdown
-    )
+    agent = get_agent(model)
 
     # Step 3: Run the agent and display response
     print(f"User: {args.message}")

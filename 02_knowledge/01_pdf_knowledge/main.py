@@ -76,6 +76,26 @@ def create_sample_pdf(output_path: Path) -> None:
     print(f"Created sample document: {output_path}")
 
 
+
+def get_agent(model=None):
+    if model is None:
+        from shared.model_config import get_model
+        model = get_model()
+    return Agent(
+        model=model,
+knowledge=knowledge,
+search_knowledge=True,
+instructions=[
+"You are a helpful assistant with access to document knowledge.",
+"Use the knowledge base to answer questions accurately.",
+"If the answer isn't in the documents, say so.",
+"Cite relevant sections when possible.",
+],
+show_tool_calls=True,
+markdown=True,
+    )
+
+
 def main():
     """Demonstrate PDF knowledge base."""
     parser = argparse.ArgumentParser(
@@ -163,19 +183,7 @@ def main():
 
     print_section("Creating RAG Agent")
     
-    agent = Agent(
-        model=model,
-        knowledge=knowledge,
-        search_knowledge=True,
-        instructions=[
-            "You are a helpful assistant with access to document knowledge.",
-            "Use the knowledge base to answer questions accurately.",
-            "If the answer isn't in the documents, say so.",
-            "Cite relevant sections when possible.",
-        ],
-        show_tool_calls=True,
-        markdown=True,
-    )
+    agent = get_agent(model)
 
     print_section("Query")
     print(f"Question: {args.query}\n")

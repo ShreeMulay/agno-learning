@@ -12,6 +12,16 @@ from shared.model_config import get_model, add_model_args
 from shared.utils import print_header, print_section
 
 
+
+def get_agent(model=None):
+    if model is None:
+        from shared.model_config import get_model
+        model = get_model()
+    return Agent(
+        name="Writer", model=model
+    )
+
+
 def main():
     parser = argparse.ArgumentParser(description="Human in the Loop Demo")
     add_model_args(parser)
@@ -21,7 +31,7 @@ def main():
 
     model = get_model(args.provider, args.model, temperature=args.temperature)
 
-    agent = Agent(name="Writer", model=model)
+    agent = get_agent(model)
 
     print_section("Step 1: Generate Draft")
     draft = agent.run("Write a tweet about AI agents")

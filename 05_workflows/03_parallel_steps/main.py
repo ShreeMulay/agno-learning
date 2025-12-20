@@ -13,7 +13,18 @@ from shared.model_config import get_model, add_model_args
 from shared.utils import print_header, print_section
 
 
-async def main():
+async def get_agent(model=None):
+    if model is None:
+        from shared.model_config import get_model
+        model = get_model()
+    return Agent(
+        name="ParallelProcessor",
+        model=model,
+        instructions=["Process tasks in parallel."],
+    )
+
+
+def main():
     parser = argparse.ArgumentParser(description="Parallel Steps Demo")
     add_model_args(parser)
     args = parser.parse_args()

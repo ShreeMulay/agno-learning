@@ -270,6 +270,14 @@ def create_counter_agent(model):
     )
 
 
+
+def get_agent(model=None):
+    if model is None:
+        from shared.model_config import get_model
+        model = get_model()
+    return create_shopping_agent(model)
+
+
 def main():
     """Demonstrate tool context and state management."""
     parser = argparse.ArgumentParser(

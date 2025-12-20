@@ -14,6 +14,21 @@ from shared.model_config import get_model, add_model_args
 from shared.utils import print_header, print_section
 
 
+
+def get_agent(model=None):
+    if model is None:
+        from shared.model_config import get_model
+        model = get_model()
+    return Team(
+        name="Customer Team",
+        agents=[support, sales],
+        model=model,
+        respond_directly=True,  # Route mode
+        show_tool_calls=True,
+        markdown=True,
+    )
+
+
 def main():
     parser = argparse.ArgumentParser(description="Route Mode Demo")
     add_model_args(parser)
@@ -26,14 +41,7 @@ def main():
     support = Agent(name="Support", role="Customer support", model=model)
     sales = Agent(name="Sales", role="Sales representative", model=model)
 
-    team = Team(
-        name="Customer Team",
-        agents=[support, sales],
-        model=model,
-        respond_directly=True,  # Route mode
-        show_tool_calls=True,
-        markdown=True,
-    )
+    team = get_agent(model)
 
     print_section("Route Mode Query")
     team.print_response("I have a question about pricing.")

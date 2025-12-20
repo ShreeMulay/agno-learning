@@ -177,6 +177,13 @@ def create_tool_agent(model, tools: list):
     )
 
 
+def get_agent(model=None):
+    if model is None:
+        from shared.model_config import get_model
+        model = get_model()
+    return create_tool_agent(model, [get_weather, calculate_tip, calculate_mortgage, convert_units])
+
+
 def main():
     """Demonstrate custom tools."""
     parser = argparse.ArgumentParser(

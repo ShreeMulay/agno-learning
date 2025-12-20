@@ -14,6 +14,21 @@ from shared.model_config import get_model, add_model_args
 from shared.utils import print_header, print_section
 
 
+
+def get_agent(model=None):
+    if model is None:
+        from shared.model_config import get_model
+        model = get_model()
+    return Team(
+        name="Content Team",
+        agents=[researcher, writer],
+        model=model,
+        instructions="Coordinate research and writing tasks.",
+        show_tool_calls=True,
+        markdown=True,
+    )
+
+
 def main():
     parser = argparse.ArgumentParser(description="Basic Team Demo")
     add_model_args(parser)
@@ -39,14 +54,7 @@ def main():
     )
 
     # Create a team
-    team = Team(
-        name="Content Team",
-        agents=[researcher, writer],
-        model=model,
-        instructions="Coordinate research and writing tasks.",
-        show_tool_calls=True,
-        markdown=True,
-    )
+    team = get_agent(model)
 
     print_section("Team Query")
     query = "Write a short paragraph about the benefits of exercise."

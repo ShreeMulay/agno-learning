@@ -58,14 +58,7 @@ class Recipe(BaseModel):
 
 def analyze_movie(model, movie_name: str) -> MovieReview:
     """Analyze a movie and return structured review."""
-    agent = Agent(
-        model=model,
-        instructions=[
-            "You are a professional movie critic.",
-            "Provide thoughtful, balanced reviews.",
-        ],
-        response_model=MovieReview,
-    )
+    agent = get_agent(model)
     
     response = agent.run(f"Please review the movie: {movie_name}")
     return response.content
@@ -73,14 +66,7 @@ def analyze_movie(model, movie_name: str) -> MovieReview:
 
 def get_recipe(model, dish_name: str) -> Recipe:
     """Get a recipe and return structured output."""
-    agent = Agent(
-        model=model,
-        instructions=[
-            "You are a professional chef.",
-            "Provide clear, detailed recipes that home cooks can follow.",
-        ],
-        response_model=Recipe,
-    )
+    agent = get_agent(model)
     
     response = agent.run(f"Please give me a recipe for: {dish_name}")
     return response.content
@@ -126,6 +112,21 @@ def display_recipe(recipe: Recipe) -> None:
     if recipe.tips:
         print()
         print(f"  Chef's tip: {recipe.tips}")
+
+
+
+def get_agent(model=None):
+    if model is None:
+        from shared.model_config import get_model
+        model = get_model()
+    return Agent(
+        model=model,
+instructions=[
+"You are a professional movie critic.",
+"Provide thoughtful, balanced reviews.",
+],
+response_model=MovieReview,
+    )
 
 
 def main():

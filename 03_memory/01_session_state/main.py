@@ -35,6 +35,24 @@ def get_state(run_context: RunContext) -> str:
     return f"Counter: {run_context.session_state['counter']}, Items: {run_context.session_state['items']}"
 
 
+
+def get_agent(model=None):
+    if model is None:
+        from shared.model_config import get_model
+        model = get_model()
+    return Agent(
+        model=model,
+tools=[increment_counter, add_item, get_state],
+session_state={"counter": 0, "items": []},
+instructions=[
+"You can track a counter and a list of items.",
+"Current state: counter={counter}, items={items}",
+],
+show_tool_calls=True,
+markdown=True,
+    )
+
+
 def main():
     parser = argparse.ArgumentParser(description="Session State Demo")
     add_model_args(parser)
@@ -44,17 +62,7 @@ def main():
 
     model = get_model(args.provider, args.model, temperature=args.temperature)
 
-    agent = Agent(
-        model=model,
-        tools=[increment_counter, add_item, get_state],
-        session_state={"counter": 0, "items": []},
-        instructions=[
-            "You can track a counter and a list of items.",
-            "Current state: counter={counter}, items={items}",
-        ],
-        show_tool_calls=True,
-        markdown=True,
-    )
+    agent = get_agent(model)
 
     queries = [
         "Increment the counter",

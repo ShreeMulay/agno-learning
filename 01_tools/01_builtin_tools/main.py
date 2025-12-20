@@ -76,6 +76,14 @@ def create_multi_tool_agent(model):
     )
 
 
+
+def get_agent(model=None):
+    if model is None:
+        from shared.model_config import get_model
+        model = get_model()
+    return create_search_agent(model)
+
+
 def main():
     """Demonstrate built-in tools."""
     parser = argparse.ArgumentParser(

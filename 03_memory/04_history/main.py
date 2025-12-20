@@ -18,6 +18,17 @@ from shared.model_config import get_model, add_model_args
 from shared.utils import print_header, print_section
 
 
+
+def get_agent(model=None):
+    if model is None:
+        from shared.model_config import get_model
+        model = get_model()
+    return Agent(
+        model=model,
+db=SqliteDb(db_file=str(db_path
+    )
+
+
 def main():
     parser = argparse.ArgumentParser(description="Conversation History Demo")
     add_model_args(parser)
@@ -31,9 +42,7 @@ def main():
 
     model = get_model(args.provider, args.model, temperature=args.temperature)
 
-    agent = Agent(
-        model=model,
-        db=SqliteDb(db_file=str(db_path)),
+    agent = get_agent(model)),
         add_history_to_context=True,
         num_history_runs=10,
         instructions=[

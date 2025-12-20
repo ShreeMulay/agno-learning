@@ -14,6 +14,21 @@ from shared.model_config import get_model, add_model_args
 from shared.utils import print_header, print_section
 
 
+
+def get_agent(model=None):
+    if model is None:
+        from shared.model_config import get_model
+        model = get_model()
+    return Team(
+        name="Review Team",
+        agents=[tech, legal, finance],
+        model=model,
+        delegate_to_all_members=True,  # Collaborate mode
+        show_tool_calls=True,
+        markdown=True,
+    )
+
+
 def main():
     parser = argparse.ArgumentParser(description="Collaborate Mode Demo")
     add_model_args(parser)
@@ -27,14 +42,7 @@ def main():
     legal = Agent(name="Legal", role="Legal reviewer", model=model)
     finance = Agent(name="Finance", role="Financial reviewer", model=model)
 
-    team = Team(
-        name="Review Team",
-        agents=[tech, legal, finance],
-        model=model,
-        delegate_to_all_members=True,  # Collaborate mode
-        show_tool_calls=True,
-        markdown=True,
-    )
+    team = get_agent(model)
 
     print_section("Parallel Review")
     team.print_response("Review this contract proposal from all perspectives.")

@@ -62,6 +62,14 @@ def create_code_review_agent(model):
     )
 
 
+
+def get_agent(model=None):
+    if model is None:
+        from shared.model_config import get_model
+        model = get_model()
+    return create_code_review_agent(model)
+
+
 def main():
     parser = argparse.ArgumentParser(description="Code Review Agent")
     add_model_args(parser)

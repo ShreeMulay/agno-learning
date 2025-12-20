@@ -89,6 +89,14 @@ def create_clinical_agent(model):
     )
 
 
+
+def get_agent(model=None):
+    if model is None:
+        from shared.model_config import get_model
+        model = get_model()
+    return create_clinical_agent(model)
+
+
 def main():
     parser = argparse.ArgumentParser(description="Clinical Decision Support")
     add_model_args(parser)

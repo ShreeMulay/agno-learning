@@ -107,6 +107,14 @@ def create_support_team(model):
     return team
 
 
+
+def get_agent(model=None):
+    if model is None:
+        from shared.model_config import get_model
+        model = get_model()
+    return create_support_team(model)
+
+
 def main():
     parser = argparse.ArgumentParser(description="Customer Support Agent")
     add_model_args(parser)

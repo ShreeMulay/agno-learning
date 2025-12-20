@@ -67,6 +67,13 @@ def create_agent_os(model):
     return agent_os
 
 
+def get_agent(model=None):
+    if model is None:
+        from shared.model_config import get_model
+        model = get_model()
+    return create_agent_os(model).agents[0]
+
+
 def main():
     parser = argparse.ArgumentParser(description="AgentOS Demo")
     add_model_args(parser)

@@ -35,28 +35,36 @@ def create_personal_agent(model, user_id: str):
     )
     
     # Create agent with memory features
-    agent = Agent(
-        name="PersonalAssistant",
-        model=model,
-        db=db,
-        # Enable conversation history
-        add_history_to_context=True,
-        num_history_runs=10,
-        # Enable user memories
-        add_memories_to_context=True,
-        create_user_memories=True,  # Automatically create memories
-        update_user_memories_after_run=True,
-        instructions=[
-            "You are a personal assistant that remembers user information.",
-            "Pay attention to personal details shared by the user.",
-            "Use what you know about the user to personalize responses.",
-            "When asked what you know, summarize stored information.",
-            "Be conversational and build rapport over time.",
-        ],
-        markdown=True,
-    )
+    agent = get_agent(model)
     
     return agent
+
+
+
+def get_agent(model=None):
+    if model is None:
+        from shared.model_config import get_model
+        model = get_model()
+    return Agent(
+        name="PersonalAssistant",
+model=model,
+db=db,
+# Enable conversation history
+add_history_to_context=True,
+num_history_runs=10,
+# Enable user memories
+add_memories_to_context=True,
+create_user_memories=True,  # Automatically create memories
+update_user_memories_after_run=True,
+instructions=[
+"You are a personal assistant that remembers user information.",
+"Pay attention to personal details shared by the user.",
+"Use what you know about the user to personalize responses.",
+"When asked what you know, summarize stored information.",
+"Be conversational and build rapport over time.",
+],
+markdown=True,
+    )
 
 
 def main():

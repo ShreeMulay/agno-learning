@@ -26,6 +26,9 @@ python 00_getting_started/01_hello_agent/main.py
 
 ```
 agno-learning/
+├── portal/                      # Portal Full-stack App
+│   ├── api/                     # FastAPI + AgentOS Backend
+│   └── ui/                      # React 19 Frontend
 ├── shared/                      # Shared utilities
 │   ├── model_config.py          # Multi-provider LLM config
 │   └── utils.py                 # Common helpers
@@ -40,12 +43,35 @@ agno-learning/
 └── sample_data/                 # Test files for examples
 ```
 
+## Agno Learning Portal
+
+The project includes an interactive web interface to explore all lessons.
+
+### Running the Portal
+
+**Backend:**
+```bash
+cd portal/api
+python3 -m uvicorn main:app --reload --port 8000
+```
+
+**Frontend:**
+```bash
+cd portal/ui
+bun install
+bun run dev
+```
+
+Visit: `http://localhost:5173`
+
 ## Tech Stack
 
 - **Framework**: Agno v2.3.x
+- **Frontend**: React 19, Tailwind CSS v4, Shadcn/ui v4
+- **Backend API**: FastAPI, AgentOS
 - **Python**: 3.12+
 - **Vector DB**: LanceDB (local, no Docker)
-- **Package Manager**: uv (preferred) or pip
+- **Package Manager**: uv (preferred) or pip / bun
 
 ## LLM Providers
 

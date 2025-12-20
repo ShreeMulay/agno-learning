@@ -18,6 +18,17 @@ from shared.model_config import get_model, add_model_args
 from shared.utils import print_header, print_section
 
 
+
+def get_agent(model=None):
+    if model is None:
+        from shared.model_config import get_model
+        model = get_model()
+    return Agent(
+        model=model,
+db=SqliteDb(db_file=str(db_path
+    )
+
+
 def main():
     parser = argparse.ArgumentParser(description="User Memories Demo")
     add_model_args(parser)
@@ -32,9 +43,7 @@ def main():
 
     model = get_model(args.provider, args.model, temperature=args.temperature)
 
-    agent = Agent(
-        model=model,
-        db=SqliteDb(db_file=str(db_path)),
+    agent = get_agent(model)),
         enable_user_memories=True,
         instructions=[
             "You remember user preferences and facts.",

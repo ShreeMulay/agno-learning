@@ -12,6 +12,16 @@ from shared.model_config import get_model, add_model_args
 from shared.utils import print_header, print_section
 
 
+
+def get_agent(model=None):
+    if model is None:
+        from shared.model_config import get_model
+        model = get_model()
+    return Agent(
+        name="Tech Expert", model=model, instructions="You're a technology expert."
+    )
+
+
 def main():
     parser = argparse.ArgumentParser(description="Conditional Flow Demo")
     add_model_args(parser)
@@ -23,9 +33,9 @@ def main():
     model = get_model(args.provider, args.model, temperature=args.temperature)
 
     # Create specialized agents
-    tech_agent = Agent(name="Tech Expert", model=model, instructions="You're a technology expert.")
-    health_agent = Agent(name="Health Expert", model=model, instructions="You're a health expert.")
-    sports_agent = Agent(name="Sports Expert", model=model, instructions="You're a sports expert.")
+    tech_agent = get_agent(model)
+    health_agent = get_agent(model)
+    sports_agent = get_agent(model)
 
     # Conditional routing
     print_section(f"Topic: {args.topic}")

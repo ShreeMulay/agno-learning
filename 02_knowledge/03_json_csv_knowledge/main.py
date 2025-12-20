@@ -109,6 +109,26 @@ def create_sample_csv(output_path: Path) -> None:
     print(f"Created sample CSV: {output_path}")
 
 
+
+def get_agent(model=None):
+    if model is None:
+        from shared.model_config import get_model
+        model = get_model()
+    return Agent(
+        model=model,
+knowledge=knowledge,
+search_knowledge=True,
+instructions=[
+"You are a data assistant with access to product information.",
+"Answer questions based on the data available.",
+"Provide specific details like prices, ratings, and availability.",
+"Format responses clearly with relevant data.",
+],
+show_tool_calls=True,
+markdown=True,
+    )
+
+
 def main():
     """Demonstrate JSON and CSV knowledge bases."""
     parser = argparse.ArgumentParser(
@@ -195,19 +215,7 @@ def main():
 
     print_section("Creating Data Assistant")
     
-    agent = Agent(
-        model=model,
-        knowledge=knowledge,
-        search_knowledge=True,
-        instructions=[
-            "You are a data assistant with access to product information.",
-            "Answer questions based on the data available.",
-            "Provide specific details like prices, ratings, and availability.",
-            "Format responses clearly with relevant data.",
-        ],
-        show_tool_calls=True,
-        markdown=True,
-    )
+    agent = get_agent(model)
 
     print_section("Query")
     print(f"Question: {args.query}\n")

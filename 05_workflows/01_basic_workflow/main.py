@@ -14,6 +14,21 @@ from shared.model_config import get_model, add_model_args
 from shared.utils import print_header, print_section
 
 
+def get_agent(model=None):
+    if model is None:
+        from shared.model_config import get_model
+        model = get_model()
+    # Return a basic workflow wrapper or the agents? 
+    # For portal we'll return a simple agent that mimics this workflow if needed, 
+    # but agno Workflow also has .run()
+    researcher = Agent(name="Researcher", model=model)
+    writer = Agent(name="Writer", model=model)
+    return Workflow(
+        name="Research writer",
+        steps=[researcher, writer] # Simple wrapper
+    )
+
+
 def main():
     parser = argparse.ArgumentParser(description="Basic Workflow Demo")
     add_model_args(parser)

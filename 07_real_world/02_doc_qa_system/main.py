@@ -37,21 +37,29 @@ def create_doc_qa_agent(model, pdf_path: str = None):
             vector_db=vector_db,
         )
     
-    agent = Agent(
-        name="DocQA",
-        model=model,
-        knowledge=knowledge,
-        instructions=[
-            "You answer questions based on the provided documents.",
-            "Always cite the specific section or page when possible.",
-            "If the answer is not in the documents, say so clearly.",
-            "Provide relevant quotes when helpful.",
-        ],
-        search_knowledge=True,
-        markdown=True,
-    )
+    agent = get_agent(model)
     
     return agent, knowledge
+
+
+
+def get_agent(model=None):
+    if model is None:
+        from shared.model_config import get_model
+        model = get_model()
+    return Agent(
+        name="DocQA",
+model=model,
+knowledge=knowledge,
+instructions=[
+"You answer questions based on the provided documents.",
+"Always cite the specific section or page when possible.",
+"If the answer is not in the documents, say so clearly.",
+"Provide relevant quotes when helpful.",
+],
+search_knowledge=True,
+markdown=True,
+    )
 
 
 def main():

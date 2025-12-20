@@ -96,6 +96,26 @@ def create_text_knowledge(lancedb_path: Path, rebuild: bool = False):
     return knowledge
 
 
+
+def get_agent(model=None):
+    if model is None:
+        from shared.model_config import get_model
+        model = get_model()
+    return Agent(
+        model=model,
+knowledge=knowledge,
+search_knowledge=True,
+num_documents=args.num_docs,  # Control retrieval count
+instructions=[
+"You are a helpful assistant explaining Agno concepts.",
+"Use the retrieved context to answer accurately.",
+"If information isn't available, say so.",
+],
+show_tool_calls=True,
+markdown=True,
+    )
+
+
 def main():
     """Demonstrate vector search concepts."""
     parser = argparse.ArgumentParser(
@@ -181,19 +201,7 @@ def main():
 
     print_section("Creating RAG Agent")
     
-    agent = Agent(
-        model=model,
-        knowledge=knowledge,
-        search_knowledge=True,
-        num_documents=args.num_docs,  # Control retrieval count
-        instructions=[
-            "You are a helpful assistant explaining Agno concepts.",
-            "Use the retrieved context to answer accurately.",
-            "If information isn't available, say so.",
-        ],
-        show_tool_calls=True,
-        markdown=True,
-    )
+    agent = get_agent(model)
 
     print_section(f"Query (retrieving {args.num_docs} chunks)")
     print(f"Question: {args.query}\n")

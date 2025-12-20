@@ -129,6 +129,18 @@ def create_agent_os(model, custom_app: FastAPI):
     return agent_os
 
 
+def get_agent(model=None):
+    if model is None:
+        from shared.model_config import get_model
+        model = get_model()
+    return Agent(
+        name="Assistant",
+        model=model,
+        instructions=["You are a helpful assistant for our API."],
+        markdown=True,
+    )
+
+
 def main():
     parser = argparse.ArgumentParser(description="FastAPI Integration Demo")
     add_model_args(parser)

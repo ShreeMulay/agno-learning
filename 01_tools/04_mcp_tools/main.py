@@ -55,6 +55,24 @@ def create_mcp_agent(model, mcp_url: str):
     )
 
 
+def get_agent(model=None):
+    if model is None:
+        from shared.model_config import get_model
+        model = get_model()
+    return Agent(
+        name="MCPAgent",
+        model=model,
+        # Instructions for the agent on how to use the MCP tool
+        instructions=[
+            "You are an agent with access to an MCP tool server.",
+            "Choose the appropriate tool based on the user's request.",
+            "If you're not sure which tool to use, ask for clarification.",
+        ],
+        show_tool_calls=True,
+        markdown=True,
+    )
+
+
 def main():
     """Demonstrate MCP tools integration."""
     parser = argparse.ArgumentParser(
