@@ -74,9 +74,11 @@ def main():
         "What's the current state?",
     ]
 
+    # session_id is required to persist session_state across multiple print_response calls
+    session_id = "session-state-demo"
     for query in queries:
         print_section(f"User: {query}")
-        agent.print_response(query)
+        agent.print_response(query, session_id=session_id)
         print()
 
 

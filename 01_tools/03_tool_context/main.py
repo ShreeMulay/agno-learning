@@ -310,6 +310,7 @@ def main():
     if args.shop:
         print_section("Shopping Cart Demo")
         agent = create_shopping_agent(model)
+        session_id = "shopping-session"  # Persist state across calls
         
         # Simulate a shopping session
         queries = [
@@ -321,12 +322,13 @@ def main():
         for query in queries:
             print(f"\nUser: {query}")
             print("-" * 40)
-            agent.print_response(query)
+            agent.print_response(query, session_id=session_id)
             print()
 
     if args.notes:
         print_section("Note-Taking Demo")
         agent = create_notes_agent(model)
+        session_id = "notes-session"  # Persist state across calls
         
         queries = [
             "Add a note: Remember to buy milk. Category: shopping",
@@ -339,12 +341,13 @@ def main():
         for query in queries:
             print(f"\nUser: {query}")
             print("-" * 40)
-            agent.print_response(query)
+            agent.print_response(query, session_id=session_id)
             print()
 
     if args.counter:
         print_section("API Counter Demo")
         agent = create_counter_agent(model)
+        session_id = "counter-session"  # Persist state across calls
         
         queries = [
             "Track a call to the weather API",
@@ -356,7 +359,7 @@ def main():
         for query in queries:
             print(f"\nUser: {query}")
             print("-" * 40)
-            agent.print_response(query)
+            agent.print_response(query, session_id=session_id)
             print()
 
     print_section("Key Takeaways")
