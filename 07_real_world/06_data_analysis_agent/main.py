@@ -143,33 +143,40 @@ Data:
     
     print_section("Analyzing...")
     response = agent.run(prompt, output_schema=DataAnalysis)
-    analysis = response.content
     
-    print_section("Summary")
-    print(f"  {analysis.summary}")
-    
-    print_section("Key Metrics")
-    for metric, value in analysis.key_metrics.items():
-        print(f"  • {metric}: {value}")
-    
-    print_section("Insights")
-    for i, insight in enumerate(analysis.insights, 1):
-        print(f"\n  {i}. {insight.title}")
-        print(f"     Finding: {insight.finding}")
-        print(f"     Significance: {insight.significance}")
-        print(f"     Action: {insight.recommendation}")
-    
-    print_section("Trends")
-    for trend in analysis.trends:
-        print(f"  📈 {trend}")
-    
-    print_section("Recommendations")
-    for rec in analysis.recommendations:
-        print(f"  → {rec}")
-    
-    print_section("Suggested Visualizations")
-    for viz in analysis.visualization_suggestions:
-        print(f"  📊 {viz}")
+    # Handle parsing failures (common with OpenRouter)
+    if isinstance(response.content, DataAnalysis):
+        analysis = response.content
+        
+        print_section("Summary")
+        print(f"  {analysis.summary}")
+        
+        print_section("Key Metrics")
+        for metric, value in analysis.key_metrics.items():
+            print(f"  - {metric}: {value}")
+        
+        print_section("Insights")
+        for i, insight in enumerate(analysis.insights, 1):
+            print(f"\n  {i}. {insight.title}")
+            print(f"     Finding: {insight.finding}")
+            print(f"     Significance: {insight.significance}")
+            print(f"     Action: {insight.recommendation}")
+        
+        print_section("Trends")
+        for trend in analysis.trends:
+            print(f"  - {trend}")
+        
+        print_section("Recommendations")
+        for rec in analysis.recommendations:
+            print(f"  -> {rec}")
+        
+        print_section("Suggested Visualizations")
+        for viz in analysis.visualization_suggestions:
+            print(f"  - {viz}")
+    else:
+        # Fallback: show raw analysis
+        print_section("Analysis (unstructured)")
+        print(f"\n{response.content}")
 
 
 if __name__ == "__main__":
