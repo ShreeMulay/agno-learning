@@ -19,6 +19,15 @@ from shared.utils import print_header, print_section
 
 
 
+def get_agent(model=None):
+    if model is None:
+        from shared.model_config import get_model
+        model = get_model()
+    project_root = Path(__file__).parent.parent.parent
+    db_path = project_root / "agno.db"
+    return create_memory_agent(model, db_path)
+
+
 def create_memory_agent(model, db_path):
     """Create an agent with user memory enabled."""
     return Agent(

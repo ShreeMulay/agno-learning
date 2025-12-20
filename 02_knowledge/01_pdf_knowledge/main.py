@@ -77,6 +77,24 @@ def create_sample_pdf(output_path: Path) -> None:
 
 
 
+def get_agent(model=None):
+    if model is None:
+        from shared.model_config import get_model
+        model = get_model()
+    
+    project_root = Path(__file__).parent.parent.parent
+    lancedb_path = project_root / ".lancedb"
+    
+    knowledge = Knowledge(
+        name="pdf_knowledge",
+        vector_db=LanceDb(
+            table_name="pdf_knowledge",
+            uri=str(lancedb_path),
+        ),
+    )
+    return create_rag_agent(model, knowledge)
+
+
 def create_rag_agent(model, knowledge):
     """Create a RAG agent with the given knowledge base."""
     return Agent(

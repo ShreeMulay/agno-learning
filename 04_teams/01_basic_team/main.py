@@ -15,6 +15,47 @@ from shared.utils import print_header, print_section
 
 
 
+def get_agent(model=None):
+    if model is None:
+        from shared.model_config import get_model
+        model = get_model()
+    
+    # Create specialized agents
+    researcher = Agent(
+        name="Researcher",
+        role="Research specialist",
+        model=model,
+        instructions=[
+            "You research topics and provide detailed, accurate facts.",
+            "Present findings in a clear, organized format.",
+            "Include key statistics or evidence when available.",
+        ],
+    )
+
+    writer = Agent(
+        name="Writer",
+        role="Content writer",
+        model=model,
+        instructions=[
+            "You write engaging content based on provided research.",
+            "Make content accessible to a general audience.",
+            "Return ONLY the final written content, no meta-commentary.",
+        ],
+    )
+
+    # Return the team (which behaves like an agent)
+    return Team(
+        members=[researcher, writer],
+        name="Content Team",
+        model=model,
+        instructions=[
+            "You coordinate the researcher and writer to produce quality content.",
+            "First delegate research, then delegate writing based on that research.",
+        ],
+        markdown=True,
+    )
+
+
 def main():
     parser = argparse.ArgumentParser(description="Basic Team Demo")
     add_model_args(parser)

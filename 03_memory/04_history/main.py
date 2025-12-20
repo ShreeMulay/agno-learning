@@ -19,6 +19,15 @@ from shared.utils import print_header, print_section
 
 
 
+def get_agent(model=None):
+    if model is None:
+        from shared.model_config import get_model
+        model = get_model()
+    project_root = Path(__file__).parent.parent.parent
+    db_path = project_root / "agno.db"
+    return create_history_agent(model, db_path, "default_session")
+
+
 def create_history_agent(model, db_path, session_id):
     """Create an agent with conversation history enabled."""
     return Agent(

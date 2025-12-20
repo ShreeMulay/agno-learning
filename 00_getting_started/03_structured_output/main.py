@@ -64,6 +64,13 @@ class Recipe(BaseModel):
 from typing import Union
 
 
+def get_agent(model=None):
+    if model is None:
+        from shared.model_config import get_model
+        model = get_model()
+    return get_movie_agent(model)
+
+
 def analyze_movie(model, movie_name: str) -> Union[MovieReview, str]:
     """Analyze a movie and return structured review (or string if parsing fails)."""
     agent = get_movie_agent(model)

@@ -35,6 +35,24 @@ DEFAULT_URLS = [
 
 
 
+def get_agent(model=None):
+    if model is None:
+        from shared.model_config import get_model
+        model = get_model()
+    
+    project_root = Path(__file__).parent.parent.parent
+    lancedb_path = project_root / ".lancedb"
+    
+    knowledge = Knowledge(
+        name="url_knowledge",
+        vector_db=LanceDb(
+            table_name="url_knowledge",
+            uri=str(lancedb_path),
+        ),
+    )
+    return create_url_agent(model, knowledge)
+
+
 def create_url_agent(model, knowledge):
     """Create a RAG agent with URL knowledge."""
     return Agent(

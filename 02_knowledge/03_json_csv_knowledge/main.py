@@ -110,6 +110,13 @@ def create_sample_csv(output_path: Path) -> None:
 
 
 
+def get_agent(model=None):
+    if model is None:
+        from shared.model_config import get_model
+        model = get_model()
+    return create_data_agent(model, None)
+
+
 def create_data_agent(model, knowledge):
     """Create a data assistant agent."""
     return Agent(

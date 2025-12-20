@@ -30,6 +30,17 @@ from shared.model_config import (
 from shared.utils import print_header, print_section
 
 
+def get_agent(model=None):
+    if model is None:
+        from shared.model_config import get_model
+        model = get_model()
+    return Agent(
+        model=model,
+        instructions="You are a helpful assistant. Be concise.",
+        markdown=True,
+    )
+
+
 def run_with_provider(provider: str, model: str = None, prompt: str = "") -> tuple[str, float]:
     """
     Run a prompt with a specific provider and measure time.
@@ -39,10 +50,7 @@ def run_with_provider(provider: str, model: str = None, prompt: str = "") -> tup
     """
     try:
         llm = get_model(provider, model)
-        agent = Agent(
-            model=llm,
-            instructions="You are a helpful assistant. Be concise.",
-        )
+        agent = get_agent(model=llm)
         
         start = time.time()
         response = agent.run(prompt)

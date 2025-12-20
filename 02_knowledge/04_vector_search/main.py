@@ -98,6 +98,13 @@ def create_text_knowledge(lancedb_path: Path, rebuild: bool = False):
 
 
 
+def get_agent(model=None):
+    if model is None:
+        from shared.model_config import get_model
+        model = get_model()
+    return create_vector_agent(model, None)
+
+
 def create_vector_agent(model, knowledge, num_docs=3):
     """Create a RAG agent with vector search."""
     return Agent(

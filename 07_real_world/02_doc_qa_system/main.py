@@ -130,6 +130,14 @@ def create_doc_qa_agent(model, pdf_path: str = None, use_demo_content: bool = Fa
 
 
 
+def get_agent(model=None):
+    if model is None:
+        from shared.model_config import get_model
+        model = get_model()
+    agent, _ = create_doc_qa_agent(model, use_demo_content=True)
+    return agent
+
+
 def main():
     parser = argparse.ArgumentParser(description="Document Q&A System")
     add_model_args(parser)
