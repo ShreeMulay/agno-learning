@@ -76,6 +76,33 @@ def get_agent(model=None):
     )
 
 
+SAMPLE_CONTRACT = """
+CONTRACT PROPOSAL: Cloud Infrastructure Migration
+
+Parties: TechCorp Inc. (Client) and CloudVendor Ltd. (Provider)
+
+Scope:
+- Migrate 50 legacy servers to cloud infrastructure
+- 12-month implementation timeline
+- 24/7 support with 99.9% uptime SLA
+
+Pricing:
+- Initial migration: $150,000
+- Monthly hosting: $25,000/month
+- Support tier: Premium ($5,000/month)
+
+Terms:
+- 3-year minimum commitment
+- Early termination: 50% of remaining contract value
+- Data sovereignty: All data stored in US regions
+- IP ownership: Client retains all IP rights
+
+Liability:
+- Provider liability capped at 12 months of fees
+- No liability for indirect/consequential damages
+"""
+
+
 def main():
     parser = argparse.ArgumentParser(description="Collaborate Mode Demo")
     add_model_args(parser)
@@ -87,9 +114,12 @@ def main():
 
     team = get_agent(model)
 
+    print_section("Sample Contract")
+    print(SAMPLE_CONTRACT)
+
     print_section("Parallel Review")
-    print("Query: Review this contract proposal from all perspectives.\n")
-    team.print_response("Review this contract proposal from all perspectives.")
+    query = f"Review this contract proposal from all perspectives:\n{SAMPLE_CONTRACT}"
+    team.print_response(query)
 
 
 if __name__ == "__main__":
