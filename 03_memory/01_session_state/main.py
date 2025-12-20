@@ -1,6 +1,12 @@
 #!/usr/bin/env python3
 """
-Lesson 01: Session State - In-memory storage within a conversation.
+Lesson 01: Session State - Persistent storage within a conversation.
+
+Session state allows tools to read and modify shared state during a session.
+Key requirements for state persistence across multiple runs:
+  1. Use SqliteDb (or another db) for persistence
+  2. Use session_id to identify the session
+  3. Initialize session_state with default values
 
 Run: python main.py
 """
@@ -12,6 +18,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 from agno.agent import Agent
+from agno.db.sqlite import SqliteDb
 from agno.run import RunContext
 
 from shared.model_config import get_model, add_model_args
@@ -35,18 +42,31 @@ def get_state(run_context: RunContext) -> str:
     return f"Counter: {run_context.session_state['counter']}, Items: {run_context.session_state['items']}"
 
 
+# Database path for session persistence
+PROJECT_ROOT = Path(__file__).parent.parent.parent
+DB_PATH = PROJECT_ROOT / "tmp" / "session_state.db"
 
-def get_agent(model=None):
+
+def get_agent(model=None, db_path=None):
     if model is None:
         from shared.model_config import get_model
         model = get_model()
+    if db_path is None:
+        db_path = DB_PATH
+    
+    # Ensure tmp directory exists
+    db_path.parent.mkdir(parents=True, exist_ok=True)
+    
     return Agent(
         model=model,
+        # Database is REQUIRED for state to persist across print_response() calls
+        db=SqliteDb(db_file=str(db_path)),
         tools=[increment_counter, add_item, get_state],
+        # Default session state - this is the initial state for new sessions
         session_state={"counter": 0, "items": []},
         instructions=[
             "You can track a counter and a list of items.",
-            "Current state: counter={counter}, items={items}",
+            "Use the tools to modify state. Current state: counter={counter}, items={items}",
         ],
         markdown=True,
     )

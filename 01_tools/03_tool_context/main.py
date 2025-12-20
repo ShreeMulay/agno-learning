@@ -4,9 +4,14 @@ Lesson 03: Tool Context
 
 Concepts covered:
 - Using RunContext to access agent state
-- session_state for persistent storage
+- session_state for persistent storage across runs
 - Building stateful tools
 - Tracking data across tool calls
+
+Key requirements for state persistence:
+  1. Use SqliteDb (or another db) for persistence
+  2. Use session_id to identify the session
+  3. Initialize session_state with default values
 
 Run: python main.py --shop
      python main.py --notes
@@ -22,10 +27,15 @@ from datetime import datetime
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 from agno.agent import Agent
+from agno.db.sqlite import SqliteDb
 from agno.run import RunContext
 
 from shared.model_config import get_model, add_model_args
 from shared.utils import print_header, print_section, check_openrouter_runcontext_error
+
+# Database path for session persistence
+PROJECT_ROOT = Path(__file__).parent.parent.parent
+DB_PATH = PROJECT_ROOT / "tmp" / "tool_context.db"
 
 
 # =============================================================================
@@ -222,12 +232,20 @@ def get_usage_stats(run_context: RunContext) -> str:
 # Agent Creation
 # =============================================================================
 
+def _get_db():
+    """Get database instance, ensuring tmp directory exists."""
+    DB_PATH.parent.mkdir(parents=True, exist_ok=True)
+    return SqliteDb(db_file=str(DB_PATH))
+
+
 def create_shopping_agent(model):
     """Create a shopping assistant agent."""
     return Agent(
         model=model,
+        # Database is REQUIRED for state to persist across print_response() calls
+        db=_get_db(),
         tools=[add_to_cart, view_cart, clear_cart],
-        session_state={"cart": []},  # Initialize state
+        session_state={"cart": []},  # Default state for new sessions
         instructions=[
             "You are a shopping assistant.",
             "Help users add items to their cart and manage their shopping.",
@@ -241,6 +259,7 @@ def create_notes_agent(model):
     """Create a note-taking assistant agent."""
     return Agent(
         model=model,
+        db=_get_db(),
         tools=[add_note, list_notes, delete_note],
         session_state={"notes": [], "note_counter": 0},
         instructions=[
@@ -256,6 +275,7 @@ def create_counter_agent(model):
     """Create an agent that demonstrates quota tracking."""
     return Agent(
         model=model,
+        db=_get_db(),
         tools=[track_api_call, get_usage_stats],
         session_state={"api_calls": {}},
         instructions=[
@@ -364,9 +384,10 @@ def main():
 
     print_section("Key Takeaways")
     print("  1. RunContext gives tools access to agent state")
-    print("  2. session_state persists across tool calls")
-    print("  3. Initialize state with session_state={} in Agent")
+    print("  2. session_state persists across runs ONLY with db + session_id")
+    print("  3. Initialize default state with session_state={} in Agent")
     print("  4. The LLM doesn't see RunContext - it's injected automatically")
+    print("  5. Without SqliteDb, state resets on each print_response() call")
 
 
 if __name__ == "__main__":
