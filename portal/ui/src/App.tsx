@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { 
   BookOpen, 
   Play, 
@@ -15,7 +15,10 @@ import {
   X,
   RotateCcw,
   Zap,
-  Info
+  Info,
+  Sliders,
+  Database,
+  History
 } from 'lucide-react'
 import axios from 'axios'
 import ReactMarkdown from 'react-markdown'
@@ -49,7 +52,11 @@ export default function App() {
     provider: 'openrouter',
     model: '',
     temperature: 0.7,
+    max_tokens: 4096,
   })
+
+  // Ref to track if we've auto-run the current lesson
+  const autoRunDone = useRef({})
 
   useEffect(() => {
     fetchModules()
@@ -95,9 +102,20 @@ export default function App() {
     }
   }
 
+  // Handle Tab Change with Auto-run logic
+  useEffect(() => {
+    if (activeTab === 'playground' && activeLesson && !autoRunDone.current[activeLesson.key]) {
+      if (lessonDetails?.default_message) {
+        // Automatically run if it's the first time entering playground for this lesson
+        sendMessage(lessonDetails.default_message)
+        autoRunDone.current[activeLesson.key] = true
+      }
+    }
+  }, [activeTab, activeLesson, lessonDetails])
+
   const runDemo = () => {
-    setInputMessage(lessonDetails.default_message || 'Hello!')
     setActiveTab('playground')
+    // The useEffect above will trigger the actual sendMessage
   }
 
   const sendMessage = (customMsg = null) => {
@@ -120,7 +138,8 @@ export default function App() {
         message: messageToSend,
         provider: config.provider,
         model: config.model || undefined,
-        temperature: config.temperature
+        temperature: config.temperature,
+        max_tokens: config.max_tokens
       }))
     }
 
@@ -155,6 +174,9 @@ export default function App() {
   const resetChat = () => {
     setChatMessages([])
     setIsStreaming(false)
+    if (activeLesson) {
+      delete autoRunDone.current[activeLesson.key]
+    }
   }
 
   const filteredModules = modules.map(mod => ({
@@ -226,7 +248,7 @@ export default function App() {
           </nav>
         </div>
 
-        <div className={`p-4 border-t border-inherit`}>
+        <div className={`p-4 border-t border-inherit space-y-2`}>
           <button 
             onClick={() => setShowSettings(!showSettings)}
             className={`flex items-center gap-3 w-full px-3 py-2 rounded-md transition-colors text-sm font-medium ${
@@ -234,7 +256,7 @@ export default function App() {
             }`}
           >
             <Settings size={18} />
-            Settings
+            System Config
           </button>
         </div>
       </aside>
@@ -244,7 +266,7 @@ export default function App() {
         {activeLesson ? (
           <>
             {/* Header */}
-            <header className={`h-16 border-b flex items-center justify-between px-8 backdrop-blur-md sticky top-0 z-10 ${theme === 'dark' ? 'bg-[#0f172a]/80 border-slate-800' : 'bg-white/80 border-slate-200'}`}>
+            <header className={`h-16 border-b flex items-center justify-between px-8 backdrop-blur-md sticky top-0 z-10 transition-colors duration-300 ${theme === 'dark' ? 'bg-[#0f172a]/80 border-slate-800' : 'bg-white/80 border-slate-200'}`}>
               <div className="flex items-center gap-6">
                 <h2 className="text-lg font-bold">{activeLesson.title}</h2>
                 <div className={`flex p-1 rounded-lg ${theme === 'dark' ? 'bg-[#1e293b]' : 'bg-slate-100 border border-slate-200'}`}>
@@ -267,7 +289,7 @@ export default function App() {
                 {activeTab === 'docs' && (
                   <button 
                     onClick={runDemo}
-                    className="flex items-center gap-2 px-4 py-1.5 bg-teal-600 hover:bg-teal-500 text-white rounded-full text-xs font-bold transition-all shadow-lg shadow-teal-600/20"
+                    className="flex items-center gap-2 px-4 py-1.5 bg-teal-600 hover:bg-teal-500 text-white rounded-full text-xs font-bold transition-all shadow-lg shadow-teal-600/20 active:scale-95"
                   >
                     <Zap size={14} /> Run Example
                   </button>
@@ -277,69 +299,75 @@ export default function App() {
                     onClick={resetChat}
                     className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold transition-all ${theme === 'dark' ? 'bg-slate-800 hover:bg-slate-700 text-slate-300' : 'bg-slate-200 hover:bg-slate-300 text-slate-700'}`}
                   >
-                    <RotateCcw size={14} /> Reset
+                    <RotateCcw size={14} /> Clear Cache
                   </button>
                 )}
                 <div className={`flex items-center gap-2 px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${theme === 'dark' ? 'bg-slate-800 text-green-400 border border-green-400/20' : 'bg-green-50 text-green-600 border border-green-200'}`}>
                   <div className="w-1.5 h-1.5 bg-green-500 rounded-full animate-pulse"></div>
-                  Online
+                  API Online
                 </div>
               </div>
             </header>
 
             {/* Content Area */}
-            <div className="flex-1 overflow-hidden flex flex-col p-8 lg:p-12">
+            <div className="flex-1 overflow-hidden flex flex-col p-8 lg:p-12 transition-colors duration-300">
               {activeTab === 'docs' ? (
                 <div className={`max-w-4xl mx-auto w-full rounded-2xl border shadow-2xl p-10 lg:p-16 overflow-y-auto custom-scrollbar animate-in slide-in-from-bottom-4 duration-500 ${
                   theme === 'dark' ? 'bg-[#1e293b] border-slate-800 prose-invert prose-teal' : 'bg-white border-slate-200 prose-slate'
                 } prose max-w-none`}>
-                  <div className="flex items-center gap-2 mb-8 px-4 py-2 bg-teal-600/10 text-teal-600 rounded-lg w-fit text-sm font-bold border border-teal-600/20">
-                    <Info size={16} /> 
-                    Module {activeLesson.module.split('_')[0]} • Lesson {activeLesson.id.split('_')[0]}
+                  <div className="flex justify-between items-start mb-8">
+                    <div className="flex items-center gap-2 px-4 py-2 bg-teal-600/10 text-teal-600 rounded-lg text-sm font-bold border border-teal-600/20">
+                      <Info size={16} /> 
+                      Module {activeLesson.module.split('_')[0]} • Lesson {activeLesson.id.split('_')[0]}
+                    </div>
+                    <div className="flex gap-4 text-xs font-bold uppercase tracking-widest opacity-40">
+                      <span className="flex items-center gap-1.5"><Terminal size={12}/> Python 3.12</span>
+                      <span className="flex items-center gap-1.5"><Database size={12}/> Agno v2.3</span>
+                    </div>
                   </div>
                   <ReactMarkdown>{lessonDetails?.readme || 'No documentation found.'}</ReactMarkdown>
                 </div>
               ) : (
-                <div className={`flex-1 max-w-5xl mx-auto w-full flex flex-col rounded-2xl border shadow-2xl overflow-hidden animate-in slide-in-from-bottom-4 duration-500 ${
+                <div className={`flex-1 max-w-5xl mx-auto w-full flex flex-col rounded-3xl border shadow-2xl overflow-hidden animate-in slide-in-from-bottom-4 duration-500 ${
                   theme === 'dark' ? 'bg-[#1e293b] border-slate-800' : 'bg-white border-slate-200'
                 }`}>
                   {/* Chat Messages */}
-                  <div className={`flex-1 overflow-y-auto p-8 space-y-8 custom-scrollbar ${theme === 'dark' ? '' : 'bg-slate-50/50'}`}>
+                  <div className={`flex-1 overflow-y-auto p-8 space-y-8 custom-scrollbar ${theme === 'dark' ? '' : 'bg-slate-50/30'}`}>
                     {chatMessages.length === 0 && (
                       <div className="h-full flex flex-col items-center justify-center text-center space-y-6 opacity-50">
                         <div className="w-20 h-20 bg-teal-600/10 rounded-full flex items-center justify-center">
                           <MessageSquare size={40} className="text-teal-500" />
                         </div>
                         <div className="space-y-2">
-                          <h3 className="text-2xl font-bold">Agent Playground</h3>
-                          <p className="max-w-md mx-auto text-sm leading-relaxed">
-                            Interact with the <strong>{activeLesson.title}</strong> agent.<br/>
-                            Config: {config.provider} • {config.model || 'Default'} • Temp {config.temperature}
+                          <h3 className="text-2xl font-bold tracking-tight">Agent Playground</h3>
+                          <p className="max-w-md mx-auto text-sm leading-relaxed font-medium">
+                            Interact with <strong>{activeLesson.title}</strong> directly from the portal.<br/>
+                            Config: {config.provider} • Temp {config.temperature}
                           </p>
                         </div>
                         <button 
                           onClick={() => sendMessage(lessonDetails?.default_message || 'Hello!')}
-                          className="px-6 py-2 bg-teal-600 hover:bg-teal-500 text-white rounded-full text-sm font-bold transition-all shadow-lg shadow-teal-600/20 flex items-center gap-2"
+                          className="px-8 py-3 bg-teal-600 hover:bg-teal-500 text-white rounded-full text-sm font-black transition-all shadow-xl shadow-teal-600/20 flex items-center gap-3 group"
                         >
-                          <Zap size={16} /> Start Lesson Demo
+                          <Zap size={18} className="group-hover:animate-pulse" /> Launch Lesson Example
                         </button>
                       </div>
                     )}
                     {chatMessages.map((msg, i) => (
                       <div key={i} className={`flex animate-in fade-in slide-in-from-bottom-2 duration-300 ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                        <div className={`max-w-[85%] rounded-2xl px-6 py-4 shadow-xl border ${
+                        <div className={`max-w-[85%] rounded-3xl px-7 py-5 shadow-2xl border transition-all ${
                           msg.role === 'user' 
-                            ? 'bg-teal-600 text-white border-teal-500 rounded-tr-none' 
-                            : `${theme === 'dark' ? 'bg-[#0f172a] border-slate-800' : 'bg-white border-slate-200 text-slate-800'} rounded-tl-none`
+                            ? 'bg-teal-600 text-white border-teal-400/30 rounded-tr-none' 
+                            : `${theme === 'dark' ? 'bg-[#0f172a] border-slate-800' : 'bg-white border-slate-100 text-slate-800 shadow-slate-200'} rounded-tl-none`
                         }`}>
-                          <div className={`text-[10px] font-black mb-2 opacity-50 uppercase tracking-[0.2em] flex items-center gap-2 ${msg.role === 'user' ? 'justify-end' : ''}`}>
+                          <div className={`text-[10px] font-black mb-3 opacity-50 uppercase tracking-[0.25em] flex items-center gap-3 ${msg.role === 'user' ? 'justify-end' : ''}`}>
                             {msg.role === 'user' ? (
-                              <>You <div className="w-1.5 h-1.5 rounded-full bg-white/50"></div></>
+                              <>USER <div className="w-2 h-2 rounded-full bg-white/40"></div></>
                             ) : (
-                              <><div className="w-1.5 h-1.5 rounded-full bg-teal-500"></div> Agent</>
+                              <><div className="w-2 h-2 rounded-full bg-teal-500"></div> AGENT</>
                             )}
                           </div>
-                          <div className={`prose prose-sm max-w-none ${msg.role === 'user' ? 'prose-invert text-white' : theme === 'dark' ? 'prose-invert' : 'prose-slate'}`}>
+                          <div className={`prose prose-sm max-w-none transition-all ${msg.role === 'user' ? 'prose-invert text-white' : theme === 'dark' ? 'prose-invert' : 'prose-slate'}`}>
                             <ReactMarkdown>{msg.content}</ReactMarkdown>
                           </div>
                         </div>
@@ -347,47 +375,47 @@ export default function App() {
                     ))}
                     {isStreaming && (
                       <div className="flex justify-start">
-                        <div className={`flex gap-3 items-center px-6 py-3 rounded-full font-bold text-xs shadow-lg animate-pulse ${
-                          theme === 'dark' ? 'bg-[#0f172a] border border-slate-800 text-teal-400' : 'bg-white border border-slate-200 text-teal-600'
+                        <div className={`flex gap-4 items-center px-7 py-4 rounded-full font-black text-xs shadow-2xl border animate-pulse ${
+                          theme === 'dark' ? 'bg-[#0f172a] border-slate-800 text-teal-400' : 'bg-white border border-slate-100 text-teal-600'
                         }`}>
-                          <div className="flex gap-1">
-                            <span className="w-1.5 h-1.5 bg-teal-500 rounded-full animate-bounce"></span>
-                            <span className="w-1.5 h-1.5 bg-teal-500 rounded-full animate-bounce [animation-delay:0.2s]"></span>
-                            <span className="w-1.5 h-1.5 bg-teal-500 rounded-full animate-bounce [animation-delay:0.4s]"></span>
+                          <div className="flex gap-1.5">
+                            <span className="w-2 h-2 bg-teal-500 rounded-full animate-bounce"></span>
+                            <span className="w-2 h-2 bg-teal-500 rounded-full animate-bounce [animation-delay:0.2s]"></span>
+                            <span className="w-2 h-2 bg-teal-500 rounded-full animate-bounce [animation-delay:0.4s]"></span>
                           </div>
-                          Agent is thinking...
+                          AGNO PROCESSING...
                         </div>
                       </div>
                     )}
                   </div>
 
                   {/* Input Bar */}
-                  <div className={`p-8 border-t transition-colors duration-300 ${theme === 'dark' ? 'bg-[#0f172a]/50 border-slate-800' : 'bg-white border-slate-200'}`}>
-                    <div className="relative max-w-4xl mx-auto">
+                  <div className={`p-8 border-t transition-all duration-500 ${theme === 'dark' ? 'bg-[#0f172a]/70 border-slate-800' : 'bg-white border-slate-100 shadow-[0_-10px_40px_-15px_rgba(0,0,0,0.05)]'}`}>
+                    <div className="relative max-w-4xl mx-auto group">
                       <input 
                         type="text"
                         value={inputMessage}
                         onChange={(e) => setInputMessage(e.target.value)}
                         onKeyDown={(e) => e.key === 'Enter' && sendMessage()}
                         placeholder={`Message ${activeLesson.title}...`}
-                        className={`w-full border rounded-2xl py-5 pl-8 pr-20 focus:outline-none focus:ring-4 focus:ring-teal-500/20 transition-all font-medium text-lg leading-relaxed shadow-inner ${
+                        className={`w-full border rounded-3xl py-6 pl-10 pr-24 focus:outline-none focus:ring-8 focus:ring-teal-500/5 transition-all font-bold text-lg leading-relaxed shadow-inner ${
                           theme === 'dark' 
-                            ? 'bg-[#0f172a] border-slate-700 placeholder:text-slate-600' 
-                            : 'bg-slate-50 border-slate-200 placeholder:text-slate-400'
+                            ? 'bg-[#0f172a] border-slate-700 placeholder:text-slate-700' 
+                            : 'bg-slate-50 border-slate-200 placeholder:text-slate-300'
                         }`}
                       />
                       <button 
                         onClick={() => sendMessage()}
                         disabled={isStreaming || !inputMessage.trim()}
-                        className="absolute right-3 top-1/2 -translate-y-1/2 w-12 h-12 bg-teal-600 hover:bg-teal-500 disabled:opacity-50 disabled:hover:bg-teal-600 text-white rounded-xl flex items-center justify-center transition-all shadow-xl shadow-teal-600/30 active:scale-95"
+                        className="absolute right-4 top-1/2 -translate-y-1/2 w-14 h-14 bg-teal-600 hover:bg-teal-500 disabled:opacity-50 disabled:hover:bg-teal-600 text-white rounded-2xl flex items-center justify-center transition-all shadow-2xl shadow-teal-600/40 active:scale-95 group-hover:scale-105"
                       >
-                        <Play size={24} className="ml-1" />
+                        <Play size={28} className="ml-1" />
                       </button>
                     </div>
-                    <div className="mt-4 flex justify-center gap-8 text-[10px] uppercase font-black tracking-[0.2em] opacity-40">
-                      <span className="flex items-center gap-2"><Terminal size={12} className="text-teal-500"/> WebSocket API</span>
-                      <span className="flex items-center gap-2"><Cpu size={12} className="text-teal-500"/> {config.provider}</span>
-                      <span className="flex items-center gap-2"><Zap size={12} className="text-teal-500"/> Streaming</span>
+                    <div className="mt-5 flex justify-center gap-10 text-[9px] uppercase font-black tracking-[0.3em] opacity-30">
+                      <span className="flex items-center gap-2 hover:opacity-100 transition-opacity"><Terminal size={14} className="text-teal-600"/> REST-Socket API</span>
+                      <span className="flex items-center gap-2 hover:opacity-100 transition-opacity"><Cpu size={14} className="text-teal-600"/> {config.provider}</span>
+                      <span className="flex items-center gap-2 hover:opacity-100 transition-opacity"><History size={14} className="text-teal-600"/> Stateless Context</span>
                     </div>
                   </div>
                 </div>
@@ -395,61 +423,74 @@ export default function App() {
             </div>
           </>
         ) : (
-          <div className="flex-1 flex flex-col items-center justify-center p-8 text-center space-y-12 animate-in fade-in duration-1000">
+          <div className="flex-1 flex flex-col items-center justify-center p-8 text-center space-y-16 animate-in fade-in duration-1000 overflow-y-auto custom-scrollbar">
             <div className="relative">
-              <div className="absolute -inset-12 bg-teal-500/20 blur-3xl rounded-full animate-pulse"></div>
-              <Cpu size={140} className="text-teal-500 relative animate-float" />
+              <div className={`absolute -inset-20 blur-3xl rounded-full animate-pulse transition-colors duration-1000 ${theme === 'dark' ? 'bg-teal-500/10' : 'bg-teal-500/5'}`}></div>
+              <div className="relative p-12 bg-gradient-to-br from-teal-500/20 to-transparent rounded-full shadow-inner border border-teal-500/10">
+                <Cpu size={140} className="text-teal-600 relative animate-float drop-shadow-[0_0_15px_rgba(20,184,166,0.5)]" />
+              </div>
             </div>
-            <div className="space-y-4 max-w-xl">
-              <h1 className="text-6xl font-black tracking-tighter bg-gradient-to-br from-white to-teal-500 bg-clip-text text-transparent">Agno Learning Hub</h1>
-              <p className={`text-xl font-medium leading-relaxed ${theme === 'dark' ? 'text-slate-400' : 'text-slate-500'}`}>
-                Explore the frontier of AI agent architecture. <br/>Interactive modules for every Agno capability.
+            <div className="space-y-6 max-w-2xl px-6">
+              <h1 className={`text-7xl font-black tracking-tighter leading-none transition-colors duration-500 ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>
+                Agno <span className="text-teal-500 tracking-[-0.1em]">Portal</span>
+              </h1>
+              <p className={`text-2xl font-semibold leading-tight tracking-tight max-w-lg mx-auto ${theme === 'dark' ? 'text-slate-400' : 'text-slate-500'}`}>
+                Deep-dive into the official Agno learning curriculum through an interactive, live playground.
               </p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-3xl px-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl px-8">
               {[
-                { label: "Core Concepts", desc: "Build foundation with Agents & Tools", icon: Cpu, color: 'text-teal-500' },
-                { label: "Production Ops", desc: "FastAPI, Observability, Persistence", icon: Terminal, color: 'text-blue-500' },
-                { label: "State Mastery", desc: "Persistent memory & Human-in-the-loop", icon: Layers, color: 'text-purple-500' },
-                { label: "Team Dynamics", desc: "Multi-agent orchestration & Routing", icon: MessageSquare, color: 'text-orange-500' }
+                { label: "Foundation", desc: "Agents, Native Tools & Multi-Provider Config", icon: Cpu, color: 'text-teal-500' },
+                { label: "Production", desc: "FastAPI OS, Telemetry, Registry & Scaling", icon: Terminal, color: 'text-blue-500' },
+                { label: "State Engines", desc: "Agentic Memory, User Profiles & Vector RAG", icon: Layers, color: 'text-indigo-500' },
+                { label: "Orchestration", desc: "Team Coordination, Routing & Workflows", icon: MessageSquare, color: 'text-amber-500' }
               ].map((item, i) => (
-                <div key={i} className={`p-8 rounded-3xl border transition-all hover:scale-[1.02] cursor-default group ${
-                  theme === 'dark' ? 'bg-[#1e293b] border-slate-800 hover:border-teal-500/50' : 'bg-white border-slate-200 hover:border-teal-500 shadow-sm hover:shadow-xl'
+                <div key={i} className={`p-10 rounded-[2.5rem] border transition-all hover:scale-[1.03] cursor-default group relative overflow-hidden ${
+                  theme === 'dark' ? 'bg-[#1e293b] border-slate-800 hover:border-teal-500/40 shadow-2xl' : 'bg-white border-slate-100 hover:border-teal-500 shadow-xl hover:shadow-2xl shadow-slate-200/50'
                 }`}>
-                  <item.icon className={`${item.color} mb-6 transition-transform group-hover:scale-110`} size={40} />
-                  <h4 className="text-lg font-bold mb-2 uppercase tracking-tight">{item.label}</h4>
-                  <p className={`text-sm leading-relaxed ${theme === 'dark' ? 'text-slate-500' : 'text-slate-500'}`}>{item.desc}</p>
+                  <div className={`absolute top-0 right-0 p-4 opacity-5 transition-transform group-hover:scale-150 ${item.color}`}>
+                    <item.icon size={80} />
+                  </div>
+                  <item.icon className={`${item.color} mb-8 transition-transform group-hover:scale-110 drop-shadow-md`} size={48} />
+                  <h4 className="text-xl font-black mb-3 uppercase tracking-tight">{item.label}</h4>
+                  <p className={`text-sm font-bold leading-relaxed transition-colors ${theme === 'dark' ? 'text-slate-500 group-hover:text-slate-400' : 'text-slate-400 group-hover:text-slate-500'}`}>{item.desc}</p>
                 </div>
               ))}
             </div>
+            <p className="text-[10px] font-black uppercase tracking-[0.4em] opacity-20 pb-12">v2.3.18 • OpenSource Agent Infrastructure</p>
           </div>
         )}
 
         {/* Settings Overlay */}
         {showSettings && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-300">
-            <div className={`w-full max-w-md rounded-3xl shadow-2xl p-8 border animate-in zoom-in-95 duration-300 ${
-              theme === 'dark' ? 'bg-[#1e293b] border-slate-700' : 'bg-white border-slate-200 text-slate-900'
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-6 bg-slate-950/80 backdrop-blur-xl animate-in fade-in duration-300">
+            <div className={`w-full max-w-xl rounded-[3rem] shadow-2xl p-12 border-2 animate-in zoom-in-95 duration-300 ${
+              theme === 'dark' ? 'bg-[#1e293b] border-slate-700 shadow-teal-900/20' : 'bg-white border-slate-100 text-slate-900'
             }`}>
-              <div className="flex items-center justify-between mb-8">
-                <h3 className="text-2xl font-black tracking-tight">System Config</h3>
-                <button onClick={() => setShowSettings(false)} className={`p-2 rounded-full ${theme === 'dark' ? 'hover:bg-slate-800' : 'hover:bg-slate-100'}`}>
-                  <X size={24} />
+              <div className="flex items-center justify-between mb-12">
+                <div className="space-y-1">
+                  <h3 className="text-3xl font-black tracking-tighter uppercase">System Config</h3>
+                  <p className="text-xs font-bold text-teal-600 tracking-widest uppercase">Global Provider Settings</p>
+                </div>
+                <button onClick={() => setShowSettings(false)} className={`p-3 rounded-2xl transition-transform hover:rotate-90 duration-300 ${theme === 'dark' ? 'bg-slate-800 hover:bg-slate-700' : 'bg-slate-50 hover:bg-slate-100'}`}>
+                  <X size={28} />
                 </button>
               </div>
 
-              <div className="space-y-8">
-                <div className="space-y-3">
-                  <label className="text-xs font-black uppercase tracking-widest opacity-50">LLM Provider</label>
-                  <div className="grid grid-cols-2 gap-2">
+              <div className="space-y-10">
+                <div className="space-y-4">
+                  <div className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.3em] opacity-40">
+                    <Zap size={14} className="text-teal-500" /> LLM PROVIDER
+                  </div>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                     {PROVIDERS.map(p => (
                       <button
                         key={p.id}
                         onClick={() => setConfig({...config, provider: p.id})}
-                        className={`px-4 py-2.5 rounded-xl text-xs font-bold border transition-all ${
+                        className={`px-4 py-3 rounded-2xl text-[10px] font-black uppercase tracking-widest border-2 transition-all ${
                           config.provider === p.id 
-                            ? 'bg-teal-600 text-white border-teal-500 shadow-lg shadow-teal-600/20' 
-                            : `${theme === 'dark' ? 'bg-[#0f172a] border-slate-800 text-slate-400 hover:border-slate-600' : 'bg-slate-50 border-slate-200 text-slate-600 hover:border-slate-300'}`
+                            ? 'bg-teal-600 text-white border-teal-500 shadow-xl shadow-teal-600/30' 
+                            : `${theme === 'dark' ? 'bg-[#0f172a] border-slate-800 text-slate-500 hover:border-slate-600' : 'bg-slate-50 border-slate-100 text-slate-600 hover:border-slate-200'}`
                         }`}
                       >
                         {p.name}
@@ -458,40 +499,64 @@ export default function App() {
                   </div>
                 </div>
 
-                <div className="space-y-3">
-                  <label className="text-xs font-black uppercase tracking-widest opacity-50">Model Name (Optional)</label>
-                  <input 
-                    type="text" 
-                    value={config.model}
-                    onChange={(e) => setConfig({...config, model: e.target.value})}
-                    placeholder={PROVIDERS.find(p => p.id === config.provider)?.defaultModel}
-                    className={`w-full border rounded-xl py-3 px-4 text-sm font-medium focus:outline-none focus:ring-2 focus:ring-teal-500 transition-all ${
-                      theme === 'dark' ? 'bg-[#0f172a] border-slate-700' : 'bg-slate-50 border-slate-200'
-                    }`}
-                  />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.3em] opacity-40">
+                      <Code size={14} className="text-teal-500" /> MODEL ID
+                    </div>
+                    <input 
+                      type="text" 
+                      value={config.model}
+                      onChange={(e) => setConfig({...config, model: e.target.value})}
+                      placeholder={PROVIDERS.find(p => p.id === config.provider)?.defaultModel}
+                      className={`w-full border-2 rounded-2xl py-4 px-6 text-sm font-bold focus:outline-none focus:ring-4 focus:ring-teal-500/10 transition-all ${
+                        theme === 'dark' ? 'bg-[#0f172a] border-slate-700' : 'bg-slate-50 border-slate-100'
+                      }`}
+                    />
+                  </div>
+
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.3em] opacity-40">
+                      <Sliders size={14} className="text-teal-500" /> TOKENS
+                    </div>
+                    <input 
+                      type="number" 
+                      value={config.max_tokens}
+                      onChange={(e) => setConfig({...config, max_tokens: parseInt(e.target.value)})}
+                      className={`w-full border-2 rounded-2xl py-4 px-6 text-sm font-bold focus:outline-none focus:ring-4 focus:ring-teal-500/10 transition-all ${
+                        theme === 'dark' ? 'bg-[#0f172a] border-slate-700' : 'bg-slate-50 border-slate-100'
+                      }`}
+                    />
+                  </div>
                 </div>
 
-                <div className="space-y-3">
+                <div className="space-y-6">
                   <div className="flex justify-between items-center">
-                    <label className="text-xs font-black uppercase tracking-widest opacity-50">Temperature</label>
-                    <span className="text-sm font-bold text-teal-500">{config.temperature}</span>
+                    <div className="flex items-center gap-2 text-xs font-black uppercase tracking-[0.3em] opacity-40">
+                      <Sun size={14} className="text-teal-500" /> TEMPERATURE
+                    </div>
+                    <span className="text-sm font-black text-teal-600 bg-teal-600/10 px-3 py-1 rounded-lg">{config.temperature}</span>
                   </div>
                   <input 
                     type="range" 
                     min="0" 
-                    max="1" 
+                    max="2" 
                     step="0.1" 
                     value={config.temperature}
                     onChange={(e) => setConfig({...config, temperature: parseFloat(e.target.value)})}
-                    className="w-full h-2 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-teal-500"
+                    className="w-full h-3 bg-slate-800 rounded-full appearance-none cursor-pointer accent-teal-500 shadow-inner"
                   />
+                  <div className="flex justify-between text-[8px] font-black uppercase tracking-widest opacity-30">
+                    <span>Deterministic</span>
+                    <span>Creative</span>
+                  </div>
                 </div>
 
                 <button 
                   onClick={() => setShowSettings(false)}
-                  className="w-full py-4 bg-teal-600 hover:bg-teal-500 text-white rounded-xl font-bold transition-all shadow-xl shadow-teal-600/30"
+                  className="w-full py-6 bg-teal-600 hover:bg-teal-500 text-white rounded-3xl font-black text-lg tracking-widest uppercase transition-all shadow-2xl shadow-teal-600/40 active:scale-[0.98] hover:scale-[1.02]"
                 >
-                  Save Configuration
+                  Apply & Close
                 </button>
               </div>
             </div>
@@ -501,35 +566,49 @@ export default function App() {
 
       <style>{`
         .custom-scrollbar::-webkit-scrollbar {
-          width: 6px;
+          width: 8px;
         }
         .custom-scrollbar::-webkit-scrollbar-track {
           background: transparent;
         }
         .custom-scrollbar::-webkit-scrollbar-thumb {
-          background: ${theme === 'dark' ? '#334155' : '#cbd5e1'};
-          border-radius: 10px;
+          background: ${theme === 'dark' ? '#334155' : '#e2e8f0'};
+          border-radius: 20px;
+          border: 2px solid transparent;
+          background-clip: content-box;
         }
         .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-          background: ${theme === 'dark' ? '#475569' : '#94a3b8'};
+          background: ${theme === 'dark' ? '#475569' : '#cbd5e1'};
+          background-clip: content-box;
         }
         pre {
           background: ${theme === 'dark' ? '#0f172a' : '#f8fafc'} !important;
-          padding: 1.5rem !important;
-          border-radius: 1rem !important;
-          border: 1px solid ${theme === 'dark' ? '#1e293b' : '#e2e8f0'} !important;
-          font-family: 'JetBrains Mono', monospace !important;
+          padding: 2rem !important;
+          border-radius: 1.5rem !important;
+          border: 1px solid ${theme === 'dark' ? '#1e293b' : '#f1f5f9'} !important;
+          font-family: 'JetBrains Mono', 'Fira Code', monospace !important;
           overflow-x: auto;
+          box-shadow: inset 0 2px 10px 0 rgba(0,0,0,0.1);
         }
         code {
           font-family: 'JetBrains Mono', monospace !important;
         }
         @keyframes float {
           0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-20px); }
+          50% { transform: translateY(-30px); }
         }
         .animate-float {
-          animation: float 6s ease-in-out infinite;
+          animation: float 8s ease-in-out infinite;
+        }
+        
+        input[type=range]::-webkit-slider-runnable-track {
+          height: 12px;
+          border-radius: 10px;
+        }
+        
+        @font-face {
+          font-family: 'Inter';
+          font-display: swap;
         }
       `}</style>
     </div>

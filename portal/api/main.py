@@ -59,6 +59,7 @@ async def run_agent_ws(websocket: WebSocket, module: str, lesson: str):
         provider = config.get("provider")
         model = config.get("model")
         temperature = config.get("temperature")
+        max_tokens = config.get("max_tokens")
         message = config.get("message")
         
         if not message:
@@ -74,6 +75,10 @@ async def run_agent_ws(websocket: WebSocket, module: str, lesson: str):
             model=model, 
             temperature=temperature
         )
+        
+        # Apply max_tokens if provided
+        if max_tokens and hasattr(agent, 'model') and agent.model:
+            agent.model.max_tokens = int(max_tokens)
         
         # Stream response
         await websocket.send_json({"type": "status", "content": "Agent started..."})
