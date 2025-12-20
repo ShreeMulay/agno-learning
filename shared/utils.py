@@ -98,5 +98,71 @@ def setup_path() -> None:
         sys.path.insert(0, str(project_root))
 
 
+def check_openrouter_runcontext_error(provider: str) -> None:
+    """
+    Check if using OpenRouter with RunContext tools and warn user.
+    
+    OpenRouter has a known issue with tools that use RunContext,
+    returning 500 errors. This function warns the user and suggests
+    alternative providers.
+    
+    Args:
+        provider: The current provider name
+    """
+    if provider == "openrouter":
+        print("\n" + "=" * 60)
+        print("  WARNING: OpenRouter + RunContext Tool Issue")
+        print("=" * 60)
+        print("""
+  This example uses RunContext for stateful tools.
+  OpenRouter has a known issue that causes 500 errors
+  with these tools.
+  
+  WORKAROUND: Use a direct provider instead:
+  
+    python main.py --provider openai
+    python main.py --provider anthropic  
+    python main.py --provider google
+    
+  Press Enter to try anyway, or Ctrl+C to exit...
+""")
+        try:
+            input()
+        except KeyboardInterrupt:
+            print("\n  Exiting. Try with --provider openai")
+            import sys
+            sys.exit(0)
+
+
+def handle_openrouter_error(error: Exception, provider: str) -> bool:
+    """
+    Handle OpenRouter 500 errors gracefully.
+    
+    Args:
+        error: The exception that was raised
+        provider: The current provider name
+        
+    Returns:
+        True if this was an OpenRouter error that was handled
+    """
+    error_str = str(error)
+    if provider == "openrouter" and ("500" in error_str or "Internal Server Error" in error_str):
+        print("\n" + "!" * 60)
+        print("  OpenRouter Error Detected")
+        print("!" * 60)
+        print("""
+  OpenRouter returned a 500 error. This is a known issue
+  with RunContext-based tools.
+  
+  Please re-run with a direct provider:
+  
+    python main.py --provider openai
+    python main.py --provider anthropic
+    python main.py --provider google
+""")
+        return True
+    return False
+
+
 # Auto-setup path when this module is imported
 setup_path()

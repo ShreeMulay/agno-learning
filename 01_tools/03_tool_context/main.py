@@ -25,7 +25,7 @@ from agno.agent import Agent
 from agno.run import RunContext
 
 from shared.model_config import get_model, add_model_args
-from shared.utils import print_header, print_section
+from shared.utils import print_header, print_section, check_openrouter_runcontext_error
 
 
 # =============================================================================
@@ -292,6 +292,10 @@ def main():
         args.shop = True
 
     print_header("Lesson 03: Tool Context")
+    
+    # Warn about OpenRouter issues with RunContext tools
+    provider = args.provider or "openrouter"
+    check_openrouter_runcontext_error(provider)
 
     try:
         model = get_model(
