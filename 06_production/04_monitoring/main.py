@@ -90,16 +90,16 @@ def setup_component_loggers(log_dir: str = "tmp"):
 
 
 
-def get_agent(model=None):
+def get_agent(model=None, telemetry=True):
     if model is None:
         from shared.model_config import get_model
         model = get_model()
     return Agent(
         name="MonitoredAgent",
-model=model,
-instructions=["You are a helpful assistant."],
-telemetry=not args.no_telemetry,  # Control telemetry
-markdown=True,
+        model=model,
+        instructions=["You are a helpful assistant."],
+        telemetry=telemetry,
+        markdown=True,
     )
 
 
@@ -135,7 +135,7 @@ def main():
     model = get_model(args.provider, args.model, temperature=args.temperature)
     
     # Create agent with telemetry control
-    agent = get_agent(model)
+    agent = get_agent(model, telemetry=not args.no_telemetry)
     
     print_section("Agent Created")
     print(f"  Name: {agent.name}")

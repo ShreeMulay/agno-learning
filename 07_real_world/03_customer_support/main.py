@@ -91,9 +91,8 @@ def create_support_team(model):
     
     # Create team with route mode
     team = Team(
+        members=[faq_agent, tech_agent, billing_agent],
         name="CustomerSupport",
-        mode="route",  # Route to appropriate agent
-        agents=[faq_agent, tech_agent, billing_agent],
         instructions=[
             "Route customer inquiries to the appropriate agent:",
             "- General questions → FAQAgent",
@@ -101,7 +100,6 @@ def create_support_team(model):
             "- Billing, payments, subscriptions → BillingAgent",
         ],
         model=model,
-        
     )
     
     return team

@@ -1,0 +1,47 @@
+
+    Agents in Agno are AI programs where a language model controls execution flow.
+    The model decides whether to reason, use tools, or respond to the user.
+    Agents are created using the Agent class with a model and optional instructions.
+    
+
+
+    Tools extend agent capabilities by allowing them to interact with external systems.
+    Tools are Python functions that agents can call to fetch data or perform actions.
+    Agno includes 100+ pre-built tools and supports custom tool creation.
+    
+
+
+    Knowledge bases enable RAG (Retrieval-Augmented Generation) patterns.
+    Documents are chunked, embedded into vectors, and stored in a vector database.
+    When a query is made, relevant chunks are retrieved and added to the LLM context.
+    
+
+
+    Memory allows agents to remember information across sessions.
+    User memories persist preferences, facts, and context about the user.
+    Session state provides temporary storage within a single conversation.
+    
+
+
+    Teams enable multi-agent collaboration for complex tasks.
+    A team has a leader agent that coordinates work among member agents.
+    Teams can operate in coordinate, route, or collaborate modes.
+    
+
+
+    Workflows provide structured orchestration of agent tasks.
+    Each workflow step can involve different agents or operations.
+    Workflows support sequential, parallel, and conditional execution.
+    
+
+
+    Vector search finds similar content using mathematical distance metrics.
+    Common metrics include cosine similarity and Euclidean distance.
+    The embedding model converts text to high-dimensional vectors.
+    
+
+
+    LanceDB is a local vector database that requires no server setup.
+    It stores vectors in the Lance format for fast similarity search.
+    LanceDB supports both exact and approximate nearest neighbor search.
+    

@@ -127,6 +127,13 @@ def main():
     response = agent.run(args.query, output_schema=ClinicalResponse)
     result = response.content
     
+    # Handle case where OpenRouter returns string instead of structured output
+    if isinstance(result, str):
+        print("\n  Note: Structured output parsing failed with this provider.")
+        print("  Try: python main.py --provider openai")
+        print(f"\n  Raw response:\n  {result[:500]}...")
+        return
+    
     print_section(f"Condition: {result.condition}")
     print(f"\n  {result.summary}")
     

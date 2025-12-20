@@ -23,14 +23,14 @@ from shared.utils import print_header, print_section
 
 
 
-def get_agent(model=None):
+def get_agent(model=None, db=None):
     if model is None:
         from shared.model_config import get_model
         model = get_model()
     return Agent(
         name="PersistentAssistant",
-model=model,
-db=db,
+        model=model,
+        db=db,
 # Enable history from database
 add_history_to_context=True,
 num_history_runs=5,  # Include last 5 messages
@@ -69,7 +69,7 @@ def main():
     print(f"  Table: agent_sessions")
     
     # Create agent with database and history
-    agent = get_agent(model)
+    agent = get_agent(model, db)
     
     # Use provided session_id or generate new
     session_id = args.session_id or f"session_{uuid.uuid4().hex[:8]}"
