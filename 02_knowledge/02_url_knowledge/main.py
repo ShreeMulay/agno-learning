@@ -105,6 +105,7 @@ def main():
     
     try:
         # Create knowledge base with URL content
+        print("  [1/4] Initializing vector database...")
         knowledge = Knowledge(
             name="url_knowledge",
             vector_db=LanceDb(
@@ -112,16 +113,31 @@ def main():
                 uri=str(lancedb_path),
             ),
         )
+        print("  [1/4] Vector database ready ✓")
         
         # Load and index content from URLs
-        print("Fetching and indexing web content...")
-        for url in args.urls:
-            print(f"  Loading: {url}")
+        print(f"\n  [2/4] Fetching {len(args.urls)} URL(s)...")
+        for i, url in enumerate(args.urls, 1):
+            print(f"        [{i}/{len(args.urls)}] Fetching: {url}")
+        
+        print("\n  [3/4] Chunking and embedding content...")
+        print("        (This may take 10-60 seconds depending on content size)")
+        
+        import time
+        start_time = time.time()
+        
+        for i, url in enumerate(args.urls, 1):
+            url_start = time.time()
+            print(f"        [{i}/{len(args.urls)}] Processing: {url}...", end=" ", flush=True)
             knowledge.add_content(url=url)
-        print("Knowledge base ready!")
+            elapsed = time.time() - url_start
+            print(f"done ({elapsed:.1f}s)")
+        
+        total_time = time.time() - start_time
+        print(f"\n  [4/4] Knowledge base ready ✓ (total: {total_time:.1f}s)")
         
     except Exception as e:
-        print(f"Error building knowledge base: {e}")
+        print(f"\n  ✗ Error building knowledge base: {e}")
         print("\nTip: Make sure you have the required dependencies:")
         print("  pip install beautifulsoup4 lxml httpx lancedb")
         print("\nAlso ensure the URLs are accessible.")
