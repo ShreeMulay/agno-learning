@@ -136,7 +136,22 @@ def main():
         f"Research findings:\n{research_result.content}",
         output_schema=BlogOutline
     )
-    outline = outline_result.content
+    
+    # Handle parsing failures (common with OpenRouter)
+    if isinstance(outline_result.content, BlogOutline):
+        outline = outline_result.content
+    else:
+        # Fallback: create a simple outline from the raw response
+        print("  (Note: Using fallback outline due to parsing issues)")
+        outline = BlogOutline(
+            title=f"Guide to {args.topic}",
+            subtitle=f"Everything you need to know about {args.topic}",
+            sections=["Introduction", "Key Benefits", "How to Get Started", "Conclusion"],
+            key_points=["Overview", "Benefits", "Practical tips"],
+            target_audience="General readers",
+            seo_keywords=[args.topic.lower(), "guide", "tips"]
+        )
+    
     print(f"  Title: {outline.title}")
     print(f"  Sections: {len(outline.sections)}")
     print(f"  Keywords: {', '.join(outline.seo_keywords[:3])}")
