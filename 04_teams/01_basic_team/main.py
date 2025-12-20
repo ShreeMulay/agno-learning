@@ -29,14 +29,22 @@ def main():
         name="Researcher",
         role="Research specialist",
         model=model,
-        instructions="You research topics and provide facts.",
+        instructions=[
+            "You research topics and provide detailed, accurate facts.",
+            "Present findings in a clear, organized format.",
+            "Include key statistics or evidence when available.",
+        ],
     )
 
     writer = Agent(
         name="Writer",
         role="Content writer",
         model=model,
-        instructions="You write engaging content based on research.",
+        instructions=[
+            "You write engaging, polished content based on provided research.",
+            "Make content accessible to a general audience.",
+            "Return ONLY the final written content, no meta-commentary.",
+        ],
     )
 
     # Create a team (note: 'members' is the new parameter name, not 'agents')
@@ -44,7 +52,12 @@ def main():
         members=[researcher, writer],
         name="Content Team",
         model=model,
-        instructions="Coordinate research and writing tasks.",
+        instructions=[
+            "You coordinate the researcher and writer to produce quality content.",
+            "First delegate research, then delegate writing based on that research.",
+            "IMPORTANT: Your final response must include the ACTUAL content produced.",
+            "Do not just describe what was done - show the final written output.",
+        ],
         markdown=True,
     )
 
