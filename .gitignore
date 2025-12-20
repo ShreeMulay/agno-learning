@@ -73,3 +73,29 @@ sample_data/*.pdf
 sample_data/*.csv
 sample_data/*.json
 !sample_data/.gitkeep
+
+# Credentials & Secrets (NEVER commit these)
+credentials/
+*.pem
+*.key
+*.p12
+*.pfx
+*.crt
+*_credentials.json
+*_token.json
+service_account*.json
+
+# OAuth tokens
+token.pickle
+token.json
+*oauth*.json
+
+# API exports/data dumps
+exports/
+data_dumps/
+*.dump
+
+# Sensitive data files
+*_secrets.*
+*_private.*
+*.secret
