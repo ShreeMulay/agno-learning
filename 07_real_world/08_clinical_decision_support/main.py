@@ -130,8 +130,10 @@ def main():
     # Handle case where OpenRouter returns string instead of structured output
     if isinstance(result, str):
         print("\n  Note: Structured output parsing failed with this provider.")
-        print("  Try: python main.py --provider openai")
-        print(f"\n  Raw response:\n  {result[:500]}...")
+        print("  Try: python main.py --provider openai for structured output.\n")
+        print("-" * 60)
+        print(result)
+        print("-" * 60)
         return
     
     print_section(f"Condition: {result.condition}")
