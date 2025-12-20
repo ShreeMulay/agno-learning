@@ -49,7 +49,7 @@ def main():
 
     print("\nStep 2: Write")
     article = writer.run(f"Write a short article based on: {research.content}")
-    print(f"  Result: {article.content[:200]}...")
+    print(f"  Result: {article.content[:1000]}...")
 
 
 if __name__ == "__main__":
