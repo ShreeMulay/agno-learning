@@ -58,6 +58,7 @@ async def run_agent_ws(websocket: WebSocket, module: str, lesson: str):
         
         provider = config.get("provider")
         model = config.get("model")
+        temperature = config.get("temperature")
         message = config.get("message")
         
         if not message:
@@ -66,7 +67,13 @@ async def run_agent_ws(websocket: WebSocket, module: str, lesson: str):
             return
 
         # Instantiate agent
-        agent = registry.get_agent_instance(module, lesson, provider=provider, model=model)
+        agent = registry.get_agent_instance(
+            module, 
+            lesson, 
+            provider=provider, 
+            model=model, 
+            temperature=temperature
+        )
         
         # Stream response
         await websocket.send_json({"type": "status", "content": "Agent started..."})
