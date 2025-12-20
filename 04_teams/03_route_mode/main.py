@@ -44,8 +44,10 @@ def get_agent(model=None):
         model=model,
         instructions=[
             "You handle pricing, plans, and purchasing questions.",
-            "Be friendly and informative about product options.",
-            "Focus on understanding customer needs.",
+            "Be friendly and ask clarifying questions about their needs.",
+            "IMPORTANT: This is a demo without real product data.",
+            "Do NOT make up specific prices or plans.",
+            "Instead, ask what product/service they're interested in.",
         ],
     )
     
