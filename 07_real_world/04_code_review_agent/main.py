@@ -129,7 +129,7 @@ password = "admin123"
     prompt = f"Review this code:\n\n```\n{code}\n```"
     
     if args.structured:
-        response = agent.run(prompt, response_model=CodeReview)
+        response = agent.run(prompt, output_schema=CodeReview)
         review = response.content
         
         print_section(f"Review Score: {review.score}/10")

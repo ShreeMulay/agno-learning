@@ -22,7 +22,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 from agno.agent import Agent
-from agno.knowledge.text import TextKnowledge
+from agno.knowledge import Knowledge
 from agno.vectordb.lancedb import LanceDb
 
 from shared.model_config import get_model, add_model_args
@@ -84,35 +84,32 @@ def create_text_knowledge(lancedb_path: Path, rebuild: bool = False):
     temp_file.parent.mkdir(exist_ok=True)
     temp_file.write_text(combined_text)
     
-    knowledge = TextKnowledge(
-        path=str(temp_file),
+    knowledge = Knowledge(
+        name="vector_search_demo",
         vector_db=LanceDb(
             table_name="vector_search_demo",
             uri=str(lancedb_path),
         ),
     )
     
-    knowledge.load(recreate=rebuild)
+    # Add text content
+    knowledge.add_content(path=str(temp_file))
     return knowledge
 
 
 
-def get_agent(model=None):
-    if model is None:
-        from shared.model_config import get_model
-        model = get_model()
+def create_vector_agent(model, knowledge, num_docs=3):
+    """Create a RAG agent with vector search."""
     return Agent(
         model=model,
-knowledge=knowledge,
-search_knowledge=True,
-num_documents=args.num_docs,  # Control retrieval count
-instructions=[
-"You are a helpful assistant explaining Agno concepts.",
-"Use the retrieved context to answer accurately.",
-"If information isn't available, say so.",
-],
-show_tool_calls=True,
-markdown=True,
+        knowledge=knowledge,
+        search_knowledge=True,
+        instructions=[
+            "You are a helpful assistant explaining Agno concepts.",
+            "Use the retrieved context to answer accurately.",
+            "If information isn't available, say so.",
+        ],
+        markdown=True,
     )
 
 
@@ -201,7 +198,7 @@ def main():
 
     print_section("Creating RAG Agent")
     
-    agent = get_agent(model)
+    agent = create_vector_agent(model, knowledge, args.num_docs)
 
     print_section(f"Query (retrieving {args.num_docs} chunks)")
     print(f"Question: {args.query}\n")

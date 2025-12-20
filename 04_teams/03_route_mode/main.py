@@ -21,10 +21,10 @@ def get_agent(model=None):
         model = get_model()
     return Team(
         name="Customer Team",
-        agents=[support, sales],
+        members=[support, sales],
         model=model,
         respond_directly=True,  # Route mode
-        show_tool_calls=True,
+        
         markdown=True,
     )
 

@@ -21,10 +21,10 @@ def get_agent(model=None):
         model = get_model()
     return Team(
         name="Strategy Team",
-        agents=[analyst, strategist],
+        members=[analyst, strategist],
         model=model,
         # Coordinate mode is the default
-        show_tool_calls=True,
+        
         markdown=True,
     )
 

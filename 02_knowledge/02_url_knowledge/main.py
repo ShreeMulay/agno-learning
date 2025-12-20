@@ -21,7 +21,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 from agno.agent import Agent
-from agno.knowledge.url import URLKnowledge
+from agno.knowledge import Knowledge
 from agno.vectordb.lancedb import LanceDb
 
 from shared.model_config import get_model, add_model_args
@@ -35,22 +35,19 @@ DEFAULT_URLS = [
 
 
 
-def get_agent(model=None):
-    if model is None:
-        from shared.model_config import get_model
-        model = get_model()
+def create_url_agent(model, knowledge):
+    """Create a RAG agent with URL knowledge."""
     return Agent(
         model=model,
-knowledge=knowledge,
-search_knowledge=True,
-instructions=[
-"You are a helpful assistant with access to web content.",
-"Use the knowledge base to answer questions accurately.",
-"Cite the source URL when providing information.",
-"If information isn't available, say so.",
-],
-show_tool_calls=True,
-markdown=True,
+        knowledge=knowledge,
+        search_knowledge=True,
+        instructions=[
+            "You are a helpful assistant with access to web content.",
+            "Use the knowledge base to answer questions accurately.",
+            "Cite the source URL when providing information.",
+            "If information isn't available, say so.",
+        ],
+        markdown=True,
     )
 
 
@@ -107,18 +104,20 @@ def main():
     print(f"Vector DB: {lancedb_path}")
     
     try:
-        # Create URL knowledge base
-        knowledge = URLKnowledge(
-            urls=args.urls,
+        # Create knowledge base with URL content
+        knowledge = Knowledge(
+            name="url_knowledge",
             vector_db=LanceDb(
                 table_name="url_knowledge",
                 uri=str(lancedb_path),
             ),
         )
         
-        # Load and index content
+        # Load and index content from URLs
         print("Fetching and indexing web content...")
-        knowledge.load(recreate=args.rebuild)
+        for url in args.urls:
+            print(f"  Loading: {url}")
+            knowledge.add_content(url=url)
         print("Knowledge base ready!")
         
     except Exception as e:
@@ -130,7 +129,7 @@ def main():
 
     print_section("Creating RAG Agent")
     
-    agent = get_agent(model)
+    agent = create_url_agent(model, knowledge)
 
     print_section("Query")
     print(f"Question: {args.query}\n")

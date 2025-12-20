@@ -14,7 +14,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 from agno.agent import Agent
-from agno.knowledge.pdf import PDFKnowledgeBase
+from agno.knowledge import Knowledge
 from agno.vectordb.lancedb import LanceDb
 
 from shared.model_config import get_model, add_model_args
@@ -32,34 +32,31 @@ def create_doc_qa_agent(model, pdf_path: str = None):
     
     knowledge = None
     if pdf_path and Path(pdf_path).exists():
-        knowledge = PDFKnowledgeBase(
-            path=pdf_path,
+        knowledge = Knowledge(
+            name="document_qa",
             vector_db=vector_db,
         )
+        knowledge.add_content(path=pdf_path)
     
-    agent = get_agent(model)
+    agent = Agent(
+        name="DocQA",
+        model=model,
+        knowledge=knowledge,
+        instructions=[
+            "You answer questions based on the provided documents.",
+            "Always cite the specific section or page when possible.",
+            "If the answer is not in the documents, say so clearly.",
+            "Provide relevant quotes when helpful.",
+        ],
+        search_knowledge=True,
+        markdown=True,
+    )
     
     return agent, knowledge
 
 
 
-def get_agent(model=None):
-    if model is None:
-        from shared.model_config import get_model
-        model = get_model()
-    return Agent(
-        name="DocQA",
-model=model,
-knowledge=knowledge,
-instructions=[
-"You answer questions based on the provided documents.",
-"Always cite the specific section or page when possible.",
-"If the answer is not in the documents, say so clearly.",
-"Provide relevant quotes when helpful.",
-],
-search_knowledge=True,
-markdown=True,
-    )
+
 
 
 def main():
@@ -92,15 +89,10 @@ def main():
     
     agent, knowledge = create_doc_qa_agent(model, args.pdf)
     
-    # Load knowledge base if provided
+    # Knowledge is already loaded when add_content is called
     if knowledge:
         print_section("Loading Document")
-        try:
-            knowledge.load()
-            print("  Document indexed successfully")
-        except Exception as e:
-            print(f"  Error loading document: {e}")
-            return
+        print("  Document indexed successfully")
     
     # Single query or interactive mode
     if args.query:

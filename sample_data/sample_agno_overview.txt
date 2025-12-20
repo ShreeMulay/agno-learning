@@ -1,0 +1,34 @@
+
+    AGNO FRAMEWORK OVERVIEW
+    =======================
+    
+    Introduction
+    ------------
+    Agno is a high-performance Python framework for building AI agents.
+    It was formerly known as phiData and was rebranded in January 2025.
+    
+    Key Features
+    ------------
+    1. Blazing Fast: Agents instantiate in ~3 microseconds
+    2. Low Memory: ~6.6KB per agent
+    3. Privacy First: Runs entirely in your cloud
+    4. 100+ Tools: Pre-built integrations
+    5. Multi-Model: Supports OpenAI, Anthropic, Google, and more
+    
+    Core Concepts
+    -------------
+    Agents: AI programs where an LLM controls execution flow
+    Tools: Functions that agents can call
+    Knowledge: Domain-specific information via RAG
+    Memory: Persistent user preferences
+    Teams: Multi-agent collaboration
+    Workflows: Orchestrated pipelines
+    
+    Getting Started
+    ---------------
+    Install agno: pip install agno
+    Create an agent: Agent(model=model, instructions="...")
+    Run it: agent.print_response("Hello!")
+    
+    For more information, visit docs.agno.com
+    

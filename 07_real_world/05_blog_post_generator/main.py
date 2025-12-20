@@ -134,7 +134,7 @@ def main():
     outline_result = outliner.run(
         f"Create a blog post outline about: {args.topic}\n\n"
         f"Research findings:\n{research_result.content}",
-        response_model=BlogOutline
+        output_schema=BlogOutline
     )
     outline = outline_result.content
     print(f"  Title: {outline.title}")

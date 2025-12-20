@@ -19,13 +19,18 @@ from shared.utils import print_header, print_section
 
 
 
-def get_agent(model=None):
-    if model is None:
-        from shared.model_config import get_model
-        model = get_model()
+def create_agentic_memory_agent(model, db_path):
+    """Create an agent with agentic memory control."""
     return Agent(
         model=model,
-db=SqliteDb(db_file=str(db_path
+        db=SqliteDb(db_file=str(db_path)),
+        enable_agentic_memory=True,
+        instructions=[
+            "You have tools to manage memories.",
+            "Remember important user information.",
+            "Update or delete memories as needed.",
+        ],
+        markdown=True,
     )
 
 
@@ -42,16 +47,7 @@ def main():
 
     model = get_model(args.provider, args.model, temperature=args.temperature)
 
-    agent = get_agent(model)),
-        enable_agentic_memory=True,  # Agent controls memory
-        instructions=[
-            "You have tools to manage memories.",
-            "Remember important user information.",
-            "Update or delete memories as needed.",
-        ],
-        show_tool_calls=True,
-        markdown=True,
-    )
+    agent = create_agentic_memory_agent(model, db_path)
 
     print(f"User ID: {args.user}")
 

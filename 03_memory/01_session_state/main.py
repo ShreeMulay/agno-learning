@@ -12,7 +12,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 from agno.agent import Agent
-from agno.run.context import RunContext
+from agno.run import RunContext
 
 from shared.model_config import get_model, add_model_args
 from shared.utils import print_header, print_section
@@ -42,14 +42,13 @@ def get_agent(model=None):
         model = get_model()
     return Agent(
         model=model,
-tools=[increment_counter, add_item, get_state],
-session_state={"counter": 0, "items": []},
-instructions=[
-"You can track a counter and a list of items.",
-"Current state: counter={counter}, items={items}",
-],
-show_tool_calls=True,
-markdown=True,
+        tools=[increment_counter, add_item, get_state],
+        session_state={"counter": 0, "items": []},
+        instructions=[
+            "You can track a counter and a list of items.",
+            "Current state: counter={counter}, items={items}",
+        ],
+        markdown=True,
     )
 
 

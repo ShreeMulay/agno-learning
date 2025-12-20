@@ -24,15 +24,10 @@ async def get_agent(model=None):
     )
 
 
-def main():
-    parser = argparse.ArgumentParser(description="Parallel Steps Demo")
-    add_model_args(parser)
-    args = parser.parse_args()
-
-    print_header("Lesson 03: Parallel Steps")
-
-    model = get_model(args.provider, args.model, temperature=args.temperature)
-
+async def run_parallel_tasks():
+    """Run agents in parallel using asyncio."""
+    model = get_model()
+    
     # Create agents
     agent1 = Agent(name="Agent 1", model=model)
     agent2 = Agent(name="Agent 2", model=model)
@@ -53,5 +48,16 @@ def main():
         print(f"Agent {i}: {result.content[:100]}...")
 
 
+def main():
+    parser = argparse.ArgumentParser(description="Parallel Steps Demo")
+    add_model_args(parser)
+    args = parser.parse_args()
+
+    print_header("Lesson 03: Parallel Steps")
+
+    # Run the async function
+    asyncio.run(run_parallel_tasks())
+
+
 if __name__ == "__main__":
-    asyncio.run(main())
+    main()

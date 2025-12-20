@@ -124,7 +124,7 @@ def main():
     agent = create_clinical_agent(model)
     
     print_section("Processing...")
-    response = agent.run(args.query, response_model=ClinicalResponse)
+    response = agent.run(args.query, output_schema=ClinicalResponse)
     result = response.content
     
     print_section(f"Condition: {result.condition}")

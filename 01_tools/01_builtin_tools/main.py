@@ -37,7 +37,6 @@ def create_search_agent(model):
             "Always cite your sources.",
             "Be concise but thorough.",
         ],
-        show_tool_calls=True,  # Show when tools are used
         markdown=True,
     )
 
@@ -53,7 +52,6 @@ def create_calculator_agent(model):
             "Show your work step by step.",
             "Always verify calculations.",
         ],
-        show_tool_calls=True,
         markdown=True,
     )
 
@@ -71,7 +69,6 @@ def create_multi_tool_agent(model):
             "Choose the appropriate tool based on the question.",
             "Be helpful and thorough.",
         ],
-        show_tool_calls=True,
         markdown=True,
     )
 
@@ -154,7 +151,7 @@ def main():
     print_section("Key Takeaways")
     print("  1. Tools extend what agents can do")
     print("  2. LLMs automatically decide when to use tools")
-    print("  3. show_tool_calls=True helps debug tool usage")
+    print("  3. Use debug_mode=True to see tool usage details")
     print("  4. Combine multiple tools for powerful agents")
 
 

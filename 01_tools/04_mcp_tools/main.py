@@ -50,7 +50,7 @@ def create_mcp_agent(model, mcp_url: str):
             "Use the available tools to answer questions.",
             "Be thorough and cite sources when possible.",
         ],
-        show_tool_calls=True,
+        
         markdown=True,
     )
 
@@ -68,7 +68,7 @@ def get_agent(model=None):
             "Choose the appropriate tool based on the user's request.",
             "If you're not sure which tool to use, ask for clarification.",
         ],
-        show_tool_calls=True,
+        
         markdown=True,
     )
 

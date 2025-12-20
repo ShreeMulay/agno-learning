@@ -22,7 +22,7 @@ from datetime import datetime
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 from agno.agent import Agent
-from agno.run.context import RunContext
+from agno.run import RunContext
 
 from shared.model_config import get_model, add_model_args
 from shared.utils import print_header, print_section
@@ -233,7 +233,6 @@ def create_shopping_agent(model):
             "Help users add items to their cart and manage their shopping.",
             "Always confirm what was added and show the current cart status.",
         ],
-        show_tool_calls=True,
         markdown=True,
     )
 
@@ -249,7 +248,6 @@ def create_notes_agent(model):
             "Help users create, organize, and manage their notes.",
             "Use categories to keep notes organized.",
         ],
-        show_tool_calls=True,
         markdown=True,
     )
 
@@ -265,7 +263,6 @@ def create_counter_agent(model):
             "Track API calls and report on usage statistics.",
             "Warn when approaching quota limits.",
         ],
-        show_tool_calls=True,
         markdown=True,
     )
 

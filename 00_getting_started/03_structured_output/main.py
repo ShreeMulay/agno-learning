@@ -4,12 +4,17 @@ Lesson 03: Structured Output
 
 Concepts covered:
 - Using Pydantic models for type-safe responses
-- The response_model parameter
+- The output_schema parameter (formerly response_model)
 - Field descriptions for better LLM understanding
 - Accessing structured data from responses
 
+Note: Structured output works best with models that support JSON mode.
+      OpenAI models (gpt-4o, gpt-4o-mini) have excellent structured output support.
+      Claude via OpenRouter may not always return valid JSON.
+
 Run: python main.py --movie "The Matrix"
      python main.py --recipe "chocolate cake"
+     python main.py --provider openai --movie "The Matrix"  # Best results
 """
 
 import argparse
@@ -56,17 +61,20 @@ class Recipe(BaseModel):
     tips: Optional[str] = Field(description="Optional cooking tips", default=None)
 
 
-def analyze_movie(model, movie_name: str) -> MovieReview:
-    """Analyze a movie and return structured review."""
-    agent = get_agent(model)
+from typing import Union
+
+
+def analyze_movie(model, movie_name: str) -> Union[MovieReview, str]:
+    """Analyze a movie and return structured review (or string if parsing fails)."""
+    agent = get_movie_agent(model)
     
     response = agent.run(f"Please review the movie: {movie_name}")
     return response.content
 
 
-def get_recipe(model, dish_name: str) -> Recipe:
-    """Get a recipe and return structured output."""
-    agent = get_agent(model)
+def get_recipe(model, dish_name: str) -> Union[Recipe, str]:
+    """Get a recipe and return structured output (or string if parsing fails)."""
+    agent = get_recipe_agent(model)
     
     response = agent.run(f"Please give me a recipe for: {dish_name}")
     return response.content
@@ -115,17 +123,31 @@ def display_recipe(recipe: Recipe) -> None:
 
 
 
-def get_agent(model=None):
-    if model is None:
-        from shared.model_config import get_model
-        model = get_model()
+def get_movie_agent(model):
+    """Create an agent for movie reviews with structured output."""
     return Agent(
         model=model,
-instructions=[
-"You are a professional movie critic.",
-"Provide thoughtful, balanced reviews.",
-],
-response_model=MovieReview,
+        instructions=[
+            "You are a professional movie critic.",
+            "Provide thoughtful, balanced reviews.",
+            "Always respond with valid JSON matching the schema.",
+        ],
+        output_schema=MovieReview,
+        use_json_mode=True,  # Helps ensure JSON output
+    )
+
+
+def get_recipe_agent(model):
+    """Create an agent for recipes with structured output."""
+    return Agent(
+        model=model,
+        instructions=[
+            "You are a professional chef.",
+            "Provide detailed, easy-to-follow recipes.",
+            "Always respond with valid JSON matching the schema.",
+        ],
+        output_schema=Recipe,
+        use_json_mode=True,  # Helps ensure JSON output
     )
 
 
@@ -169,22 +191,43 @@ def main():
         print("Analyzing (this may take a moment)...", flush=True)
         
         review = analyze_movie(model, args.movie)
-        display_movie_review(review)
         
-        # Show the raw object too
-        print()
-        print_section("Raw Pydantic Object")
-        print(f"  Type: {type(review).__name__}")
-        print(f"  Fields: {list(review.model_fields.keys())}")
-        print(f"  review.rating = {review.rating}")
-        print(f"  review.strengths[0] = {review.strengths[0]!r}")
+        # Check if we got structured output or a string fallback
+        if isinstance(review, MovieReview):
+            display_movie_review(review)
+            
+            # Show the raw object too
+            print()
+            print_section("Raw Pydantic Object")
+            print(f"  Type: {type(review).__name__}")
+            print(f"  Fields: {list(review.model_fields.keys())}")
+            print(f"  review.rating = {review.rating}")
+            print(f"  review.strengths[0] = {review.strengths[0]!r}")
+        else:
+            # Fallback: the model returned plain text
+            print("\n  Note: Model returned plain text instead of structured JSON.")
+            print("  This can happen with some providers (e.g., Claude via OpenRouter).")
+            print("  Try: python main.py --provider openai --movie \"Inception\"")
+            print()
+            print("  Response:")
+            print("  " + "-" * 40)
+            print(f"  {review[:500]}..." if len(str(review)) > 500 else f"  {review}")
 
     if args.recipe:
         print_section(f"Recipe: {args.recipe}")
         print("Generating recipe (this may take a moment)...", flush=True)
         
         recipe = get_recipe(model, args.recipe)
-        display_recipe(recipe)
+        
+        if isinstance(recipe, Recipe):
+            display_recipe(recipe)
+        else:
+            print("\n  Note: Model returned plain text instead of structured JSON.")
+            print("  Try: python main.py --provider openai --recipe \"chocolate cake\"")
+            print()
+            print("  Response:")
+            print("  " + "-" * 40)
+            print(f"  {recipe[:500]}..." if len(str(recipe)) > 500 else f"  {recipe}")
 
 
 if __name__ == "__main__":

@@ -19,13 +19,19 @@ from shared.utils import print_header, print_section
 
 
 
-def get_agent(model=None):
-    if model is None:
-        from shared.model_config import get_model
-        model = get_model()
+def create_history_agent(model, db_path, session_id):
+    """Create an agent with conversation history enabled."""
     return Agent(
         model=model,
-db=SqliteDb(db_file=str(db_path
+        session_id=session_id,
+        db=SqliteDb(db_file=str(db_path)),
+        add_history_to_context=True,
+        num_history_runs=10,
+        instructions=[
+            "You maintain context across the conversation.",
+            "Reference previous messages when relevant.",
+        ],
+        markdown=True,
     )
 
 
@@ -42,15 +48,7 @@ def main():
 
     model = get_model(args.provider, args.model, temperature=args.temperature)
 
-    agent = get_agent(model)),
-        add_history_to_context=True,
-        num_history_runs=10,
-        instructions=[
-            "You maintain context across the conversation.",
-            "Reference previous messages when relevant.",
-        ],
-        markdown=True,
-    )
+    agent = create_history_agent(model, db_path, args.session)
 
     print(f"Session ID: {args.session}")
 

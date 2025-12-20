@@ -21,10 +21,10 @@ def get_agent(model=None):
         model = get_model()
     return Team(
         name="Review Team",
-        agents=[tech, legal, finance],
+        members=[tech, legal, finance],
         model=model,
         delegate_to_all_members=True,  # Collaborate mode
-        show_tool_calls=True,
+        
         markdown=True,
     )
 

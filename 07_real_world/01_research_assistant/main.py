@@ -44,7 +44,7 @@ def create_research_agent(model):
             "Suggest follow-up questions the user might want to explore.",
         ],
         markdown=True,
-        show_tool_calls=True,
+        
     )
 
 
@@ -85,7 +85,7 @@ def main():
         # Structured output mode
         response = agent.run(
             args.query,
-            response_model=ResearchResponse
+            output_schema=ResearchResponse
         )
         result = response.content
         

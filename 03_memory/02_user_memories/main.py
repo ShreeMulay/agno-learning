@@ -19,13 +19,17 @@ from shared.utils import print_header, print_section
 
 
 
-def get_agent(model=None):
-    if model is None:
-        from shared.model_config import get_model
-        model = get_model()
+def create_memory_agent(model, db_path):
+    """Create an agent with user memory enabled."""
     return Agent(
         model=model,
-db=SqliteDb(db_file=str(db_path
+        db=SqliteDb(db_file=str(db_path)),
+        enable_user_memories=True,
+        instructions=[
+            "You remember user preferences across sessions.",
+            "Use what you know about the user to personalize responses.",
+        ],
+        markdown=True,
     )
 
 
@@ -43,14 +47,7 @@ def main():
 
     model = get_model(args.provider, args.model, temperature=args.temperature)
 
-    agent = get_agent(model)),
-        enable_user_memories=True,
-        instructions=[
-            "You remember user preferences and facts.",
-            "Reference what you know about the user when relevant.",
-        ],
-        markdown=True,
-    )
+    agent = create_memory_agent(model, db_path)
 
     print(f"User ID: {args.user}")
     print(f"Database: {db_path}")

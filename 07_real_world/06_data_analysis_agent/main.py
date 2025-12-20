@@ -142,7 +142,7 @@ Data:
 """
     
     print_section("Analyzing...")
-    response = agent.run(prompt, response_model=DataAnalysis)
+    response = agent.run(prompt, output_schema=DataAnalysis)
     analysis = response.content
     
     print_section("Summary")

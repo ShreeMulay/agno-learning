@@ -22,7 +22,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 from agno.agent import Agent
-from agno.knowledge.pdf import PDFKnowledge
+from agno.knowledge import Knowledge
 from agno.vectordb.lancedb import LanceDb
 
 from shared.model_config import get_model, add_model_args
@@ -77,22 +77,19 @@ def create_sample_pdf(output_path: Path) -> None:
 
 
 
-def get_agent(model=None):
-    if model is None:
-        from shared.model_config import get_model
-        model = get_model()
+def create_rag_agent(model, knowledge):
+    """Create a RAG agent with the given knowledge base."""
     return Agent(
         model=model,
-knowledge=knowledge,
-search_knowledge=True,
-instructions=[
-"You are a helpful assistant with access to document knowledge.",
-"Use the knowledge base to answer questions accurately.",
-"If the answer isn't in the documents, say so.",
-"Cite relevant sections when possible.",
-],
-show_tool_calls=True,
-markdown=True,
+        knowledge=knowledge,
+        search_knowledge=True,
+        instructions=[
+            "You are a helpful assistant with access to document knowledge.",
+            "Use the knowledge base to answer questions accurately.",
+            "If the answer isn't in the documents, say so.",
+            "Cite relevant sections when possible.",
+        ],
+        markdown=True,
     )
 
 
@@ -160,19 +157,19 @@ def main():
     print(f"Document: {pdf_path}")
     print(f"Vector DB: {lancedb_path}")
     
-    # Create knowledge base
+    # Create knowledge base using the new Knowledge API
     try:
-        knowledge = PDFKnowledge(
-            path=str(pdf_path),
+        knowledge = Knowledge(
+            name="pdf_knowledge",
             vector_db=LanceDb(
                 table_name="pdf_knowledge",
                 uri=str(lancedb_path),
             ),
         )
         
-        # Load documents (index them)
+        # Load documents (index them) - must use path= keyword argument
         print("Indexing document...")
-        knowledge.load(recreate=args.rebuild)
+        knowledge.add_content(path=str(pdf_path))
         print("Knowledge base ready!")
         
     except Exception as e:
@@ -183,7 +180,7 @@ def main():
 
     print_section("Creating RAG Agent")
     
-    agent = get_agent(model)
+    agent = create_rag_agent(model, knowledge)
 
     print_section("Query")
     print(f"Question: {args.query}\n")

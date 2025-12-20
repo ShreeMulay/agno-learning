@@ -101,7 +101,7 @@ def create_support_team(model):
             "- Billing, payments, subscriptions → BillingAgent",
         ],
         model=model,
-        show_tool_calls=True,
+        
     )
     
     return team

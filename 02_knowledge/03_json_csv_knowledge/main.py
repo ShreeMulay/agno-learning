@@ -23,7 +23,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent.parent))
 
 from agno.agent import Agent
-from agno.knowledge.json_file import JSONKnowledge
+from agno.knowledge import Knowledge
 from agno.vectordb.lancedb import LanceDb
 
 from shared.model_config import get_model, add_model_args
@@ -110,22 +110,19 @@ def create_sample_csv(output_path: Path) -> None:
 
 
 
-def get_agent(model=None):
-    if model is None:
-        from shared.model_config import get_model
-        model = get_model()
+def create_data_agent(model, knowledge):
+    """Create a data assistant agent."""
     return Agent(
         model=model,
-knowledge=knowledge,
-search_knowledge=True,
-instructions=[
-"You are a data assistant with access to product information.",
-"Answer questions based on the data available.",
-"Provide specific details like prices, ratings, and availability.",
-"Format responses clearly with relevant data.",
-],
-show_tool_calls=True,
-markdown=True,
+        knowledge=knowledge,
+        search_knowledge=True,
+        instructions=[
+            "You are a data assistant with access to product information.",
+            "Answer questions based on the data available.",
+            "Provide specific details like prices, ratings, and availability.",
+            "Format responses clearly with relevant data.",
+        ],
+        markdown=True,
     )
 
 
@@ -194,9 +191,9 @@ def main():
     print(f"Vector DB: {lancedb_path}")
 
     try:
-        # Create JSON knowledge base
-        knowledge = JSONKnowledge(
-            path=str(json_path),
+        # Create knowledge base with JSON content
+        knowledge = Knowledge(
+            name="json_knowledge",
             vector_db=LanceDb(
                 table_name="json_knowledge",
                 uri=str(lancedb_path),
@@ -204,7 +201,7 @@ def main():
         )
         
         print("Indexing JSON data...")
-        knowledge.load(recreate=args.rebuild)
+        knowledge.add_content(path=str(json_path))
         print("Knowledge base ready!")
         
     except Exception as e:
@@ -215,7 +212,7 @@ def main():
 
     print_section("Creating Data Assistant")
     
-    agent = get_agent(model)
+    agent = create_data_agent(model, knowledge)
 
     print_section("Query")
     print(f"Question: {args.query}\n")

@@ -172,7 +172,6 @@ def create_tool_agent(model, tools: list):
             "Always show the tool results clearly.",
             "If you use a tool, explain what you found.",
         ],
-        show_tool_calls=True,
         markdown=True,
     )
 
