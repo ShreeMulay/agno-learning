@@ -5,14 +5,12 @@ import axios from 'axios';
 import { useStore } from '../store/useStore';
 import { 
   Search, 
-  Settings2, 
   Terminal, 
   Zap, 
   LayoutDashboard, 
   ChevronRight, 
   ChevronDown,
   Activity,
-  History as HistoryIcon,
   Palette,
   Play,
   Cpu,
@@ -24,7 +22,6 @@ import {
   RefreshCcw,
   Check,
   FileText,
-  X,
   FolderOpen,
   Folder,
   Wrench,
@@ -336,7 +333,7 @@ export default function Dashboard() {
              key = agent.path_parts.slice(0, -1).map(p => p.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase())).join(' / ');
           }
           if (!dirGroups[key]) dirGroups[key] = [];
-          dirGroups[key].push(agent);
+          dirGroups[key]!.push(agent);
        });
        return dirGroups;
     }
