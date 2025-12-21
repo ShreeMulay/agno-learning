@@ -7,6 +7,10 @@
     "description": "A practical agent that searches the web and provides researched answers.\n\nRun with:\n    python main.py \"What are the latest developments in quantum computing?\"",
     "path": "07_real_world/01_research_assistant/main.py",
     "dir": "07_real_world/01_research_assistant",
+    "path_parts": [
+      "07_real_world",
+      "01_research_assistant"
+    ],
     "params": [
       {
         "name": "query",
@@ -39,6 +43,10 @@
     "description": "A system for answering questions about uploaded documents.\n\nRun with:\n    python main.py                           # Demo mode with sample content\n    python main.py --pdf path/to/doc.pdf     # Interactive with your PDF\n    python main.py --pdf doc.pdf \"Question?\" # Single question mode",
     "path": "07_real_world/02_doc_qa_system/main.py",
     "dir": "07_real_world/02_doc_qa_system",
+    "path_parts": [
+      "07_real_world",
+      "02_doc_qa_system"
+    ],
     "params": [
       {
         "name": "query",
@@ -71,6 +79,10 @@
     "description": "A team of agents that handles different types of customer inquiries.\n\nRun with:\n    python main.py",
     "path": "07_real_world/03_customer_support/main.py",
     "dir": "07_real_world/03_customer_support",
+    "path_parts": [
+      "07_real_world",
+      "03_customer_support"
+    ],
     "params": [],
     "type": "Team",
     "tools": [
@@ -85,6 +97,10 @@
     "description": "An agent that reviews code and provides actionable feedback.\n\nRun with:\n    python main.py --file path/to/code.py\n    python main.py \"def add(a, b): return a + b\"",
     "path": "07_real_world/04_code_review_agent/main.py",
     "dir": "07_real_world/04_code_review_agent",
+    "path_parts": [
+      "07_real_world",
+      "04_code_review_agent"
+    ],
     "params": [
       {
         "name": "code",
@@ -125,6 +141,10 @@
     "description": "A workflow that generates blog posts through research, writing, and editing.\n\nRun with:\n    python main.py \"The future of renewable energy\"",
     "path": "07_real_world/05_blog_post_generator/main.py",
     "dir": "07_real_world/05_blog_post_generator",
+    "path_parts": [
+      "07_real_world",
+      "05_blog_post_generator"
+    ],
     "params": [
       {
         "name": "topic",
@@ -157,6 +177,10 @@
     "description": "An agent that analyzes datasets and provides actionable insights.\n\nRun with:\n    python main.py --data sales.csv \"What are the key trends?\"\n    python main.py  # Uses demo data",
     "path": "07_real_world/06_data_analysis_agent/main.py",
     "dir": "07_real_world/06_data_analysis_agent",
+    "path_parts": [
+      "07_real_world",
+      "06_data_analysis_agent"
+    ],
     "params": [
       {
         "name": "question",
@@ -188,6 +212,10 @@
     "description": "An agent that remembers user information and provides personalized responses.\n\nRun with:\n    python main.py --user alice",
     "path": "07_real_world/07_personal_knowledge_base/main.py",
     "dir": "07_real_world/07_personal_knowledge_base",
+    "path_parts": [
+      "07_real_world",
+      "07_personal_knowledge_base"
+    ],
     "params": [
       {
         "name": "user",
@@ -209,6 +237,10 @@
     "description": "A domain-specific agent for clinical information (educational only).\n\nRun with:\n    python main.py \"What are the first-line treatments for hypertension?\"\n\nDISCLAIMER: This is for educational purposes only. Always consult\nhealthcare professionals for medical decisions.",
     "path": "07_real_world/08_clinical_decision_support/main.py",
     "dir": "07_real_world/08_clinical_decision_support",
+    "path_parts": [
+      "07_real_world",
+      "08_clinical_decision_support"
+    ],
     "params": [
       {
         "name": "query",
@@ -233,6 +265,12 @@
     "description": "Category: business/sales\n\nDESCRIPTION:\nScores and qualifies sales leads based on company information, engagement signals,\nand fit criteria. Uses web search to enrich lead data and returns a structured\nqualification score with reasoning. Perfect for prioritizing outreach efforts.\n\nPATTERNS:\n- Tools (DuckDuckGo for company research)\n- Structured Output (LeadScore with qualification details)\n\nARGUMENTS:\n- company_name (str): Company to research. Default: \"Acme Corp\"\n- contact_email (str): Lead's email address. Default: \"john@acme.com\"\n- industry (str): Target industry filter. Default: \"technology\"\n- min_employees (int): Minimum company size. Default: 50",
     "path": "07_real_world/business/sales/01_lead_qualifier/main.py",
     "dir": "07_real_world/business/sales/01_lead_qualifier",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "sales",
+      "01_lead_qualifier"
+    ],
     "params": [
       {
         "name": "company",
@@ -281,6 +319,12 @@
     "description": "Category: business/sales\n\nDESCRIPTION:\nGenerates personalized cold outreach emails based on prospect research.\nUses web search to find relevant talking points and crafts emails that\nreference specific company news, challenges, or initiatives.\n\nPATTERNS:\n- Tools (DuckDuckGo for prospect research)\n- Memory (conversation history for follow-up sequences)\n\nARGUMENTS:\n- prospect_name (str): Contact's name. Default: \"Sarah Johnson\"\n- company_name (str): Target company. Default: \"TechCorp\"\n- your_company (str): Your company name. Default: \"SalesBot Inc\"\n- product (str): Product/service being sold. Default: \"AI Sales Assistant\"\n- email_type (str): cold/follow_up/breakup. Default: \"cold\"",
     "path": "07_real_world/business/sales/02_sales_email_drafter/main.py",
     "dir": "07_real_world/business/sales/02_sales_email_drafter",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "sales",
+      "02_sales_email_drafter"
+    ],
     "params": [
       {
         "name": "prospect",
@@ -345,6 +389,12 @@
     "description": "Category: business/sales\n\nDESCRIPTION:\nAutomatically enriches CRM contact records with company information,\nLinkedIn insights, recent news, and technology stack details.\nPerfect for keeping CRM data fresh and actionable.\n\nPATTERNS:\n- Tools (DuckDuckGo for company research)\n- Knowledge (company database for context)\n- Structured Output (EnrichedContact schema)\n\nARGUMENTS:\n- company_name (str): Company to enrich. Default: \"Stripe\"\n- contact_name (str): Contact name. Default: \"Patrick Collison\"\n- existing_data (str): Known info. Default: \"\"",
     "path": "07_real_world/business/sales/03_crm_data_enricher/main.py",
     "dir": "07_real_world/business/sales/03_crm_data_enricher",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "sales",
+      "03_crm_data_enricher"
+    ],
     "params": [
       {
         "name": "company",
@@ -385,6 +435,12 @@
     "description": "Category: business/sales\n\nDESCRIPTION:\nAnalyzes sales deals to predict closure probability and identify risks.\nUses deal context (stage, engagement, competition) to score risk and\nsuggest mitigation strategies.\n\nPATTERNS:\n- Structured Output (DealRiskAssessment)\n- Knowledge (optional: historical deal data)\n\nARGUMENTS:\n- deal_name (str): Deal/opportunity name. Default: \"Enterprise SaaS Deal\"\n- deal_value (int): Deal value in USD. Default: 100000\n- stage (str): Current pipeline stage. Default: \"negotiation\"\n- days_in_stage (int): Days stuck in current stage. Default: 14",
     "path": "07_real_world/business/sales/04_deal_risk_analyzer/main.py",
     "dir": "07_real_world/business/sales/04_deal_risk_analyzer",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "sales",
+      "04_deal_risk_analyzer"
+    ],
     "params": [
       {
         "name": "deal",
@@ -440,6 +496,12 @@
     "description": "Category: business/sales\n\nDESCRIPTION:\nGenerates customized sales proposals from templates and prospect data.\nResearches the prospect's company to personalize value propositions\nand creates executive summaries, pricing sections, and next steps.\n\nPATTERNS:\n- Tools (DuckDuckGo for company research)\n- Knowledge (proposal templates)\n- Structured Output (Proposal schema)\n\nARGUMENTS:\n- prospect_company (str): Target company. Default: \"TechCorp\"\n- prospect_name (str): Decision maker. Default: \"Jane Smith\"\n- product (str): Product being proposed. Default: \"Enterprise Platform\"\n- price (int): Proposed price. Default: 50000",
     "path": "07_real_world/business/sales/05_proposal_generator/main.py",
     "dir": "07_real_world/business/sales/05_proposal_generator",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "sales",
+      "05_proposal_generator"
+    ],
     "params": [
       {
         "name": "company",
@@ -488,6 +550,12 @@
     "description": "Category: business/sales\n\nDESCRIPTION:\nGenerates real-time competitive intelligence battle cards by researching\ncompetitors and creating comparison matrices, objection handlers, and\nwin strategies for sales teams.\n\nPATTERNS:\n- Tools (DuckDuckGo for competitor research)\n- Structured Output (BattleCard schema)\n\nARGUMENTS:\n- competitor (str): Competitor to analyze. Default: \"Salesforce\"\n- your_product (str): Your product name. Default: \"SalesBot CRM\"\n- focus_area (str): Key differentiator. Default: \"AI automation\"",
     "path": "07_real_world/business/sales/06_competitor_battle_cards/main.py",
     "dir": "07_real_world/business/sales/06_competitor_battle_cards",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "sales",
+      "06_competitor_battle_cards"
+    ],
     "params": [
       {
         "name": "competitor",
@@ -528,6 +596,12 @@
     "description": "Category: business/sales\n\nDESCRIPTION:\nProcesses sales call transcripts to extract key information, action items,\nnext steps, and updates for CRM. Works with transcripts from Gong, Chorus,\nor manual notes.\n\nPATTERNS:\n- Structured Output (CallSummary schema)\n- Workflows (multi-step processing)\n\nARGUMENTS:\n- transcript (str): Call transcript text. Default: sample transcript\n- deal_stage (str): Current pipeline stage. Default: \"discovery\"",
     "path": "07_real_world/business/sales/07_sales_call_summarizer/main.py",
     "dir": "07_real_world/business/sales/07_sales_call_summarizer",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "sales",
+      "07_sales_call_summarizer"
+    ],
     "params": [
       {
         "name": "stage",
@@ -559,6 +633,12 @@
     "description": "Category: business/sales\n\nDESCRIPTION:\nOptimizes sales territory assignments by analyzing account potential,\ngeographic distribution, and rep capacity to create balanced territories.\n\nPATTERNS:\n- Structured Output (TerritoryPlan schema)\n- Tools (for market data lookup)\n\nARGUMENTS:\n- num_reps (int): Number of sales reps. Default: 5\n- region (str): Geographic region. Default: \"West Coast\"\n- account_type (str): Account segment. Default: \"enterprise\"",
     "path": "07_real_world/business/sales/08_territory_planner/main.py",
     "dir": "07_real_world/business/sales/08_territory_planner",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "sales",
+      "08_territory_planner"
+    ],
     "params": [
       {
         "name": "reps",
@@ -598,6 +678,12 @@
     "description": "Category: business/sales\n\nDESCRIPTION:\nCalculates sales commissions based on complex compensation plans including\naccelerators, SPIFFs, team bonuses, and what-if scenarios.\n\nPATTERNS:\n- Structured Output (CommissionReport schema)\n- Tools (for plan rules lookup)\n\nARGUMENTS:\n- rep_name (str): Sales rep name. Default: \"Alex Johnson\"\n- closed_revenue (int): Revenue closed. Default: 500000\n- quota (int): Quota amount. Default: 400000\n- base_rate (float): Base commission rate. Default: 0.10",
     "path": "07_real_world/business/sales/09_commission_calculator/main.py",
     "dir": "07_real_world/business/sales/09_commission_calculator",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "sales",
+      "09_commission_calculator"
+    ],
     "params": [
       {
         "name": "rep",
@@ -637,6 +723,12 @@
     "description": "Category: business/sales\n\nDESCRIPTION:\nAnalyzes customer usage patterns, support tickets, and engagement signals\nto predict churn risk and recommend retention strategies.\n\nPATTERNS:\n- Structured Output (ChurnAnalysis schema)\n- Knowledge (customer health metrics)\n\nARGUMENTS:\n- customer_name (str): Customer to analyze. Default: \"Acme Corp\"\n- arr (int): Annual recurring revenue. Default: 50000\n- months_active (int): Months as customer. Default: 18\n- nps_score (int): NPS score 0-10. Default: 6",
     "path": "07_real_world/business/sales/10_churn_predictor/main.py",
     "dir": "07_real_world/business/sales/10_churn_predictor",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "sales",
+      "10_churn_predictor"
+    ],
     "params": [
       {
         "name": "customer",
@@ -676,6 +768,12 @@
     "description": "Category: business/marketing\n\nDESCRIPTION:\nCreates, schedules, and analyzes social media content across platforms.\nDrafts platform-specific posts, suggests optimal posting times, and tracks\nengagement patterns. Uses team workflows for content creation and approval.\n\nPATTERNS:\n- Teams (content creator + editor + analyst)\n- Workflows (draft \u2192 review \u2192 schedule)\n- Structured Output (PostPlan with scheduling)\n\nARGUMENTS:\n- brand_name (str): Brand/company name. Default: \"TechCo\"\n- platforms (str): Target platforms. Default: \"twitter,linkedin\"\n- topic (str): Content topic. Default: \"AI productivity tips\"\n- tone (str): Brand voice. Default: \"professional but friendly\"",
     "path": "07_real_world/business/marketing/01_social_media_manager/main.py",
     "dir": "07_real_world/business/marketing/01_social_media_manager",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "marketing",
+      "01_social_media_manager"
+    ],
     "params": [
       {
         "name": "brand",
@@ -724,6 +822,12 @@
     "description": "Category: business/marketing\n\nDESCRIPTION:\nAnalyzes and optimizes content for search engine rankings. Performs keyword\nresearch, content scoring, and provides actionable suggestions to improve\norganic visibility. Compares against top-ranking competitors.\n\nPATTERNS:\n- Knowledge (SEO best practices, algorithm updates)\n- Tools (web search for competitor analysis)\n- Structured Output (SEOAnalysis with improvement suggestions)\n\nARGUMENTS:\n- content (str): Content to analyze. Default: sample article\n- target_keyword (str): Primary keyword to rank for. Default: \"AI agents\"\n- competitors (int): Number of competitors to analyze. Default: 3",
     "path": "07_real_world/business/marketing/02_seo_content_optimizer/main.py",
     "dir": "07_real_world/business/marketing/02_seo_content_optimizer",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "marketing",
+      "02_seo_content_optimizer"
+    ],
     "params": [
       {
         "name": "content",
@@ -765,6 +869,12 @@
     "description": "Category: business/marketing\n\nDESCRIPTION:\nCreates high-converting ad copy for multiple platforms (Google Ads, Facebook,\nLinkedIn). Generates A/B test variants, respects character limits, and applies\nproven copywriting frameworks (AIDA, PAS, etc.).\n\nPATTERNS:\n- Structured Output (AdCopyPlan with variants)\n- Memory (learn from past campaign performance)\n\nARGUMENTS:\n- product (str): Product or service name. Default: \"CloudSync Pro\"\n- value_prop (str): Main value proposition. Default: \"Sync files 10x faster\"\n- platform (str): Ad platform. Default: \"google\"\n- goal (str): Campaign goal. Default: \"signups\"",
     "path": "07_real_world/business/marketing/03_ad_copy_generator/main.py",
     "dir": "07_real_world/business/marketing/03_ad_copy_generator",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "marketing",
+      "03_ad_copy_generator"
+    ],
     "params": [
       {
         "name": "product",
@@ -820,6 +930,12 @@
     "description": "Category: business/marketing\n\nDESCRIPTION:\nAnalyzes marketing campaign performance across channels. Provides cross-channel\nattribution insights, ROI calculations, and actionable recommendations for\nbudget optimization. Identifies trends and anomalies.\n\nPATTERNS:\n- Tools (for metric calculations)\n- Structured Output (CampaignAnalysis with insights)\n\nARGUMENTS:\n- campaign_data (str): Campaign metrics data. Default: sample data\n- channels (str): Channels to analyze. Default: \"google,facebook,email\"\n- budget (float): Total campaign budget. Default: 10000\n- goal_metric (str): Primary success metric. Default: \"conversions\"",
     "path": "07_real_world/business/marketing/04_campaign_performance_analyst/main.py",
     "dir": "07_real_world/business/marketing/04_campaign_performance_analyst",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "marketing",
+      "04_campaign_performance_analyst"
+    ],
     "params": [
       {
         "name": "data",
@@ -859,6 +975,12 @@
     "description": "Category: business/marketing\n\nDESCRIPTION:\nFinds and evaluates influencers for brand partnerships. Analyzes audience fit,\nengagement authenticity, content alignment, and provides partnership\nrecommendations with estimated campaign ROI.\n\nPATTERNS:\n- Knowledge (influencer marketing best practices)\n- Tools (web search for influencer research)\n- Structured Output (InfluencerReport with matches)\n\nARGUMENTS:\n- brand (str): Brand name. Default: \"FitTech Pro\"\n- industry (str): Brand industry. Default: \"fitness technology\"\n- budget (float): Campaign budget. Default: 25000\n- goals (str): Campaign goals. Default: \"awareness,engagement\"",
     "path": "07_real_world/business/marketing/05_influencer_matcher/main.py",
     "dir": "07_real_world/business/marketing/05_influencer_matcher",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "marketing",
+      "05_influencer_matcher"
+    ],
     "params": [
       {
         "name": "brand",
@@ -907,6 +1029,12 @@
     "description": "Category: business/marketing\n\nDESCRIPTION:\nMonitors brand mentions and sentiment across social media and web. Detects\ntrends, identifies potential PR issues, and provides real-time brand health\ninsights. Alerts on significant sentiment shifts.\n\nPATTERNS:\n- Tools (web search for brand mentions)\n- Knowledge (sentiment analysis best practices)\n- Structured Output (SentimentReport with alerts)\n\nARGUMENTS:\n- brand_name (str): Brand to monitor. Default: \"TechCorp\"\n- competitors (str): Competitor brands. Default: \"CompA,CompB\"\n- keywords (str): Additional keywords. Default: \"product,service\"\n- alert_threshold (int): Sentiment drop alert threshold. Default: 20",
     "path": "07_real_world/business/marketing/06_brand_sentiment_monitor/main.py",
     "dir": "07_real_world/business/marketing/06_brand_sentiment_monitor",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "marketing",
+      "06_brand_sentiment_monitor"
+    ],
     "params": [
       {
         "name": "brand",
@@ -947,6 +1075,12 @@
     "description": "Category: business/marketing\n\nDESCRIPTION:\nCreates comprehensive content calendars with themes, topics, and scheduling\nacross multiple platforms. Balances content types, maintains posting frequency,\nand aligns with marketing campaigns and seasonal events.\n\nPATTERNS:\n- Memory (track content history to avoid repetition)\n- Workflows (planning \u2192 drafting \u2192 scheduling)\n- Structured Output (ContentCalendar with posts)\n\nARGUMENTS:\n- brand (str): Brand name. Default: \"TechStartup\"\n- duration (str): Planning period. Default: \"1 month\"\n- platforms (str): Target platforms. Default: \"blog,linkedin,twitter\"\n- themes (str): Content themes. Default: \"product,thought leadership,community\"",
     "path": "07_real_world/business/marketing/07_content_calendar_planner/main.py",
     "dir": "07_real_world/business/marketing/07_content_calendar_planner",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "marketing",
+      "07_content_calendar_planner"
+    ],
     "params": [
       {
         "name": "brand",
@@ -994,6 +1128,12 @@
     "description": "Category: business/marketing\n\nDESCRIPTION:\nGenerates and evaluates email subject lines for maximum open rates.\nCreates A/B test variants, predicts performance, and applies proven\npsychological triggers. Analyzes against email marketing best practices.\n\nPATTERNS:\n- Structured Output (SubjectLineReport with variants)\n\nARGUMENTS:\n- email_topic (str): Email content topic. Default: \"product launch\"\n- audience (str): Target audience. Default: \"B2B tech buyers\"\n- tone (str): Desired tone. Default: \"professional\"\n- variants (int): Number of variants to generate. Default: 5",
     "path": "07_real_world/business/marketing/08_email_subject_line_tester/main.py",
     "dir": "07_real_world/business/marketing/08_email_subject_line_tester",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "marketing",
+      "08_email_subject_line_tester"
+    ],
     "params": [
       {
         "name": "topic",
@@ -1041,6 +1181,12 @@
     "description": "Category: business/marketing\n\nDESCRIPTION:\nAnalyzes and optimizes landing page copy for conversions. Reviews headlines,\nCTAs, value propositions, and overall messaging. Provides specific\nimprovement suggestions based on conversion rate optimization best practices.\n\nPATTERNS:\n- Knowledge (CRO best practices)\n- Structured Output (LandingPageAnalysis with improvements)\n\nARGUMENTS:\n- page_content (str): Landing page copy. Default: sample page\n- goal (str): Conversion goal. Default: \"sign up for free trial\"\n- audience (str): Target audience. Default: \"small business owners\"",
     "path": "07_real_world/business/marketing/09_landing_page_optimizer/main.py",
     "dir": "07_real_world/business/marketing/09_landing_page_optimizer",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "marketing",
+      "09_landing_page_optimizer"
+    ],
     "params": [
       {
         "name": "content",
@@ -1080,6 +1226,12 @@
     "description": "Category: business/marketing\n\nDESCRIPTION:\nResearches and recommends hashtags for social media posts. Analyzes trending\ntags, relevance scores, competition levels, and suggests optimal hashtag\ncombinations for maximum reach and engagement.\n\nPATTERNS:\n- Tools (web search for trending hashtags)\n- Structured Output (HashtagReport with recommendations)\n\nARGUMENTS:\n- topic (str): Content topic. Default: \"artificial intelligence\"\n- platform (str): Target platform. Default: \"instagram\"\n- niche (str): Industry niche. Default: \"tech startups\"\n- post_type (str): Type of post. Default: \"educational\"",
     "path": "07_real_world/business/marketing/10_hashtag_researcher/main.py",
     "dir": "07_real_world/business/marketing/10_hashtag_researcher",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "marketing",
+      "10_hashtag_researcher"
+    ],
     "params": [
       {
         "name": "topic",
@@ -1128,6 +1280,12 @@
     "description": "Category: business/customer_success\n\nDESCRIPTION:\nAutomatically classifies, prioritizes, and routes support tickets to the\nappropriate team or agent. Uses NLP to understand ticket intent, extracts\nkey information, and applies routing rules based on urgency and expertise.\n\nPATTERNS:\n- Structured Output (TicketRouting with classification)\n- Teams (route to appropriate team)\n\nARGUMENTS:\n- ticket_subject (str): Ticket subject line. Default: sample\n- ticket_body (str): Ticket description. Default: sample\n- customer_tier (str): Customer tier. Default: \"standard\"",
     "path": "07_real_world/business/customer_success/01_ticket_router/main.py",
     "dir": "07_real_world/business/customer_success/01_ticket_router",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "customer_success",
+      "01_ticket_router"
+    ],
     "params": [
       {
         "name": "subject",
@@ -1168,6 +1326,12 @@
     "description": "Category: business/customer_success\n\nDESCRIPTION:\nSemantic search across help documentation and knowledge base articles.\nUnderstands natural language queries, finds relevant articles, and provides\ndirect answers with source citations. Supports follow-up questions.\n\nPATTERNS:\n- Knowledge (document search and retrieval)\n- Memory (conversation context for follow-ups)\n\nARGUMENTS:\n- query (str): User's search query. Default: sample\n- kb_context (str): Knowledge base content. Default: sample articles",
     "path": "07_real_world/business/customer_success/02_knowledge_base_search/main.py",
     "dir": "07_real_world/business/customer_success/02_knowledge_base_search",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "customer_success",
+      "02_knowledge_base_search"
+    ],
     "params": [
       {
         "name": "query",
@@ -1192,6 +1356,12 @@
     "description": "Category: business/customer_success\n\nDESCRIPTION:\nPredicts which support tickets are likely to escalate based on sentiment,\nhistory, and issue complexity. Flags high-risk tickets for proactive\nintervention before customer frustration peaks.\n\nPATTERNS:\n- Knowledge (escalation patterns)\n- Structured Output (EscalationPrediction with risk factors)\n\nARGUMENTS:\n- ticket_data (str): Ticket information. Default: sample\n- customer_history (str): Customer interaction history. Default: sample",
     "path": "07_real_world/business/customer_success/03_escalation_predictor/main.py",
     "dir": "07_real_world/business/customer_success/03_escalation_predictor",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "customer_success",
+      "03_escalation_predictor"
+    ],
     "params": [
       {
         "name": "ticket",
@@ -1223,6 +1393,12 @@
     "description": "Category: business/customer_success\n\nDESCRIPTION:\nAnalyzes customer satisfaction survey responses to extract themes, identify\ntrends, and surface actionable insights. Processes both quantitative scores\nand qualitative feedback to understand customer sentiment drivers.\n\nPATTERNS:\n- Knowledge (sentiment analysis)\n- Structured Output (CSATAnalysis with themes)\n\nARGUMENTS:\n- responses (str): CSAT survey responses. Default: sample data\n- period (str): Analysis period. Default: \"last 30 days\"",
     "path": "07_real_world/business/customer_success/04_csat_analyzer/main.py",
     "dir": "07_real_world/business/customer_success/04_csat_analyzer",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "customer_success",
+      "04_csat_analyzer"
+    ],
     "params": [
       {
         "name": "responses",
@@ -1254,6 +1430,12 @@
     "description": "Category: business/customer_success\n\nDESCRIPTION:\nGuides new customers through onboarding with personalized checklists.\nTracks progress, identifies stuck points, and provides proactive\nassistance to ensure successful product adoption.\n\nPATTERNS:\n- Memory (track progress across sessions)\n- Workflows (step-by-step onboarding)\n- Structured Output (OnboardingStatus)\n\nARGUMENTS:\n- customer_name (str): Customer name. Default: \"Acme Corp\"\n- plan (str): Subscription plan. Default: \"professional\"\n- completed_steps (str): Already completed steps. Default: sample",
     "path": "07_real_world/business/customer_success/05_onboarding_checklist_tracker/main.py",
     "dir": "07_real_world/business/customer_success/05_onboarding_checklist_tracker",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "customer_success",
+      "05_onboarding_checklist_tracker"
+    ],
     "params": [
       {
         "name": "customer",
@@ -1301,6 +1483,12 @@
     "description": "Category: business/customer_success\n\nDESCRIPTION:\nClusters and prioritizes feature requests from multiple sources. Identifies\ntrends, calculates business impact, and generates product roadmap\nrecommendations based on customer needs.\n\nPATTERNS:\n- Knowledge (product development best practices)\n- Structured Output (FeatureRequestReport)\n\nARGUMENTS:\n- requests (str): Feature requests data. Default: sample",
     "path": "07_real_world/business/customer_success/06_feature_request_aggregator/main.py",
     "dir": "07_real_world/business/customer_success/06_feature_request_aggregator",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "customer_success",
+      "06_feature_request_aggregator"
+    ],
     "params": [
       {
         "name": "requests",
@@ -1324,6 +1512,12 @@
     "description": "Category: business/customer_success\n\nDESCRIPTION:\nTracks SLA compliance in real-time, alerts on breaches, and provides\nperformance analytics. Monitors response times, resolution times, and\nidentifies patterns in SLA violations.\n\nPATTERNS:\n- Tools (time calculations)\n- Workflows (alert triggers)\n- Structured Output (SLAReport)\n\nARGUMENTS:\n- tickets (str): Ticket data with timestamps. Default: sample\n- sla_config (str): SLA thresholds. Default: sample",
     "path": "07_real_world/business/customer_success/07_sla_monitor/main.py",
     "dir": "07_real_world/business/customer_success/07_sla_monitor",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "customer_success",
+      "07_sla_monitor"
+    ],
     "params": [
       {
         "name": "tickets",
@@ -1347,6 +1541,12 @@
     "description": "Category: business/customer_success\n\nDESCRIPTION:\nCalculates customer health scores based on usage metrics, engagement signals,\nand support interactions. Identifies at-risk accounts and recommends\nproactive interventions to improve retention.\n\nPATTERNS:\n- Structured Output (HealthScoreReport)\n- Tools (metric calculations)\n\nARGUMENTS:\n- customer_data (str): Customer metrics. Default: sample",
     "path": "07_real_world/business/customer_success/08_customer_health_scorer/main.py",
     "dir": "07_real_world/business/customer_success/08_customer_health_scorer",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "customer_success",
+      "08_customer_health_scorer"
+    ],
     "params": [
       {
         "name": "data",
@@ -1370,6 +1570,12 @@
     "description": "Category: business/customer_success\n\nDESCRIPTION:\nProactively manages renewal outreach with personalized timing and messaging.\nTracks renewal pipeline, identifies upsell opportunities, and generates\ncustomized renewal communications based on customer context.\n\nPATTERNS:\n- Memory (track outreach history)\n- Tools (date calculations)\n- Structured Output (RenewalPlan)\n\nARGUMENTS:\n- customer_data (str): Customer renewal info. Default: sample\n- days_to_renewal (int): Days until renewal. Default: 90",
     "path": "07_real_world/business/customer_success/09_renewal_reminder_agent/main.py",
     "dir": "07_real_world/business/customer_success/09_renewal_reminder_agent",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "customer_success",
+      "09_renewal_reminder_agent"
+    ],
     "params": [
       {
         "name": "data",
@@ -1401,6 +1607,12 @@
     "description": "Category: business/customer_success\n\nDESCRIPTION:\nAnalyzes win/loss interview summaries to extract patterns, identify\ncompetitive insights, and generate actionable recommendations for\nimproving win rates.\n\nPATTERNS:\n- Knowledge (competitive analysis)\n- Structured Output (WinLossReport)\n\nARGUMENTS:\n- interviews (str): Win/loss interview data. Default: sample",
     "path": "07_real_world/business/customer_success/10_win_loss_analyst/main.py",
     "dir": "07_real_world/business/customer_success/10_win_loss_analyst",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "customer_success",
+      "10_win_loss_analyst"
+    ],
     "params": [
       {
         "name": "interviews",
@@ -1424,6 +1636,12 @@
     "description": "Category: business/finance\n\nDESCRIPTION:\nExtracts data from invoices, validates against purchase orders, and routes\nfor approval. Handles various invoice formats and identifies discrepancies.\n\nPATTERNS:\n- Knowledge (invoice processing rules)\n- Workflows (extract \u2192 validate \u2192 route)\n- Structured Output (InvoiceData)\n\nARGUMENTS:\n- invoice_text (str): Invoice content. Default: sample",
     "path": "07_real_world/business/finance/01_invoice_processor/main.py",
     "dir": "07_real_world/business/finance/01_invoice_processor",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "finance",
+      "01_invoice_processor"
+    ],
     "params": [
       {
         "name": "invoice",
@@ -1447,6 +1665,12 @@
     "description": "Category: business/finance\n\nDESCRIPTION:\nCategorizes expenses from receipts, validates against policy, and flags\npotential compliance issues. Supports multi-currency and various expense types.\n\nPATTERNS:\n- Tools (calculations)\n- Structured Output (ExpenseReport)",
     "path": "07_real_world/business/finance/02_expense_categorizer/main.py",
     "dir": "07_real_world/business/finance/02_expense_categorizer",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "finance",
+      "02_expense_categorizer"
+    ],
     "params": [
       {
         "name": "data",
@@ -1470,6 +1694,12 @@
     "description": "Category: business/finance\n\nDESCRIPTION:\nAnalyzes actual vs budget performance, identifies significant variances,\nand provides explanations with corrective action recommendations.\n\nPATTERNS:\n- Structured Output (VarianceReport)\n- Knowledge (financial analysis)",
     "path": "07_real_world/business/finance/03_budget_variance_analyzer/main.py",
     "dir": "07_real_world/business/finance/03_budget_variance_analyzer",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "finance",
+      "03_budget_variance_analyzer"
+    ],
     "params": [
       {
         "name": "data",
@@ -1493,6 +1723,12 @@
     "description": "Category: business/finance\n\nDESCRIPTION:\nTransforms raw financial data into narrative insights and executive summaries.\nGenerates board-ready reports with key metrics and trend analysis.",
     "path": "07_real_world/business/finance/04_financial_report_generator/main.py",
     "dir": "07_real_world/business/finance/04_financial_report_generator",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "finance",
+      "04_financial_report_generator"
+    ],
     "params": [
       {
         "name": "data",
@@ -1516,6 +1752,12 @@
     "description": "Category: business/finance\n\nDESCRIPTION:\nDocuments changes to financial records with proper audit trails.\nTracks who changed what, when, and why for compliance purposes.",
     "path": "07_real_world/business/finance/05_audit_trail_documenter/main.py",
     "dir": "07_real_world/business/finance/05_audit_trail_documenter",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "finance",
+      "05_audit_trail_documenter"
+    ],
     "params": [
       {
         "name": "data",
@@ -1539,6 +1781,12 @@
     "description": "Category: business/finance\n\nDESCRIPTION:\nOptimizes vendor payment timing based on cash flow, discount opportunities,\nand vendor relationships. Maximizes early payment discounts while managing liquidity.",
     "path": "07_real_world/business/finance/06_vendor_payment_scheduler/main.py",
     "dir": "07_real_world/business/finance/06_vendor_payment_scheduler",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "finance",
+      "06_vendor_payment_scheduler"
+    ],
     "params": [
       {
         "name": "data",
@@ -1562,6 +1810,12 @@
     "description": "Category: business/finance\n\nDESCRIPTION:\nCategorizes and organizes tax-related documents, extracts key information,\nand prepares for filing. Identifies missing documents.",
     "path": "07_real_world/business/finance/07_tax_document_organizer/main.py",
     "dir": "07_real_world/business/finance/07_tax_document_organizer",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "finance",
+      "07_tax_document_organizer"
+    ],
     "params": [
       {
         "name": "docs",
@@ -1585,6 +1839,12 @@
     "description": "Category: business/finance\n\nDESCRIPTION:\nAnalyzes transactions for fraud patterns, flags suspicious activity,\nand provides risk scores with explanations.",
     "path": "07_real_world/business/finance/08_fraud_detection_agent/main.py",
     "dir": "07_real_world/business/finance/08_fraud_detection_agent",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "finance",
+      "08_fraud_detection_agent"
+    ],
     "params": [
       {
         "name": "data",
@@ -1608,6 +1868,12 @@
     "description": "Category: business/finance\n\nDESCRIPTION:\nMonitors FX exposure, tracks currency movements, and recommends hedging strategies.",
     "path": "07_real_world/business/finance/09_currency_risk_monitor/main.py",
     "dir": "07_real_world/business/finance/09_currency_risk_monitor",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "finance",
+      "09_currency_risk_monitor"
+    ],
     "params": [
       {
         "name": "data",
@@ -1631,6 +1897,12 @@
     "description": "Category: business/finance\n\nDESCRIPTION:\nHelps build financial models with scenario analysis and sensitivity testing.",
     "path": "07_real_world/business/finance/10_financial_modeling_assistant/main.py",
     "dir": "07_real_world/business/finance/10_financial_modeling_assistant",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "finance",
+      "10_financial_modeling_assistant"
+    ],
     "params": [
       {
         "name": "inputs",
@@ -1654,6 +1926,12 @@
     "description": "Category: business/hr\n\nDESCRIPTION:\nParses resumes, matches against job descriptions, and ranks candidates.\nExtracts skills, experience, and education to provide fit scores.\n\nPATTERNS:\n- Knowledge (JD requirements)\n- Structured Output (CandidateAssessment)\n- Reasoning (match justification)\n\nARGUMENTS:\n- resume (str): Candidate resume text. Default: sample\n- job_description (str): JD to match against. Default: sample",
     "path": "07_real_world/business/hr/01_resume_screener/main.py",
     "dir": "07_real_world/business/hr/01_resume_screener",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "hr",
+      "01_resume_screener"
+    ],
     "params": [
       {
         "name": "resume",
@@ -1685,6 +1963,12 @@
     "description": "Category: business/hr\n\nDESCRIPTION:\nMatches interviewer and candidate availability to schedule interviews.\nHandles time zones, generates calendar invites, and sends reminders.\n\nPATTERNS:\n- Reasoning (scheduling logic)\n- Structured Output (ScheduleResult)\n\nARGUMENTS:\n- candidate_availability (str): Candidate's available slots\n- interviewer_availability (str): Interviewer's available slots",
     "path": "07_real_world/business/hr/02_interview_scheduler/main.py",
     "dir": "07_real_world/business/hr/02_interview_scheduler",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "hr",
+      "02_interview_scheduler"
+    ],
     "params": [
       {
         "name": "candidate",
@@ -1716,6 +2000,12 @@
     "description": "Category: business/hr\n\nDESCRIPTION:\nGuides new hires through onboarding, answers common questions,\nand tracks task completion for first 30/60/90 days.\n\nPATTERNS:\n- Knowledge (company policies, procedures)\n- Structured Output (OnboardingStatus)\n\nARGUMENTS:\n- employee_name (str): New hire name\n- start_date (str): Start date\n- question (str): Question from new hire",
     "path": "07_real_world/business/hr/03_onboarding_assistant/main.py",
     "dir": "07_real_world/business/hr/03_onboarding_assistant",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "hr",
+      "03_onboarding_assistant"
+    ],
     "params": [
       {
         "name": "name",
@@ -1747,6 +2037,12 @@
     "description": "Category: business/hr\n\nDESCRIPTION:\nTransforms role requirements into compelling, inclusive job descriptions\noptimized for candidate attraction and SEO.\n\nPATTERNS:\n- Structured Output (JobDescription)\n- Knowledge (JD best practices)\n\nARGUMENTS:\n- role_requirements (str): Basic role info and requirements",
     "path": "07_real_world/business/hr/04_job_description_writer/main.py",
     "dir": "07_real_world/business/hr/04_job_description_writer",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "hr",
+      "04_job_description_writer"
+    ],
     "params": [
       {
         "name": "requirements",
@@ -1770,6 +2066,12 @@
     "description": "Category: business/hr\n\nDESCRIPTION:\nAnalyzes market compensation data to recommend salary ranges\nfor roles based on location, experience, and industry.\n\nPATTERNS:\n- Knowledge (comp data patterns)\n- Structured Output (CompAnalysis)\n- Reasoning (market positioning)\n\nARGUMENTS:\n- role (str): Job title\n- location (str): Geographic location\n- experience_years (int): Years of experience",
     "path": "07_real_world/business/hr/05_compensation_benchmarker/main.py",
     "dir": "07_real_world/business/hr/05_compensation_benchmarker",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "hr",
+      "05_compensation_benchmarker"
+    ],
     "params": [
       {
         "name": "role",
@@ -1809,6 +2111,12 @@
     "description": "Category: business/hr\n\nDESCRIPTION:\nSynthesizes 360-degree feedback from multiple reviewers into\nactionable insights, themes, and development recommendations.\n\nPATTERNS:\n- Reasoning (theme extraction)\n- Structured Output (ReviewSummary)\n- Knowledge (performance frameworks)\n\nARGUMENTS:\n- feedback (str): Multi-source feedback text",
     "path": "07_real_world/business/hr/06_performance_review_summarizer/main.py",
     "dir": "07_real_world/business/hr/06_performance_review_summarizer",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "hr",
+      "06_performance_review_summarizer"
+    ],
     "params": [
       {
         "name": "feedback",
@@ -1840,6 +2148,12 @@
     "description": "Category: business/hr\n\nDESCRIPTION:\nAnswers employee questions about company policies by searching\nthe employee handbook and providing accurate, sourced responses.\n\nPATTERNS:\n- Knowledge (policy database)\n- Structured Output (PolicyAnswer)\n- RAG-like (search and cite)\n\nARGUMENTS:\n- question (str): Employee's policy question",
     "path": "07_real_world/business/hr/07_policy_qa_bot/main.py",
     "dir": "07_real_world/business/hr/07_policy_qa_bot",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "hr",
+      "07_policy_qa_bot"
+    ],
     "params": [
       {
         "name": "question",
@@ -1863,6 +2177,12 @@
     "description": "Category: business/hr\n\nDESCRIPTION:\nTracks employee leave balances, processes time-off requests,\nand provides availability forecasts for team planning.\n\nPATTERNS:\n- Structured Output (PTOStatus)\n- Reasoning (balance calculations)\n\nARGUMENTS:\n- employee_data (str): Employee leave data\n- request (str): Time-off request to process",
     "path": "07_real_world/business/hr/08_pto_balance_tracker/main.py",
     "dir": "07_real_world/business/hr/08_pto_balance_tracker",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "hr",
+      "08_pto_balance_tracker"
+    ],
     "params": [
       {
         "name": "request",
@@ -1886,6 +2206,12 @@
     "description": "Category: business/hr\n\nDESCRIPTION:\nAnalyzes exit interview responses to extract themes, sentiment,\nand actionable insights for improving retention.\n\nPATTERNS:\n- Reasoning (theme extraction)\n- Structured Output (ExitAnalysis)\n- Knowledge (retention factors)\n\nARGUMENTS:\n- interviews (str): Exit interview transcripts/notes",
     "path": "07_real_world/business/hr/09_exit_interview_analyzer/main.py",
     "dir": "07_real_world/business/hr/09_exit_interview_analyzer",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "hr",
+      "09_exit_interview_analyzer"
+    ],
     "params": [
       {
         "name": "interviews",
@@ -1909,6 +2235,12 @@
     "description": "Category: business/hr\n\nDESCRIPTION:\nAnalyzes workforce demographics to generate DEI reports,\nidentify gaps, and recommend improvement initiatives.\n\nPATTERNS:\n- Structured Output (DEIReport)\n- Reasoning (gap analysis)\n- Knowledge (DEI benchmarks)\n\nARGUMENTS:\n- demographics (str): Workforce demographic data",
     "path": "07_real_world/business/hr/10_diversity_metrics_reporter/main.py",
     "dir": "07_real_world/business/hr/10_diversity_metrics_reporter",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "hr",
+      "10_diversity_metrics_reporter"
+    ],
     "params": [
       {
         "name": "demographics",
@@ -1932,6 +2264,12 @@
     "description": "Category: business/legal\n\nDESCRIPTION:\nAnalyzes contracts to identify key clauses, flag risks,\nand highlight terms that need negotiation.\n\nPATTERNS:\n- Knowledge (contract law basics)\n- Structured Output (ContractReview)\n- Reasoning (risk assessment)\n\nARGUMENTS:\n- contract_text (str): Contract to review",
     "path": "07_real_world/business/legal/01_contract_reviewer/main.py",
     "dir": "07_real_world/business/legal/01_contract_reviewer",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "legal",
+      "01_contract_reviewer"
+    ],
     "params": [
       {
         "name": "contract",
@@ -1955,6 +2293,12 @@
     "description": "Category: business/legal\n\nDESCRIPTION:\nGenerates customized Non-Disclosure Agreements based on\nparty details and specific requirements.\n\nPATTERNS:\n- Structured Output (NDADocument)\n- Knowledge (NDA best practices)\n\nARGUMENTS:\n- disclosing_party (str): Party sharing confidential info\n- receiving_party (str): Party receiving info\n- purpose (str): Purpose of disclosure",
     "path": "07_real_world/business/legal/02_nda_generator/main.py",
     "dir": "07_real_world/business/legal/02_nda_generator",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "legal",
+      "02_nda_generator"
+    ],
     "params": [
       {
         "name": "disclosing",
@@ -1995,6 +2339,12 @@
     "description": "Category: business/legal\n\nDESCRIPTION:\nReviews business practices and documents against regulatory\nrequirements to identify potential compliance violations.\n\nPATTERNS:\n- Knowledge (regulatory frameworks)\n- Structured Output (ComplianceReport)\n- Reasoning (violation detection)\n\nARGUMENTS:\n- practice_description (str): Business practice to check\n- regulations (str): Applicable regulations",
     "path": "07_real_world/business/legal/03_compliance_checker/main.py",
     "dir": "07_real_world/business/legal/03_compliance_checker",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "legal",
+      "03_compliance_checker"
+    ],
     "params": [
       {
         "name": "practice",
@@ -2026,6 +2376,12 @@
     "description": "Category: business/legal\n\nDESCRIPTION:\nAnalyzes privacy policies for completeness, clarity, and\ncompliance with GDPR, CCPA, and other privacy regulations.\n\nPATTERNS:\n- Knowledge (privacy law requirements)\n- Structured Output (PolicyAnalysis)\n- Reasoning (gap identification)\n\nARGUMENTS:\n- policy_text (str): Privacy policy to analyze",
     "path": "07_real_world/business/legal/04_privacy_policy_analyzer/main.py",
     "dir": "07_real_world/business/legal/04_privacy_policy_analyzer",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "legal",
+      "04_privacy_policy_analyzer"
+    ],
     "params": [
       {
         "name": "policy",
@@ -2049,6 +2405,12 @@
     "description": "Category: business/legal\n\nDESCRIPTION:\nAnalyzes proposed brand names for potential trademark conflicts,\nsuggests alternatives, and provides registration guidance.\n\nPATTERNS:\n- Knowledge (trademark law)\n- Structured Output (TrademarkAnalysis)\n- Reasoning (conflict assessment)\n\nARGUMENTS:\n- proposed_name (str): Brand name to check\n- industry (str): Business category",
     "path": "07_real_world/business/legal/05_trademark_search/main.py",
     "dir": "07_real_world/business/legal/05_trademark_search",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "legal",
+      "05_trademark_search"
+    ],
     "params": [
       {
         "name": "name",
@@ -2080,6 +2442,12 @@
     "description": "Category: business/legal\n\nDESCRIPTION:\nSummarizes complex legal documents into plain language,\nhighlighting key terms and obligations.\n\nPATTERNS:\n- Structured Output (DocumentSummary)\n- Reasoning (plain language translation)\n\nARGUMENTS:\n- document (str): Legal document to summarize",
     "path": "07_real_world/business/legal/06_legal_document_summarizer/main.py",
     "dir": "07_real_world/business/legal/06_legal_document_summarizer",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "legal",
+      "06_legal_document_summarizer"
+    ],
     "params": [
       {
         "name": "document",
@@ -2103,6 +2471,12 @@
     "description": "Category: business/legal\n\nDESCRIPTION:\nMonitors regulatory changes and assesses impact on business operations.\n\nPATTERNS:\n- Knowledge (regulatory landscape)\n- Structured Output (RegulatoryUpdate)\n\nARGUMENTS:\n- update_text (str): Regulatory update or news\n- industry (str): Business sector",
     "path": "07_real_world/business/legal/07_regulatory_update_monitor/main.py",
     "dir": "07_real_world/business/legal/07_regulatory_update_monitor",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "legal",
+      "07_regulatory_update_monitor"
+    ],
     "params": [
       {
         "name": "update",
@@ -2134,6 +2508,12 @@
     "description": "Category: business/legal\n\nDESCRIPTION:\nParses software license agreements to extract permissions,\nrestrictions, and compatibility information.\n\nPATTERNS:\n- Knowledge (open source licenses)\n- Structured Output (LicenseAnalysis)\n\nARGUMENTS:\n- license_text (str): License agreement text",
     "path": "07_real_world/business/legal/08_license_agreement_parser/main.py",
     "dir": "07_real_world/business/legal/08_license_agreement_parser",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "legal",
+      "08_license_agreement_parser"
+    ],
     "params": [
       {
         "name": "license",
@@ -2157,6 +2537,12 @@
     "description": "Category: business/legal\n\nDESCRIPTION:\nEvaluates legal risks in business decisions, contracts,\nor activities with scoring and mitigation recommendations.\n\nPATTERNS:\n- Reasoning (risk analysis)\n- Structured Output (RiskAssessment)\n\nARGUMENTS:\n- scenario (str): Business scenario to assess",
     "path": "07_real_world/business/legal/09_risk_assessment_agent/main.py",
     "dir": "07_real_world/business/legal/09_risk_assessment_agent",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "legal",
+      "09_risk_assessment_agent"
+    ],
     "params": [
       {
         "name": "scenario",
@@ -2180,6 +2566,12 @@
     "description": "Category: business/legal\n\nDESCRIPTION:\nAssists with e-discovery by analyzing documents for relevance,\nprivilege, and key information in litigation contexts.\n\nPATTERNS:\n- Reasoning (relevance assessment)\n- Structured Output (DocumentReview)\n\nARGUMENTS:\n- document (str): Document to review\n- case_context (str): Litigation context",
     "path": "07_real_world/business/legal/10_ediscovery_assistant/main.py",
     "dir": "07_real_world/business/legal/10_ediscovery_assistant",
+    "path_parts": [
+      "07_real_world",
+      "business",
+      "legal",
+      "10_ediscovery_assistant"
+    ],
     "params": [
       {
         "name": "document",
@@ -2211,6 +2603,12 @@
     "description": "Category: engineering/code\n\nDESCRIPTION:\nReviews code for quality, best practices, potential bugs, and suggests improvements.\n\nPATTERNS:\n- Knowledge (coding standards)\n- Structured Output (CodeReview)",
     "path": "07_real_world/engineering/code/01_code_reviewer/main.py",
     "dir": "07_real_world/engineering/code/01_code_reviewer",
+    "path_parts": [
+      "07_real_world",
+      "engineering",
+      "code",
+      "01_code_reviewer"
+    ],
     "params": [
       {
         "name": "code",
@@ -2234,6 +2632,12 @@
     "description": "Category: engineering/code\n\nDESCRIPTION:\nAnalyzes code to detect potential bugs, edge cases, and runtime errors.",
     "path": "07_real_world/engineering/code/02_bug_detector/main.py",
     "dir": "07_real_world/engineering/code/02_bug_detector",
+    "path_parts": [
+      "07_real_world",
+      "engineering",
+      "code",
+      "02_bug_detector"
+    ],
     "params": [
       {
         "name": "code",
@@ -2257,6 +2661,12 @@
     "description": "Category: engineering/code\n\nDESCRIPTION:\nSuggests and applies refactoring patterns to improve code quality.",
     "path": "07_real_world/engineering/code/03_refactoring_assistant/main.py",
     "dir": "07_real_world/engineering/code/03_refactoring_assistant",
+    "path_parts": [
+      "07_real_world",
+      "engineering",
+      "code",
+      "03_refactoring_assistant"
+    ],
     "params": [
       {
         "name": "code",
@@ -2280,6 +2690,12 @@
     "description": "Category: engineering/code\n\nDESCRIPTION:\nGenerates comprehensive documentation from code including docstrings, README, and API docs.",
     "path": "07_real_world/engineering/code/04_documentation_generator/main.py",
     "dir": "07_real_world/engineering/code/04_documentation_generator",
+    "path_parts": [
+      "07_real_world",
+      "engineering",
+      "code",
+      "04_documentation_generator"
+    ],
     "params": [
       {
         "name": "code",
@@ -2303,6 +2719,12 @@
     "description": "Category: engineering/code\n\nDESCRIPTION:\nGenerates unit tests for code with edge cases and mocking.",
     "path": "07_real_world/engineering/code/05_test_generator/main.py",
     "dir": "07_real_world/engineering/code/05_test_generator",
+    "path_parts": [
+      "07_real_world",
+      "engineering",
+      "code",
+      "05_test_generator"
+    ],
     "params": [
       {
         "name": "code",
@@ -2326,6 +2748,12 @@
     "description": "Category: engineering/code\n\nDESCRIPTION:\nExplains code in plain language for learning and onboarding.",
     "path": "07_real_world/engineering/code/06_code_explainer/main.py",
     "dir": "07_real_world/engineering/code/06_code_explainer",
+    "path_parts": [
+      "07_real_world",
+      "engineering",
+      "code",
+      "06_code_explainer"
+    ],
     "params": [
       {
         "name": "code",
@@ -2349,6 +2777,12 @@
     "description": "Category: engineering/code\n\nDESCRIPTION:\nDesigns RESTful APIs with endpoints, schemas, and best practices.",
     "path": "07_real_world/engineering/code/07_api_designer/main.py",
     "dir": "07_real_world/engineering/code/07_api_designer",
+    "path_parts": [
+      "07_real_world",
+      "engineering",
+      "code",
+      "07_api_designer"
+    ],
     "params": [
       {
         "name": "requirements",
@@ -2372,6 +2806,12 @@
     "description": "Category: engineering/code\n\nDESCRIPTION:\nAnalyzes project dependencies for security, updates, and conflicts.",
     "path": "07_real_world/engineering/code/08_dependency_analyzer/main.py",
     "dir": "07_real_world/engineering/code/08_dependency_analyzer",
+    "path_parts": [
+      "07_real_world",
+      "engineering",
+      "code",
+      "08_dependency_analyzer"
+    ],
     "params": [
       {
         "name": "deps",
@@ -2395,6 +2835,12 @@
     "description": "Category: engineering/code\n\nDESCRIPTION:\nScans code for security vulnerabilities and suggests fixes.",
     "path": "07_real_world/engineering/code/09_security_scanner/main.py",
     "dir": "07_real_world/engineering/code/09_security_scanner",
+    "path_parts": [
+      "07_real_world",
+      "engineering",
+      "code",
+      "09_security_scanner"
+    ],
     "params": [
       {
         "name": "code",
@@ -2418,6 +2864,12 @@
     "description": "Category: engineering/code\n\nDESCRIPTION:\nAnalyzes code for performance issues and suggests optimizations.",
     "path": "07_real_world/engineering/code/10_performance_optimizer/main.py",
     "dir": "07_real_world/engineering/code/10_performance_optimizer",
+    "path_parts": [
+      "07_real_world",
+      "engineering",
+      "code",
+      "10_performance_optimizer"
+    ],
     "params": [
       {
         "name": "code",
@@ -2441,6 +2893,12 @@
     "description": "Category: engineering/devops\nDESCRIPTION: Analyzes incidents and guides response with runbooks.",
     "path": "07_real_world/engineering/devops/01_incident_responder/main.py",
     "dir": "07_real_world/engineering/devops/01_incident_responder",
+    "path_parts": [
+      "07_real_world",
+      "engineering",
+      "devops",
+      "01_incident_responder"
+    ],
     "params": [
       {
         "name": "incident",
@@ -2464,6 +2922,12 @@
     "description": "Category: engineering/devops\nDESCRIPTION: Analyzes logs to identify patterns, errors, and anomalies.",
     "path": "07_real_world/engineering/devops/02_log_analyzer/main.py",
     "dir": "07_real_world/engineering/devops/02_log_analyzer",
+    "path_parts": [
+      "07_real_world",
+      "engineering",
+      "devops",
+      "02_log_analyzer"
+    ],
     "params": [
       {
         "name": "logs",
@@ -2487,6 +2951,12 @@
     "description": "Category: engineering/devops\nDESCRIPTION: Plans deployments with rollback strategies and risk assessment.",
     "path": "07_real_world/engineering/devops/03_deployment_planner/main.py",
     "dir": "07_real_world/engineering/devops/03_deployment_planner",
+    "path_parts": [
+      "07_real_world",
+      "engineering",
+      "devops",
+      "03_deployment_planner"
+    ],
     "params": [
       {
         "name": "deployment",
@@ -2510,6 +2980,12 @@
     "description": "Category: engineering/devops\nDESCRIPTION: Audits infrastructure for security, compliance, and best practices.",
     "path": "07_real_world/engineering/devops/04_infrastructure_auditor/main.py",
     "dir": "07_real_world/engineering/devops/04_infrastructure_auditor",
+    "path_parts": [
+      "07_real_world",
+      "engineering",
+      "devops",
+      "04_infrastructure_auditor"
+    ],
     "params": [
       {
         "name": "infra",
@@ -2533,6 +3009,12 @@
     "description": "Category: engineering/devops\nDESCRIPTION: Analyzes usage patterns and recommends capacity changes.",
     "path": "07_real_world/engineering/devops/05_capacity_planner/main.py",
     "dir": "07_real_world/engineering/devops/05_capacity_planner",
+    "path_parts": [
+      "07_real_world",
+      "engineering",
+      "devops",
+      "05_capacity_planner"
+    ],
     "params": [
       {
         "name": "metrics",
@@ -2556,6 +3038,12 @@
     "description": "Category: engineering/devops\nDESCRIPTION: Analyzes alerting rules to reduce noise and improve signal.",
     "path": "07_real_world/engineering/devops/06_alert_tuner/main.py",
     "dir": "07_real_world/engineering/devops/06_alert_tuner",
+    "path_parts": [
+      "07_real_world",
+      "engineering",
+      "devops",
+      "06_alert_tuner"
+    ],
     "params": [
       {
         "name": "alerts",
@@ -2579,6 +3067,12 @@
     "description": "Category: engineering/devops\nDESCRIPTION: Generates operational runbooks from incident patterns.",
     "path": "07_real_world/engineering/devops/07_runbook_generator/main.py",
     "dir": "07_real_world/engineering/devops/07_runbook_generator",
+    "path_parts": [
+      "07_real_world",
+      "engineering",
+      "devops",
+      "07_runbook_generator"
+    ],
     "params": [
       {
         "name": "scenario",
@@ -2602,6 +3096,12 @@
     "description": "Category: engineering/devops\nDESCRIPTION: Analyzes cloud spending and recommends cost optimizations.",
     "path": "07_real_world/engineering/devops/08_cost_optimizer/main.py",
     "dir": "07_real_world/engineering/devops/08_cost_optimizer",
+    "path_parts": [
+      "07_real_world",
+      "engineering",
+      "devops",
+      "08_cost_optimizer"
+    ],
     "params": [
       {
         "name": "spending",
@@ -2625,6 +3125,12 @@
     "description": "Category: engineering/devops\nDESCRIPTION: Creates disaster recovery plans with RTO/RPO analysis.",
     "path": "07_real_world/engineering/devops/09_disaster_recovery_planner/main.py",
     "dir": "07_real_world/engineering/devops/09_disaster_recovery_planner",
+    "path_parts": [
+      "07_real_world",
+      "engineering",
+      "devops",
+      "09_disaster_recovery_planner"
+    ],
     "params": [
       {
         "name": "system",
@@ -2648,6 +3154,12 @@
     "description": "Category: engineering/devops\nDESCRIPTION: Validates configuration files for errors and best practices.",
     "path": "07_real_world/engineering/devops/10_config_validator/main.py",
     "dir": "07_real_world/engineering/devops/10_config_validator",
+    "path_parts": [
+      "07_real_world",
+      "engineering",
+      "devops",
+      "10_config_validator"
+    ],
     "params": [
       {
         "name": "config",
@@ -2671,6 +3183,12 @@
     "description": "Category: engineering/data\nDESCRIPTION: Validates data quality rules across datasets - checks nulls, duplicates, ranges, formats",
     "path": "07_real_world/engineering/data/01_data_quality_checker/main.py",
     "dir": "07_real_world/engineering/data/01_data_quality_checker",
+    "path_parts": [
+      "07_real_world",
+      "engineering",
+      "data",
+      "01_data_quality_checker"
+    ],
     "params": [
       {
         "name": "dataset",
@@ -2702,6 +3220,12 @@
     "description": "Category: engineering/data\nDESCRIPTION: Designs optimal database schemas from requirements - tables, relationships, indexes",
     "path": "07_real_world/engineering/data/02_schema_designer/main.py",
     "dir": "07_real_world/engineering/data/02_schema_designer",
+    "path_parts": [
+      "07_real_world",
+      "engineering",
+      "data",
+      "02_schema_designer"
+    ],
     "params": [
       {
         "name": "domain",
@@ -2725,6 +3249,12 @@
     "description": "Category: engineering/data\nDESCRIPTION: Generates ETL pipeline code and configurations from source to target specs",
     "path": "07_real_world/engineering/data/03_etl_pipeline_builder/main.py",
     "dir": "07_real_world/engineering/data/03_etl_pipeline_builder",
+    "path_parts": [
+      "07_real_world",
+      "engineering",
+      "data",
+      "03_etl_pipeline_builder"
+    ],
     "params": [
       {
         "name": "source",
@@ -2756,6 +3286,12 @@
     "description": "Category: engineering/data\nDESCRIPTION: Analyzes and optimizes SQL queries for better performance",
     "path": "07_real_world/engineering/data/04_sql_query_optimizer/main.py",
     "dir": "07_real_world/engineering/data/04_sql_query_optimizer",
+    "path_parts": [
+      "07_real_world",
+      "engineering",
+      "data",
+      "04_sql_query_optimizer"
+    ],
     "params": [
       {
         "name": "database",
@@ -2779,6 +3315,12 @@
     "description": "Category: engineering/data\nDESCRIPTION: Manages data catalog metadata - descriptions, lineage, ownership, tags",
     "path": "07_real_world/engineering/data/05_data_catalog_curator/main.py",
     "dir": "07_real_world/engineering/data/05_data_catalog_curator",
+    "path_parts": [
+      "07_real_world",
+      "engineering",
+      "data",
+      "05_data_catalog_curator"
+    ],
     "params": [
       {
         "name": "asset_type",
@@ -2802,6 +3344,12 @@
     "description": "Category: engineering/data\nDESCRIPTION: Detects anomalies in data patterns - statistical outliers, trend breaks, missing data",
     "path": "07_real_world/engineering/data/06_anomaly_detector/main.py",
     "dir": "07_real_world/engineering/data/06_anomaly_detector",
+    "path_parts": [
+      "07_real_world",
+      "engineering",
+      "data",
+      "06_anomaly_detector"
+    ],
     "params": [
       {
         "name": "metric",
@@ -2825,6 +3373,12 @@
     "description": "Category: engineering/data\nDESCRIPTION: Generates business reports from data - executive summaries, insights, visualizations",
     "path": "07_real_world/engineering/data/07_report_generator/main.py",
     "dir": "07_real_world/engineering/data/07_report_generator",
+    "path_parts": [
+      "07_real_world",
+      "engineering",
+      "data",
+      "07_report_generator"
+    ],
     "params": [
       {
         "name": "report_type",
@@ -2848,6 +3402,12 @@
     "description": "Category: engineering/data\nDESCRIPTION: Tracks data lineage - sources, transformations, dependencies across pipelines",
     "path": "07_real_world/engineering/data/08_data_lineage_tracker/main.py",
     "dir": "07_real_world/engineering/data/08_data_lineage_tracker",
+    "path_parts": [
+      "07_real_world",
+      "engineering",
+      "data",
+      "08_data_lineage_tracker"
+    ],
     "params": [
       {
         "name": "target_table",
@@ -2871,6 +3431,12 @@
     "description": "Category: engineering/data\nDESCRIPTION: Designs dashboard layouts - chart selection, metrics, filters, drill-downs",
     "path": "07_real_world/engineering/data/09_dashboard_builder/main.py",
     "dir": "07_real_world/engineering/data/09_dashboard_builder",
+    "path_parts": [
+      "07_real_world",
+      "engineering",
+      "data",
+      "09_dashboard_builder"
+    ],
     "params": [
       {
         "name": "dashboard_type",
@@ -2894,6 +3460,12 @@
     "description": "Category: engineering/data\nDESCRIPTION: Analyzes business metrics - trends, correlations, drivers, forecasts",
     "path": "07_real_world/engineering/data/10_metrics_analyzer/main.py",
     "dir": "07_real_world/engineering/data/10_metrics_analyzer",
+    "path_parts": [
+      "07_real_world",
+      "engineering",
+      "data",
+      "10_metrics_analyzer"
+    ],
     "params": [
       {
         "name": "metric",
@@ -2917,6 +3489,12 @@
     "description": "Category: healthcare/clinical\nDESCRIPTION: Guides patient intake - demographics, chief complaint, medical history collection",
     "path": "07_real_world/healthcare/clinical/01_patient_intake/main.py",
     "dir": "07_real_world/healthcare/clinical/01_patient_intake",
+    "path_parts": [
+      "07_real_world",
+      "healthcare",
+      "clinical",
+      "01_patient_intake"
+    ],
     "params": [
       {
         "name": "visit_type",
@@ -2940,6 +3518,12 @@
     "description": "Category: healthcare/clinical\nDESCRIPTION: Analyzes patient symptoms to suggest possible conditions and triage urgency",
     "path": "07_real_world/healthcare/clinical/02_symptom_checker/main.py",
     "dir": "07_real_world/healthcare/clinical/02_symptom_checker",
+    "path_parts": [
+      "07_real_world",
+      "healthcare",
+      "clinical",
+      "02_symptom_checker"
+    ],
     "params": [
       {
         "name": "urgency_threshold",
@@ -2963,6 +3547,12 @@
     "description": "Category: healthcare/clinical\nDESCRIPTION: Supports clinical decision-making with differential diagnosis and evidence",
     "path": "07_real_world/healthcare/clinical/03_diagnosis_assistant/main.py",
     "dir": "07_real_world/healthcare/clinical/03_diagnosis_assistant",
+    "path_parts": [
+      "07_real_world",
+      "healthcare",
+      "clinical",
+      "03_diagnosis_assistant"
+    ],
     "params": [
       {
         "name": "specialty",
@@ -2986,6 +3576,12 @@
     "description": "Category: healthcare/clinical\nDESCRIPTION: Develops evidence-based treatment plans considering patient factors",
     "path": "07_real_world/healthcare/clinical/04_treatment_planner/main.py",
     "dir": "07_real_world/healthcare/clinical/04_treatment_planner",
+    "path_parts": [
+      "07_real_world",
+      "healthcare",
+      "clinical",
+      "04_treatment_planner"
+    ],
     "params": [
       {
         "name": "condition",
@@ -3009,6 +3605,12 @@
     "description": "Category: healthcare/clinical\nDESCRIPTION: Reviews medication lists for interactions, duplications, and appropriateness",
     "path": "07_real_world/healthcare/clinical/05_medication_reviewer/main.py",
     "dir": "07_real_world/healthcare/clinical/05_medication_reviewer",
+    "path_parts": [
+      "07_real_world",
+      "healthcare",
+      "clinical",
+      "05_medication_reviewer"
+    ],
     "params": [
       {
         "name": "review_type",
@@ -3032,6 +3634,12 @@
     "description": "Category: healthcare/clinical\nDESCRIPTION: Interprets laboratory results with clinical context and recommendations",
     "path": "07_real_world/healthcare/clinical/06_lab_interpreter/main.py",
     "dir": "07_real_world/healthcare/clinical/06_lab_interpreter",
+    "path_parts": [
+      "07_real_world",
+      "healthcare",
+      "clinical",
+      "06_lab_interpreter"
+    ],
     "params": [
       {
         "name": "panel_type",
@@ -3055,6 +3663,12 @@
     "description": "Category: healthcare/clinical\nDESCRIPTION: Coordinates multi-disciplinary care - referrals, appointments, care gaps",
     "path": "07_real_world/healthcare/clinical/07_care_coordinator/main.py",
     "dir": "07_real_world/healthcare/clinical/07_care_coordinator",
+    "path_parts": [
+      "07_real_world",
+      "healthcare",
+      "clinical",
+      "07_care_coordinator"
+    ],
     "params": [
       {
         "name": "patient_complexity",
@@ -3078,6 +3692,12 @@
     "description": "Category: healthcare/clinical\nDESCRIPTION: Creates comprehensive discharge plans - medications, follow-up, patient instructions",
     "path": "07_real_world/healthcare/clinical/08_discharge_planner/main.py",
     "dir": "07_real_world/healthcare/clinical/08_discharge_planner",
+    "path_parts": [
+      "07_real_world",
+      "healthcare",
+      "clinical",
+      "08_discharge_planner"
+    ],
     "params": [
       {
         "name": "discharge_type",
@@ -3101,6 +3721,12 @@
     "description": "Category: healthcare/clinical\nDESCRIPTION: Schedules and tracks follow-up appointments based on clinical needs",
     "path": "07_real_world/healthcare/clinical/09_follow_up_scheduler/main.py",
     "dir": "07_real_world/healthcare/clinical/09_follow_up_scheduler",
+    "path_parts": [
+      "07_real_world",
+      "healthcare",
+      "clinical",
+      "09_follow_up_scheduler"
+    ],
     "params": [
       {
         "name": "scheduling_mode",
@@ -3124,6 +3750,12 @@
     "description": "Category: healthcare/clinical\nDESCRIPTION: Generates structured clinical documentation - SOAP notes, H&Ps, progress notes",
     "path": "07_real_world/healthcare/clinical/10_clinical_notes/main.py",
     "dir": "07_real_world/healthcare/clinical/10_clinical_notes",
+    "path_parts": [
+      "07_real_world",
+      "healthcare",
+      "clinical",
+      "10_clinical_notes"
+    ],
     "params": [
       {
         "name": "note_type",
@@ -3147,6 +3779,12 @@
     "description": "Category: healthcare/admin\nDESCRIPTION: Optimizes appointment scheduling - availability, duration, provider matching",
     "path": "07_real_world/healthcare/admin/01_appointment_scheduler/main.py",
     "dir": "07_real_world/healthcare/admin/01_appointment_scheduler",
+    "path_parts": [
+      "07_real_world",
+      "healthcare",
+      "admin",
+      "01_appointment_scheduler"
+    ],
     "params": [
       {
         "name": "appointment_type",
@@ -3170,6 +3808,12 @@
     "description": "Category: healthcare/admin\nDESCRIPTION: Verifies insurance eligibility and benefits for patient visits",
     "path": "07_real_world/healthcare/admin/02_insurance_verifier/main.py",
     "dir": "07_real_world/healthcare/admin/02_insurance_verifier",
+    "path_parts": [
+      "07_real_world",
+      "healthcare",
+      "admin",
+      "02_insurance_verifier"
+    ],
     "params": [
       {
         "name": "service_type",
@@ -3193,6 +3837,12 @@
     "description": "Category: healthcare/admin\nDESCRIPTION: Processes and validates healthcare claims for submission",
     "path": "07_real_world/healthcare/admin/03_claims_processor/main.py",
     "dir": "07_real_world/healthcare/admin/03_claims_processor",
+    "path_parts": [
+      "07_real_world",
+      "healthcare",
+      "admin",
+      "03_claims_processor"
+    ],
     "params": [
       {
         "name": "claim_type",
@@ -3216,6 +3866,12 @@
     "description": "Category: healthcare/admin\nDESCRIPTION: Manages prior authorization requests - requirements, submissions, tracking",
     "path": "07_real_world/healthcare/admin/04_prior_auth/main.py",
     "dir": "07_real_world/healthcare/admin/04_prior_auth",
+    "path_parts": [
+      "07_real_world",
+      "healthcare",
+      "admin",
+      "04_prior_auth"
+    ],
     "params": [
       {
         "name": "service_category",
@@ -3239,6 +3895,12 @@
     "description": "Category: healthcare/admin\nDESCRIPTION: Handles patient portal inquiries - messages, results, appointments",
     "path": "07_real_world/healthcare/admin/05_patient_portal/main.py",
     "dir": "07_real_world/healthcare/admin/05_patient_portal",
+    "path_parts": [
+      "07_real_world",
+      "healthcare",
+      "admin",
+      "05_patient_portal"
+    ],
     "params": [
       {
         "name": "inquiry_type",
@@ -3262,6 +3924,12 @@
     "description": "Category: healthcare/admin\nDESCRIPTION: Assigns appropriate CPT, ICD-10, and HCPCS codes from clinical documentation",
     "path": "07_real_world/healthcare/admin/06_billing_coder/main.py",
     "dir": "07_real_world/healthcare/admin/06_billing_coder",
+    "path_parts": [
+      "07_real_world",
+      "healthcare",
+      "admin",
+      "06_billing_coder"
+    ],
     "params": [
       {
         "name": "encounter_type",
@@ -3285,6 +3953,12 @@
     "description": "Category: healthcare/admin\nDESCRIPTION: Manages hospital/facility census - admissions, discharges, bed management",
     "path": "07_real_world/healthcare/admin/07_census_manager/main.py",
     "dir": "07_real_world/healthcare/admin/07_census_manager",
+    "path_parts": [
+      "07_real_world",
+      "healthcare",
+      "admin",
+      "07_census_manager"
+    ],
     "params": [
       {
         "name": "facility_type",
@@ -3308,6 +3982,12 @@
     "description": "Category: healthcare/admin\nDESCRIPTION: Generates quality metrics reports - HEDIS, MIPS, patient outcomes",
     "path": "07_real_world/healthcare/admin/08_quality_reporter/main.py",
     "dir": "07_real_world/healthcare/admin/08_quality_reporter",
+    "path_parts": [
+      "07_real_world",
+      "healthcare",
+      "admin",
+      "08_quality_reporter"
+    ],
     "params": [
       {
         "name": "measure_set",
@@ -3331,6 +4011,12 @@
     "description": "Category: healthcare/admin\nDESCRIPTION: Audits healthcare compliance - HIPAA, documentation, billing",
     "path": "07_real_world/healthcare/admin/09_compliance_auditor/main.py",
     "dir": "07_real_world/healthcare/admin/09_compliance_auditor",
+    "path_parts": [
+      "07_real_world",
+      "healthcare",
+      "admin",
+      "09_compliance_auditor"
+    ],
     "params": [
       {
         "name": "audit_type",
@@ -3354,6 +4040,12 @@
     "description": "Category: healthcare/admin\nDESCRIPTION: Tracks provider credentials - licenses, certifications, privileges",
     "path": "07_real_world/healthcare/admin/10_credential_tracker/main.py",
     "dir": "07_real_world/healthcare/admin/10_credential_tracker",
+    "path_parts": [
+      "07_real_world",
+      "healthcare",
+      "admin",
+      "10_credential_tracker"
+    ],
     "params": [
       {
         "name": "provider_type",
@@ -3377,6 +4069,12 @@
     "description": "Category: education/teaching\nDESCRIPTION: Creates structured lesson plans with objectives, activities, and assessments",
     "path": "07_real_world/education/teaching/01_lesson_planner/main.py",
     "dir": "07_real_world/education/teaching/01_lesson_planner",
+    "path_parts": [
+      "07_real_world",
+      "education",
+      "teaching",
+      "01_lesson_planner"
+    ],
     "params": [
       {
         "name": "subject",
@@ -3408,6 +4106,12 @@
     "description": "Category: education/teaching\nDESCRIPTION: Generates quizzes and tests with varied question types and answer keys",
     "path": "07_real_world/education/teaching/02_quiz_generator/main.py",
     "dir": "07_real_world/education/teaching/02_quiz_generator",
+    "path_parts": [
+      "07_real_world",
+      "education",
+      "teaching",
+      "02_quiz_generator"
+    ],
     "params": [
       {
         "name": "topic",
@@ -3439,6 +4143,12 @@
     "description": "Category: education/teaching\nDESCRIPTION: Assists with grading assignments using rubrics and providing feedback",
     "path": "07_real_world/education/teaching/03_grading_assistant/main.py",
     "dir": "07_real_world/education/teaching/03_grading_assistant",
+    "path_parts": [
+      "07_real_world",
+      "education",
+      "teaching",
+      "03_grading_assistant"
+    ],
     "params": [
       {
         "name": "assignment_type",
@@ -3462,6 +4172,12 @@
     "description": "Category: education/teaching\nDESCRIPTION: Provides personalized tutoring with explanations and practice problems",
     "path": "07_real_world/education/teaching/04_tutoring_agent/main.py",
     "dir": "07_real_world/education/teaching/04_tutoring_agent",
+    "path_parts": [
+      "07_real_world",
+      "education",
+      "teaching",
+      "04_tutoring_agent"
+    ],
     "params": [
       {
         "name": "subject",
@@ -3493,6 +4209,12 @@
     "description": "Category: education/teaching\nDESCRIPTION: Designs course curricula with scope, sequence, and learning outcomes",
     "path": "07_real_world/education/teaching/05_curriculum_designer/main.py",
     "dir": "07_real_world/education/teaching/05_curriculum_designer",
+    "path_parts": [
+      "07_real_world",
+      "education",
+      "teaching",
+      "05_curriculum_designer"
+    ],
     "params": [
       {
         "name": "course",
@@ -3524,6 +4246,12 @@
     "description": "Category: education/teaching\nDESCRIPTION: Assesses student learning and identifies knowledge gaps",
     "path": "07_real_world/education/teaching/06_learning_assessor/main.py",
     "dir": "07_real_world/education/teaching/06_learning_assessor",
+    "path_parts": [
+      "07_real_world",
+      "education",
+      "teaching",
+      "06_learning_assessor"
+    ],
     "params": [
       {
         "name": "subject",
@@ -3548,6 +4276,12 @@
     "description": "Category: education/teaching\nDESCRIPTION: Adapts educational content for different reading levels and needs",
     "path": "07_real_world/education/teaching/07_content_adapter/main.py",
     "dir": "07_real_world/education/teaching/07_content_adapter",
+    "path_parts": [
+      "07_real_world",
+      "education",
+      "teaching",
+      "07_content_adapter"
+    ],
     "params": [
       {
         "name": "target_level",
@@ -3579,6 +4313,12 @@
     "description": "Category: education/teaching\nDESCRIPTION: Writes constructive, personalized feedback on student work",
     "path": "07_real_world/education/teaching/08_feedback_writer/main.py",
     "dir": "07_real_world/education/teaching/08_feedback_writer",
+    "path_parts": [
+      "07_real_world",
+      "education",
+      "teaching",
+      "08_feedback_writer"
+    ],
     "params": [
       {
         "name": "feedback_style",
@@ -3602,6 +4342,12 @@
     "description": "Category: education/teaching\nDESCRIPTION: Facilitates classroom discussions with prompts and responses",
     "path": "07_real_world/education/teaching/09_discussion_facilitator/main.py",
     "dir": "07_real_world/education/teaching/09_discussion_facilitator",
+    "path_parts": [
+      "07_real_world",
+      "education",
+      "teaching",
+      "09_discussion_facilitator"
+    ],
     "params": [
       {
         "name": "topic",
@@ -3633,6 +4379,12 @@
     "description": "Category: education/teaching\nDESCRIPTION: Tracks student skill development over time with progress reports",
     "path": "07_real_world/education/teaching/10_skill_tracker/main.py",
     "dir": "07_real_world/education/teaching/10_skill_tracker",
+    "path_parts": [
+      "07_real_world",
+      "education",
+      "teaching",
+      "10_skill_tracker"
+    ],
     "params": [
       {
         "name": "subject",
@@ -3656,6 +4408,12 @@
     "description": "Category: education/admin\nDESCRIPTION: Processes student enrollments and registrations",
     "path": "07_real_world/education/admin/01_enrollment_processor/main.py",
     "dir": "07_real_world/education/admin/01_enrollment_processor",
+    "path_parts": [
+      "07_real_world",
+      "education",
+      "admin",
+      "01_enrollment_processor"
+    ],
     "params": [
       {
         "name": "enrollment_type",
@@ -3679,6 +4437,12 @@
     "description": "Category: education/admin\nDESCRIPTION: Optimizes class schedules for students and teachers",
     "path": "07_real_world/education/admin/02_schedule_optimizer/main.py",
     "dir": "07_real_world/education/admin/02_schedule_optimizer",
+    "path_parts": [
+      "07_real_world",
+      "education",
+      "admin",
+      "02_schedule_optimizer"
+    ],
     "params": [
       {
         "name": "optimization_goal",
@@ -3702,6 +4466,12 @@
     "description": "Category: education/admin\nDESCRIPTION: Tracks and analyzes student attendance patterns",
     "path": "07_real_world/education/admin/03_attendance_tracker/main.py",
     "dir": "07_real_world/education/admin/03_attendance_tracker",
+    "path_parts": [
+      "07_real_world",
+      "education",
+      "admin",
+      "03_attendance_tracker"
+    ],
     "params": [
       {
         "name": "report_type",
@@ -3725,6 +4495,12 @@
     "description": "Category: education/admin\nDESCRIPTION: Generates parent communications about student progress",
     "path": "07_real_world/education/admin/04_parent_communicator/main.py",
     "dir": "07_real_world/education/admin/04_parent_communicator",
+    "path_parts": [
+      "07_real_world",
+      "education",
+      "admin",
+      "04_parent_communicator"
+    ],
     "params": [
       {
         "name": "communication_type",
@@ -3748,6 +4524,12 @@
     "description": "Category: education/admin\nDESCRIPTION: Allocates educational resources across departments",
     "path": "07_real_world/education/admin/05_resource_allocator/main.py",
     "dir": "07_real_world/education/admin/05_resource_allocator",
+    "path_parts": [
+      "07_real_world",
+      "education",
+      "admin",
+      "05_resource_allocator"
+    ],
     "params": [
       {
         "name": "resource_type",
@@ -3771,6 +4553,12 @@
     "description": "Category: education/admin\nDESCRIPTION: Manages accreditation requirements and documentation",
     "path": "07_real_world/education/admin/06_accreditation_manager/main.py",
     "dir": "07_real_world/education/admin/06_accreditation_manager",
+    "path_parts": [
+      "07_real_world",
+      "education",
+      "admin",
+      "06_accreditation_manager"
+    ],
     "params": [
       {
         "name": "accreditation_body",
@@ -3794,6 +4582,12 @@
     "description": "Category: education/admin\nDESCRIPTION: Provides academic advising and course recommendations",
     "path": "07_real_world/education/admin/07_student_advisor/main.py",
     "dir": "07_real_world/education/admin/07_student_advisor",
+    "path_parts": [
+      "07_real_world",
+      "education",
+      "admin",
+      "07_student_advisor"
+    ],
     "params": [
       {
         "name": "advising_type",
@@ -3817,6 +4611,12 @@
     "description": "Category: education/admin\nDESCRIPTION: Processes and evaluates academic transcripts",
     "path": "07_real_world/education/admin/08_transcript_processor/main.py",
     "dir": "07_real_world/education/admin/08_transcript_processor",
+    "path_parts": [
+      "07_real_world",
+      "education",
+      "admin",
+      "08_transcript_processor"
+    ],
     "params": [
       {
         "name": "process_type",
@@ -3840,6 +4640,12 @@
     "description": "Category: education/admin\nDESCRIPTION: Processes financial aid applications and awards",
     "path": "07_real_world/education/admin/09_financial_aid/main.py",
     "dir": "07_real_world/education/admin/09_financial_aid",
+    "path_parts": [
+      "07_real_world",
+      "education",
+      "admin",
+      "09_financial_aid"
+    ],
     "params": [
       {
         "name": "aid_type",
@@ -3863,6 +4669,12 @@
     "description": "Category: education/admin\nDESCRIPTION: Generates education compliance and regulatory reports",
     "path": "07_real_world/education/admin/10_compliance_reporter/main.py",
     "dir": "07_real_world/education/admin/10_compliance_reporter",
+    "path_parts": [
+      "07_real_world",
+      "education",
+      "admin",
+      "10_compliance_reporter"
+    ],
     "params": [
       {
         "name": "report_type",
@@ -3886,6 +4698,12 @@
     "description": "Category: personal/productivity\nDESCRIPTION: Manages personal tasks with prioritization, deadlines, and progress tracking",
     "path": "07_real_world/personal/productivity/01_task_manager/main.py",
     "dir": "07_real_world/personal/productivity/01_task_manager",
+    "path_parts": [
+      "07_real_world",
+      "personal",
+      "productivity",
+      "01_task_manager"
+    ],
     "params": [
       {
         "name": "context",
@@ -3909,6 +4727,12 @@
     "description": "Category: personal/productivity\nDESCRIPTION: Optimizes calendar scheduling for productivity, focus time, and work-life balance",
     "path": "07_real_world/personal/productivity/02_calendar_optimizer/main.py",
     "dir": "07_real_world/personal/productivity/02_calendar_optimizer",
+    "path_parts": [
+      "07_real_world",
+      "personal",
+      "productivity",
+      "02_calendar_optimizer"
+    ],
     "params": [
       {
         "name": "work_hours",
@@ -3932,6 +4756,12 @@
     "description": "Category: personal/productivity\nDESCRIPTION: Prioritizes emails by urgency, importance, and suggests response strategies",
     "path": "07_real_world/personal/productivity/03_email_prioritizer/main.py",
     "dir": "07_real_world/personal/productivity/03_email_prioritizer",
+    "path_parts": [
+      "07_real_world",
+      "personal",
+      "productivity",
+      "03_email_prioritizer"
+    ],
     "params": [
       {
         "name": "role",
@@ -3955,6 +4785,12 @@
     "description": "Category: personal/productivity\nDESCRIPTION: Finds optimal meeting times considering availability, time zones, and preferences",
     "path": "07_real_world/personal/productivity/04_meeting_scheduler/main.py",
     "dir": "07_real_world/personal/productivity/04_meeting_scheduler",
+    "path_parts": [
+      "07_real_world",
+      "personal",
+      "productivity",
+      "04_meeting_scheduler"
+    ],
     "params": [
       {
         "name": "timezone",
@@ -3978,6 +4814,12 @@
     "description": "Category: personal/productivity\nDESCRIPTION: Tracks habits, analyzes streaks, and provides motivation for behavior change",
     "path": "07_real_world/personal/productivity/05_habit_tracker/main.py",
     "dir": "07_real_world/personal/productivity/05_habit_tracker",
+    "path_parts": [
+      "07_real_world",
+      "personal",
+      "productivity",
+      "05_habit_tracker"
+    ],
     "params": [
       {
         "name": "focus_area",
@@ -4001,6 +4843,12 @@
     "description": "Category: personal/productivity\nDESCRIPTION: Helps define SMART goals, break them into milestones, and track progress",
     "path": "07_real_world/personal/productivity/06_goal_setter/main.py",
     "dir": "07_real_world/personal/productivity/06_goal_setter",
+    "path_parts": [
+      "07_real_world",
+      "personal",
+      "productivity",
+      "06_goal_setter"
+    ],
     "params": [
       {
         "name": "timeframe",
@@ -4024,6 +4872,12 @@
     "description": "Category: personal/productivity\nDESCRIPTION: Creates time-blocked schedules for maximum focus and productivity",
     "path": "07_real_world/personal/productivity/07_time_blocker/main.py",
     "dir": "07_real_world/personal/productivity/07_time_blocker",
+    "path_parts": [
+      "07_real_world",
+      "personal",
+      "productivity",
+      "07_time_blocker"
+    ],
     "params": [
       {
         "name": "style",
@@ -4047,6 +4901,12 @@
     "description": "Category: personal/productivity\nDESCRIPTION: Provides strategies and coaching to improve concentration and reduce distractions",
     "path": "07_real_world/personal/productivity/08_focus_coach/main.py",
     "dir": "07_real_world/personal/productivity/08_focus_coach",
+    "path_parts": [
+      "07_real_world",
+      "personal",
+      "productivity",
+      "08_focus_coach"
+    ],
     "params": [
       {
         "name": "challenge",
@@ -4070,6 +4930,12 @@
     "description": "Category: personal/productivity\nDESCRIPTION: Creates comprehensive daily plans balancing work, personal, and wellness goals",
     "path": "07_real_world/personal/productivity/09_daily_planner/main.py",
     "dir": "07_real_world/personal/productivity/09_daily_planner",
+    "path_parts": [
+      "07_real_world",
+      "personal",
+      "productivity",
+      "09_daily_planner"
+    ],
     "params": [
       {
         "name": "planning_style",
@@ -4093,6 +4959,12 @@
     "description": "Category: personal/productivity\nDESCRIPTION: Conducts weekly reviews analyzing accomplishments, lessons, and planning ahead",
     "path": "07_real_world/personal/productivity/10_weekly_reviewer/main.py",
     "dir": "07_real_world/personal/productivity/10_weekly_reviewer",
+    "path_parts": [
+      "07_real_world",
+      "personal",
+      "productivity",
+      "10_weekly_reviewer"
+    ],
     "params": [
       {
         "name": "review_style",
@@ -4116,6 +4988,12 @@
     "description": "Category: personal/finance\nDESCRIPTION: Creates and manages personal budgets with spending categories and savings goals",
     "path": "07_real_world/personal/finance/01_budget_planner/main.py",
     "dir": "07_real_world/personal/finance/01_budget_planner",
+    "path_parts": [
+      "07_real_world",
+      "personal",
+      "finance",
+      "01_budget_planner"
+    ],
     "params": [
       {
         "name": "income_frequency",
@@ -4139,6 +5017,12 @@
     "description": "Category: personal/finance\nDESCRIPTION: Categorizes and analyzes spending patterns to identify savings opportunities",
     "path": "07_real_world/personal/finance/02_expense_tracker/main.py",
     "dir": "07_real_world/personal/finance/02_expense_tracker",
+    "path_parts": [
+      "07_real_world",
+      "personal",
+      "finance",
+      "02_expense_tracker"
+    ],
     "params": [
       {
         "name": "period",
@@ -4162,6 +5046,12 @@
     "description": "Category: personal/finance\nDESCRIPTION: Provides investment guidance based on goals, risk tolerance, and time horizon",
     "path": "07_real_world/personal/finance/03_investment_advisor/main.py",
     "dir": "07_real_world/personal/finance/03_investment_advisor",
+    "path_parts": [
+      "07_real_world",
+      "personal",
+      "finance",
+      "03_investment_advisor"
+    ],
     "params": [
       {
         "name": "risk_profile",
@@ -4185,6 +5075,12 @@
     "description": "Category: personal/finance\nDESCRIPTION: Creates debt payoff strategies using avalanche, snowball, or hybrid methods",
     "path": "07_real_world/personal/finance/04_debt_manager/main.py",
     "dir": "07_real_world/personal/finance/04_debt_manager",
+    "path_parts": [
+      "07_real_world",
+      "personal",
+      "finance",
+      "04_debt_manager"
+    ],
     "params": [
       {
         "name": "strategy",
@@ -4208,6 +5104,12 @@
     "description": "Category: personal/finance\nDESCRIPTION: Creates savings plans for specific goals with timelines and strategies",
     "path": "07_real_world/personal/finance/05_savings_goal/main.py",
     "dir": "07_real_world/personal/finance/05_savings_goal",
+    "path_parts": [
+      "07_real_world",
+      "personal",
+      "finance",
+      "05_savings_goal"
+    ],
     "params": [
       {
         "name": "goal_type",
@@ -4231,6 +5133,12 @@
     "description": "Category: personal/finance\nDESCRIPTION: Estimates tax liability and suggests deductions and planning strategies",
     "path": "07_real_world/personal/finance/06_tax_estimator/main.py",
     "dir": "07_real_world/personal/finance/06_tax_estimator",
+    "path_parts": [
+      "07_real_world",
+      "personal",
+      "finance",
+      "06_tax_estimator"
+    ],
     "params": [
       {
         "name": "filing_status",
@@ -4254,6 +5162,12 @@
     "description": "Category: personal/finance\nDESCRIPTION: Calculates and tracks net worth with assets, liabilities, and growth analysis",
     "path": "07_real_world/personal/finance/07_net_worth_tracker/main.py",
     "dir": "07_real_world/personal/finance/07_net_worth_tracker",
+    "path_parts": [
+      "07_real_world",
+      "personal",
+      "finance",
+      "07_net_worth_tracker"
+    ],
     "params": [
       {
         "name": "tracking_period",
@@ -4277,6 +5191,12 @@
     "description": "Category: personal/finance\nDESCRIPTION: Tracks recurring subscriptions and identifies unused or redundant services",
     "path": "07_real_world/personal/finance/08_subscription_manager/main.py",
     "dir": "07_real_world/personal/finance/08_subscription_manager",
+    "path_parts": [
+      "07_real_world",
+      "personal",
+      "finance",
+      "08_subscription_manager"
+    ],
     "params": [
       {
         "name": "audit_depth",
@@ -4300,6 +5220,12 @@
     "description": "Category: personal/finance\nDESCRIPTION: Assesses overall financial health and provides personalized improvement plans",
     "path": "07_real_world/personal/finance/09_financial_health/main.py",
     "dir": "07_real_world/personal/finance/09_financial_health",
+    "path_parts": [
+      "07_real_world",
+      "personal",
+      "finance",
+      "09_financial_health"
+    ],
     "params": [
       {
         "name": "assessment_type",
@@ -4323,6 +5249,12 @@
     "description": "Category: personal/finance\nDESCRIPTION: Projects retirement savings needs and creates contribution strategies",
     "path": "07_real_world/personal/finance/10_retirement_planner/main.py",
     "dir": "07_real_world/personal/finance/10_retirement_planner",
+    "path_parts": [
+      "07_real_world",
+      "personal",
+      "finance",
+      "10_retirement_planner"
+    ],
     "params": [
       {
         "name": "retirement_style",
@@ -4346,6 +5278,12 @@
     "description": "Category: personal/creative\nDESCRIPTION: Generates creative short stories based on prompts, themes, and genres",
     "path": "07_real_world/personal/creative/01_story_generator/main.py",
     "dir": "07_real_world/personal/creative/01_story_generator",
+    "path_parts": [
+      "07_real_world",
+      "personal",
+      "creative",
+      "01_story_generator"
+    ],
     "params": [
       {
         "name": "genre",
@@ -4369,6 +5307,12 @@
     "description": "Category: personal/creative\nDESCRIPTION: Creates engaging blog posts with SEO optimization and audience targeting",
     "path": "07_real_world/personal/creative/02_blog_writer/main.py",
     "dir": "07_real_world/personal/creative/02_blog_writer",
+    "path_parts": [
+      "07_real_world",
+      "personal",
+      "creative",
+      "02_blog_writer"
+    ],
     "params": [
       {
         "name": "tone",
@@ -4392,6 +5336,12 @@
     "description": "Category: personal/creative\nDESCRIPTION: Composes poetry in various styles and forms based on themes and emotions",
     "path": "07_real_world/personal/creative/03_poem_composer/main.py",
     "dir": "07_real_world/personal/creative/03_poem_composer",
+    "path_parts": [
+      "07_real_world",
+      "personal",
+      "creative",
+      "03_poem_composer"
+    ],
     "params": [
       {
         "name": "style",
@@ -4415,6 +5365,12 @@
     "description": "Category: personal/creative\nDESCRIPTION: Writes scripts for videos, podcasts, or presentations with proper formatting",
     "path": "07_real_world/personal/creative/04_script_writer/main.py",
     "dir": "07_real_world/personal/creative/04_script_writer",
+    "path_parts": [
+      "07_real_world",
+      "personal",
+      "creative",
+      "04_script_writer"
+    ],
     "params": [
       {
         "name": "format",
@@ -4438,6 +5394,12 @@
     "description": "Category: personal/creative\nDESCRIPTION: Generates content ideas and topics based on niche, trends, and audience interests",
     "path": "07_real_world/personal/creative/05_content_ideator/main.py",
     "dir": "07_real_world/personal/creative/05_content_ideator",
+    "path_parts": [
+      "07_real_world",
+      "personal",
+      "creative",
+      "05_content_ideator"
+    ],
     "params": [
       {
         "name": "niche",
@@ -4461,6 +5423,12 @@
     "description": "Category: personal/creative\nDESCRIPTION: Provides writing feedback, suggestions, and coaching to improve craft",
     "path": "07_real_world/personal/creative/06_writing_coach/main.py",
     "dir": "07_real_world/personal/creative/06_writing_coach",
+    "path_parts": [
+      "07_real_world",
+      "personal",
+      "creative",
+      "06_writing_coach"
+    ],
     "params": [
       {
         "name": "focus",
@@ -4484,6 +5452,12 @@
     "description": "Category: personal/creative\nDESCRIPTION: Creates detailed character profiles for fiction writing with depth and consistency",
     "path": "07_real_world/personal/creative/07_character_developer/main.py",
     "dir": "07_real_world/personal/creative/07_character_developer",
+    "path_parts": [
+      "07_real_world",
+      "personal",
+      "creative",
+      "07_character_developer"
+    ],
     "params": [
       {
         "name": "genre",
@@ -4507,6 +5481,12 @@
     "description": "Category: personal/creative\nDESCRIPTION: Creates structured story outlines with plot points, arcs, and pacing",
     "path": "07_real_world/personal/creative/08_plot_outliner/main.py",
     "dir": "07_real_world/personal/creative/08_plot_outliner",
+    "path_parts": [
+      "07_real_world",
+      "personal",
+      "creative",
+      "08_plot_outliner"
+    ],
     "params": [
       {
         "name": "structure",
@@ -4530,6 +5510,12 @@
     "description": "Category: personal/creative\nDESCRIPTION: Creates natural, character-driven dialogue for fiction and scripts",
     "path": "07_real_world/personal/creative/09_dialogue_writer/main.py",
     "dir": "07_real_world/personal/creative/09_dialogue_writer",
+    "path_parts": [
+      "07_real_world",
+      "personal",
+      "creative",
+      "09_dialogue_writer"
+    ],
     "params": [
       {
         "name": "style",
@@ -4553,6 +5539,12 @@
     "description": "Category: personal/creative\nDESCRIPTION: Provides developmental and line editing suggestions for manuscripts",
     "path": "07_real_world/personal/creative/10_editing_assistant/main.py",
     "dir": "07_real_world/personal/creative/10_editing_assistant",
+    "path_parts": [
+      "07_real_world",
+      "personal",
+      "creative",
+      "10_editing_assistant"
+    ],
     "params": [
       {
         "name": "edit_level",
@@ -4576,6 +5568,12 @@
     "description": "Category: research/science\nDESCRIPTION: Reviews and synthesizes scientific literature on a topic",
     "path": "07_real_world/research/science/01_literature_reviewer/main.py",
     "dir": "07_real_world/research/science/01_literature_reviewer",
+    "path_parts": [
+      "07_real_world",
+      "research",
+      "science",
+      "01_literature_reviewer"
+    ],
     "params": [
       {
         "name": "topic",
@@ -4615,6 +5613,12 @@
     "description": "Category: research/science\nDESCRIPTION: Generates testable research hypotheses based on observations",
     "path": "07_real_world/research/science/02_hypothesis_generator/main.py",
     "dir": "07_real_world/research/science/02_hypothesis_generator",
+    "path_parts": [
+      "07_real_world",
+      "research",
+      "science",
+      "02_hypothesis_generator"
+    ],
     "params": [
       {
         "name": "field",
@@ -4654,6 +5658,12 @@
     "description": "Category: research/science\nDESCRIPTION: Designs rigorous research experiments",
     "path": "07_real_world/research/science/03_experiment_designer/main.py",
     "dir": "07_real_world/research/science/03_experiment_designer",
+    "path_parts": [
+      "07_real_world",
+      "research",
+      "science",
+      "03_experiment_designer"
+    ],
     "params": [
       {
         "name": "hypothesis",
@@ -4693,6 +5703,12 @@
     "description": "Category: research/science\nDESCRIPTION: Analyzes research data and interprets statistical results",
     "path": "07_real_world/research/science/04_data_analyzer/main.py",
     "dir": "07_real_world/research/science/04_data_analyzer",
+    "path_parts": [
+      "07_real_world",
+      "research",
+      "science",
+      "04_data_analyzer"
+    ],
     "params": [
       {
         "name": "type",
@@ -4732,6 +5748,12 @@
     "description": "Category: research/science\nDESCRIPTION: Summarizes scientific papers in structured format",
     "path": "07_real_world/research/science/05_paper_summarizer/main.py",
     "dir": "07_real_world/research/science/05_paper_summarizer",
+    "path_parts": [
+      "07_real_world",
+      "research",
+      "science",
+      "05_paper_summarizer"
+    ],
     "params": [
       {
         "name": "type",
@@ -4771,6 +5793,12 @@
     "description": "Category: research/science\nDESCRIPTION: Finds relevant citations for research papers",
     "path": "07_real_world/research/science/06_citation_finder/main.py",
     "dir": "07_real_world/research/science/06_citation_finder",
+    "path_parts": [
+      "07_real_world",
+      "research",
+      "science",
+      "06_citation_finder"
+    ],
     "params": [
       {
         "name": "topic",
@@ -4810,6 +5838,12 @@
     "description": "Category: research/science\nDESCRIPTION: Advises on appropriate research methodologies",
     "path": "07_real_world/research/science/07_methodology_advisor/main.py",
     "dir": "07_real_world/research/science/07_methodology_advisor",
+    "path_parts": [
+      "07_real_world",
+      "research",
+      "science",
+      "07_methodology_advisor"
+    ],
     "params": [
       {
         "name": "question",
@@ -4849,6 +5883,12 @@
     "description": "Category: research/science\nDESCRIPTION: Assists with research grant proposal writing",
     "path": "07_real_world/research/science/08_grant_writer/main.py",
     "dir": "07_real_world/research/science/08_grant_writer",
+    "path_parts": [
+      "07_real_world",
+      "research",
+      "science",
+      "08_grant_writer"
+    ],
     "params": [
       {
         "name": "title",
@@ -4888,6 +5928,12 @@
     "description": "Category: research/science\nDESCRIPTION: Provides constructive peer review feedback",
     "path": "07_real_world/research/science/09_peer_reviewer/main.py",
     "dir": "07_real_world/research/science/09_peer_reviewer",
+    "path_parts": [
+      "07_real_world",
+      "research",
+      "science",
+      "09_peer_reviewer"
+    ],
     "params": [
       {
         "name": "type",
@@ -4927,6 +5973,12 @@
     "description": "Category: research/science\nDESCRIPTION: General-purpose research assistant for academic work",
     "path": "07_real_world/research/science/10_research_assistant/main.py",
     "dir": "07_real_world/research/science/10_research_assistant",
+    "path_parts": [
+      "07_real_world",
+      "research",
+      "science",
+      "10_research_assistant"
+    ],
     "params": [
       {
         "name": "task",
@@ -4966,6 +6018,12 @@
     "description": "Category: industry/real_estate\nDESCRIPTION: Estimates property values using comparable sales and market data",
     "path": "07_real_world/industry/real_estate/01_property_valuator/main.py",
     "dir": "07_real_world/industry/real_estate/01_property_valuator",
+    "path_parts": [
+      "07_real_world",
+      "industry",
+      "real_estate",
+      "01_property_valuator"
+    ],
     "params": [
       {
         "name": "type",
@@ -5013,6 +6071,12 @@
     "description": "Category: industry/real_estate\nDESCRIPTION: Creates compelling property listings for MLS and marketing",
     "path": "07_real_world/industry/real_estate/02_listing_generator/main.py",
     "dir": "07_real_world/industry/real_estate/02_listing_generator",
+    "path_parts": [
+      "07_real_world",
+      "industry",
+      "real_estate",
+      "02_listing_generator"
+    ],
     "params": [
       {
         "name": "type",
@@ -5060,6 +6124,12 @@
     "description": "Category: industry/real_estate\nDESCRIPTION: Matches buyer preferences with available properties",
     "path": "07_real_world/industry/real_estate/03_buyer_matcher/main.py",
     "dir": "07_real_world/industry/real_estate/03_buyer_matcher",
+    "path_parts": [
+      "07_real_world",
+      "industry",
+      "real_estate",
+      "03_buyer_matcher"
+    ],
     "params": [
       {
         "name": "budget",
@@ -5108,6 +6178,12 @@
     "description": "Category: industry/real_estate\nDESCRIPTION: Analyzes real estate market trends and conditions",
     "path": "07_real_world/industry/real_estate/04_market_analyzer/main.py",
     "dir": "07_real_world/industry/real_estate/04_market_analyzer",
+    "path_parts": [
+      "07_real_world",
+      "industry",
+      "real_estate",
+      "04_market_analyzer"
+    ],
     "params": [
       {
         "name": "location",
@@ -5147,6 +6223,12 @@
     "description": "Category: industry/real_estate\nDESCRIPTION: Reviews real estate contracts and identifies issues",
     "path": "07_real_world/industry/real_estate/05_contract_reviewer/main.py",
     "dir": "07_real_world/industry/real_estate/05_contract_reviewer",
+    "path_parts": [
+      "07_real_world",
+      "industry",
+      "real_estate",
+      "05_contract_reviewer"
+    ],
     "params": [
       {
         "name": "type",
@@ -5178,6 +6260,12 @@
     "description": "Category: industry/real_estate\nDESCRIPTION: Optimizes property showing schedules for agents and buyers",
     "path": "07_real_world/industry/real_estate/06_showing_scheduler/main.py",
     "dir": "07_real_world/industry/real_estate/06_showing_scheduler",
+    "path_parts": [
+      "07_real_world",
+      "industry",
+      "real_estate",
+      "06_showing_scheduler"
+    ],
     "params": [
       {
         "name": "count",
@@ -5217,6 +6305,12 @@
     "description": "Category: industry/real_estate\nDESCRIPTION: Calculates mortgage payments and compares loan options",
     "path": "07_real_world/industry/real_estate/07_mortgage_calculator/main.py",
     "dir": "07_real_world/industry/real_estate/07_mortgage_calculator",
+    "path_parts": [
+      "07_real_world",
+      "industry",
+      "real_estate",
+      "07_mortgage_calculator"
+    ],
     "params": [
       {
         "name": "price",
@@ -5256,6 +6350,12 @@
     "description": "Category: industry/real_estate\nDESCRIPTION: Analyzes real estate investment opportunities and ROI",
     "path": "07_real_world/industry/real_estate/08_investment_analyzer/main.py",
     "dir": "07_real_world/industry/real_estate/08_investment_analyzer",
+    "path_parts": [
+      "07_real_world",
+      "industry",
+      "real_estate",
+      "08_investment_analyzer"
+    ],
     "params": [
       {
         "name": "price",
@@ -5295,6 +6395,12 @@
     "description": "Category: industry/real_estate\nDESCRIPTION: Generates comprehensive neighborhood reports for buyers",
     "path": "07_real_world/industry/real_estate/09_neighborhood_reporter/main.py",
     "dir": "07_real_world/industry/real_estate/09_neighborhood_reporter",
+    "path_parts": [
+      "07_real_world",
+      "industry",
+      "real_estate",
+      "09_neighborhood_reporter"
+    ],
     "params": [
       {
         "name": "neighborhood",
@@ -5326,6 +6432,12 @@
     "description": "Category: industry/real_estate\nDESCRIPTION: Manages real estate closing process and documentation",
     "path": "07_real_world/industry/real_estate/10_closing_coordinator/main.py",
     "dir": "07_real_world/industry/real_estate/10_closing_coordinator",
+    "path_parts": [
+      "07_real_world",
+      "industry",
+      "real_estate",
+      "10_closing_coordinator"
+    ],
     "params": [
       {
         "name": "date",
@@ -5365,6 +6477,12 @@
     "description": "Category: industry/ecommerce\nDESCRIPTION: Generates product catalog entries with descriptions and metadata",
     "path": "07_real_world/industry/ecommerce/01_product_cataloger/main.py",
     "dir": "07_real_world/industry/ecommerce/01_product_cataloger",
+    "path_parts": [
+      "07_real_world",
+      "industry",
+      "ecommerce",
+      "01_product_cataloger"
+    ],
     "params": [
       {
         "name": "product",
@@ -5396,6 +6514,12 @@
     "description": "Category: industry/ecommerce\nDESCRIPTION: Optimizes product pricing based on competition and demand",
     "path": "07_real_world/industry/ecommerce/02_pricing_optimizer/main.py",
     "dir": "07_real_world/industry/ecommerce/02_pricing_optimizer",
+    "path_parts": [
+      "07_real_world",
+      "industry",
+      "ecommerce",
+      "02_pricing_optimizer"
+    ],
     "params": [
       {
         "name": "product",
@@ -5435,6 +6559,12 @@
     "description": "Category: industry/ecommerce\nDESCRIPTION: Manages inventory levels and generates reorder recommendations",
     "path": "07_real_world/industry/ecommerce/03_inventory_manager/main.py",
     "dir": "07_real_world/industry/ecommerce/03_inventory_manager",
+    "path_parts": [
+      "07_real_world",
+      "industry",
+      "ecommerce",
+      "03_inventory_manager"
+    ],
     "params": [
       {
         "name": "sku",
@@ -5474,6 +6604,12 @@
     "description": "Category: industry/ecommerce\nDESCRIPTION: Processes and validates e-commerce orders",
     "path": "07_real_world/industry/ecommerce/04_order_processor/main.py",
     "dir": "07_real_world/industry/ecommerce/04_order_processor",
+    "path_parts": [
+      "07_real_world",
+      "industry",
+      "ecommerce",
+      "04_order_processor"
+    ],
     "params": [
       {
         "name": "order",
@@ -5505,6 +6641,12 @@
     "description": "Category: industry/ecommerce\nDESCRIPTION: Analyzes customer reviews for insights and sentiment",
     "path": "07_real_world/industry/ecommerce/05_review_analyzer/main.py",
     "dir": "07_real_world/industry/ecommerce/05_review_analyzer",
+    "path_parts": [
+      "07_real_world",
+      "industry",
+      "ecommerce",
+      "05_review_analyzer"
+    ],
     "params": [
       {
         "name": "product",
@@ -5536,6 +6678,12 @@
     "description": "Category: industry/ecommerce\nDESCRIPTION: Generates personalized product recommendations",
     "path": "07_real_world/industry/ecommerce/06_recommendation_engine/main.py",
     "dir": "07_real_world/industry/ecommerce/06_recommendation_engine",
+    "path_parts": [
+      "07_real_world",
+      "industry",
+      "ecommerce",
+      "06_recommendation_engine"
+    ],
     "params": [
       {
         "name": "segment",
@@ -5567,6 +6715,12 @@
     "description": "Category: industry/ecommerce\nDESCRIPTION: Analyzes cart abandonment and generates recovery strategies",
     "path": "07_real_world/industry/ecommerce/07_cart_abandonment/main.py",
     "dir": "07_real_world/industry/ecommerce/07_cart_abandonment",
+    "path_parts": [
+      "07_real_world",
+      "industry",
+      "ecommerce",
+      "07_cart_abandonment"
+    ],
     "params": [
       {
         "name": "value",
@@ -5606,6 +6760,12 @@
     "description": "Category: industry/ecommerce\nDESCRIPTION: Optimizes shipping methods and carrier selection",
     "path": "07_real_world/industry/ecommerce/08_shipping_optimizer/main.py",
     "dir": "07_real_world/industry/ecommerce/08_shipping_optimizer",
+    "path_parts": [
+      "07_real_world",
+      "industry",
+      "ecommerce",
+      "08_shipping_optimizer"
+    ],
     "params": [
       {
         "name": "dest",
@@ -5645,6 +6805,12 @@
     "description": "Category: industry/ecommerce\nDESCRIPTION: Processes product returns and generates RMA decisions",
     "path": "07_real_world/industry/ecommerce/09_return_processor/main.py",
     "dir": "07_real_world/industry/ecommerce/09_return_processor",
+    "path_parts": [
+      "07_real_world",
+      "industry",
+      "ecommerce",
+      "09_return_processor"
+    ],
     "params": [
       {
         "name": "order",
@@ -5684,6 +6850,12 @@
     "description": "Category: industry/ecommerce\nDESCRIPTION: Segments customers for targeted marketing and personalization",
     "path": "07_real_world/industry/ecommerce/10_customer_segmenter/main.py",
     "dir": "07_real_world/industry/ecommerce/10_customer_segmenter",
+    "path_parts": [
+      "07_real_world",
+      "industry",
+      "ecommerce",
+      "10_customer_segmenter"
+    ],
     "params": [
       {
         "name": "customers",
@@ -5715,6 +6887,12 @@
     "description": "Category: industry/travel\nDESCRIPTION: Creates personalized trip plans based on preferences and budget",
     "path": "07_real_world/industry/travel/01_trip_planner/main.py",
     "dir": "07_real_world/industry/travel/01_trip_planner",
+    "path_parts": [
+      "07_real_world",
+      "industry",
+      "travel",
+      "01_trip_planner"
+    ],
     "params": [
       {
         "name": "dest",
@@ -5762,6 +6940,12 @@
     "description": "Category: industry/travel\nDESCRIPTION: Finds optimal flight options based on preferences",
     "path": "07_real_world/industry/travel/02_flight_finder/main.py",
     "dir": "07_real_world/industry/travel/02_flight_finder",
+    "path_parts": [
+      "07_real_world",
+      "industry",
+      "travel",
+      "02_flight_finder"
+    ],
     "params": [
       {
         "name": "origin",
@@ -5810,6 +6994,12 @@
     "description": "Category: industry/travel\nDESCRIPTION: Recommends hotels based on preferences and location",
     "path": "07_real_world/industry/travel/03_hotel_recommender/main.py",
     "dir": "07_real_world/industry/travel/03_hotel_recommender",
+    "path_parts": [
+      "07_real_world",
+      "industry",
+      "travel",
+      "03_hotel_recommender"
+    ],
     "params": [
       {
         "name": "city",
@@ -5857,6 +7047,12 @@
     "description": "Category: industry/travel\nDESCRIPTION: Builds detailed daily itineraries with timing and logistics",
     "path": "07_real_world/industry/travel/04_itinerary_builder/main.py",
     "dir": "07_real_world/industry/travel/04_itinerary_builder",
+    "path_parts": [
+      "07_real_world",
+      "industry",
+      "travel",
+      "04_itinerary_builder"
+    ],
     "params": [
       {
         "name": "city",
@@ -5896,6 +7092,12 @@
     "description": "Category: industry/travel\nDESCRIPTION: Assists with travel bookings and reservations",
     "path": "07_real_world/industry/travel/05_booking_assistant/main.py",
     "dir": "07_real_world/industry/travel/05_booking_assistant",
+    "path_parts": [
+      "07_real_world",
+      "industry",
+      "travel",
+      "05_booking_assistant"
+    ],
     "params": [
       {
         "name": "type",
@@ -5943,6 +7145,12 @@
     "description": "Category: industry/travel\nDESCRIPTION: Provides personalized travel advice and destination recommendations",
     "path": "07_real_world/industry/travel/06_travel_advisor/main.py",
     "dir": "07_real_world/industry/travel/06_travel_advisor",
+    "path_parts": [
+      "07_real_world",
+      "industry",
+      "travel",
+      "06_travel_advisor"
+    ],
     "params": [
       {
         "name": "month",
@@ -5983,6 +7191,12 @@
     "description": "Category: industry/travel\nDESCRIPTION: Tracks and analyzes travel expenses",
     "path": "07_real_world/industry/travel/07_expense_tracker/main.py",
     "dir": "07_real_world/industry/travel/07_expense_tracker",
+    "path_parts": [
+      "07_real_world",
+      "industry",
+      "travel",
+      "07_expense_tracker"
+    ],
     "params": [
       {
         "name": "trip",
@@ -6022,6 +7236,12 @@
     "description": "Category: industry/travel\nDESCRIPTION: Checks visa requirements and provides application guidance",
     "path": "07_real_world/industry/travel/08_visa_checker/main.py",
     "dir": "07_real_world/industry/travel/08_visa_checker",
+    "path_parts": [
+      "07_real_world",
+      "industry",
+      "travel",
+      "08_visa_checker"
+    ],
     "params": [
       {
         "name": "passport",
@@ -6061,6 +7281,12 @@
     "description": "Category: industry/travel\nDESCRIPTION: Provides local insider knowledge and recommendations",
     "path": "07_real_world/industry/travel/09_local_guide/main.py",
     "dir": "07_real_world/industry/travel/09_local_guide",
+    "path_parts": [
+      "07_real_world",
+      "industry",
+      "travel",
+      "09_local_guide"
+    ],
     "params": [
       {
         "name": "city",
@@ -6093,6 +7319,12 @@
     "description": "Category: industry/travel\nDESCRIPTION: Aggregates and summarizes travel reviews from multiple sources",
     "path": "07_real_world/industry/travel/10_review_aggregator/main.py",
     "dir": "07_real_world/industry/travel/10_review_aggregator",
+    "path_parts": [
+      "07_real_world",
+      "industry",
+      "travel",
+      "10_review_aggregator"
+    ],
     "params": [
       {
         "name": "place",
@@ -6132,6 +7364,12 @@
     "description": "Category: industry/media\nDESCRIPTION: Schedules content across multiple platforms with optimal timing",
     "path": "07_real_world/industry/media/01_content_scheduler/main.py",
     "dir": "07_real_world/industry/media/01_content_scheduler",
+    "path_parts": [
+      "07_real_world",
+      "industry",
+      "media",
+      "01_content_scheduler"
+    ],
     "params": [
       {
         "name": "platforms",
@@ -6171,6 +7409,12 @@
     "description": "Category: industry/media\nDESCRIPTION: Generates compelling headlines for articles and content",
     "path": "07_real_world/industry/media/02_headline_generator/main.py",
     "dir": "07_real_world/industry/media/02_headline_generator",
+    "path_parts": [
+      "07_real_world",
+      "industry",
+      "media",
+      "02_headline_generator"
+    ],
     "params": [
       {
         "name": "topic",
@@ -6210,6 +7454,12 @@
     "description": "Category: industry/media\nDESCRIPTION: Summarizes articles into different formats and lengths",
     "path": "07_real_world/industry/media/03_article_summarizer/main.py",
     "dir": "07_real_world/industry/media/03_article_summarizer",
+    "path_parts": [
+      "07_real_world",
+      "industry",
+      "media",
+      "03_article_summarizer"
+    ],
     "params": [
       {
         "name": "length",
@@ -6249,6 +7499,12 @@
     "description": "Category: industry/media\nDESCRIPTION: Analyzes trending topics and predicts content opportunities",
     "path": "07_real_world/industry/media/04_trend_analyzer/main.py",
     "dir": "07_real_world/industry/media/04_trend_analyzer",
+    "path_parts": [
+      "07_real_world",
+      "industry",
+      "media",
+      "04_trend_analyzer"
+    ],
     "params": [
       {
         "name": "industry",
@@ -6288,6 +7544,12 @@
     "description": "Category: industry/media\nDESCRIPTION: Analyzes audience demographics and behavior patterns",
     "path": "07_real_world/industry/media/05_audience_insights/main.py",
     "dir": "07_real_world/industry/media/05_audience_insights",
+    "path_parts": [
+      "07_real_world",
+      "industry",
+      "media",
+      "05_audience_insights"
+    ],
     "params": [
       {
         "name": "platform",
@@ -6327,6 +7589,12 @@
     "description": "Category: industry/media\nDESCRIPTION: Writes compelling ad copy for various platforms",
     "path": "07_real_world/industry/media/06_ad_copy_writer/main.py",
     "dir": "07_real_world/industry/media/06_ad_copy_writer",
+    "path_parts": [
+      "07_real_world",
+      "industry",
+      "media",
+      "06_ad_copy_writer"
+    ],
     "params": [
       {
         "name": "product",
@@ -6366,6 +7634,12 @@
     "description": "Category: industry/media\nDESCRIPTION: Monitors social media mentions and sentiment",
     "path": "07_real_world/industry/media/07_social_monitor/main.py",
     "dir": "07_real_world/industry/media/07_social_monitor",
+    "path_parts": [
+      "07_real_world",
+      "industry",
+      "media",
+      "07_social_monitor"
+    ],
     "params": [
       {
         "name": "brand",
@@ -6405,6 +7679,12 @@
     "description": "Category: industry/media\nDESCRIPTION: Matches brands with suitable influencers for partnerships",
     "path": "07_real_world/industry/media/08_influencer_matcher/main.py",
     "dir": "07_real_world/industry/media/08_influencer_matcher",
+    "path_parts": [
+      "07_real_world",
+      "industry",
+      "media",
+      "08_influencer_matcher"
+    ],
     "params": [
       {
         "name": "niche",
@@ -6444,6 +7724,12 @@
     "description": "Category: industry/media\nDESCRIPTION: Moderates user-generated content for policy violations",
     "path": "07_real_world/industry/media/09_content_moderator/main.py",
     "dir": "07_real_world/industry/media/09_content_moderator",
+    "path_parts": [
+      "07_real_world",
+      "industry",
+      "media",
+      "09_content_moderator"
+    ],
     "params": [
       {
         "name": "platform",
@@ -6483,6 +7769,12 @@
     "description": "Category: industry/media\nDESCRIPTION: Generates comprehensive analytics reports for media performance",
     "path": "07_real_world/industry/media/10_analytics_reporter/main.py",
     "dir": "07_real_world/industry/media/10_analytics_reporter",
+    "path_parts": [
+      "07_real_world",
+      "industry",
+      "media",
+      "10_analytics_reporter"
+    ],
     "params": [
       {
         "name": "type",
@@ -6522,6 +7814,12 @@
     "description": "Category: advanced/multi_agent\nDESCRIPTION: Multiple agents debate a topic from different perspectives to explore all angles",
     "path": "07_real_world/advanced/multi_agent/01_debate_team/main.py",
     "dir": "07_real_world/advanced/multi_agent/01_debate_team",
+    "path_parts": [
+      "07_real_world",
+      "advanced",
+      "multi_agent",
+      "01_debate_team"
+    ],
     "params": [
       {
         "name": "rounds",
@@ -6546,6 +7844,12 @@
     "description": "Category: advanced/multi_agent\nDESCRIPTION: Collaborative research team with specialized roles for comprehensive analysis",
     "path": "07_real_world/advanced/multi_agent/02_research_team/main.py",
     "dir": "07_real_world/advanced/multi_agent/02_research_team",
+    "path_parts": [
+      "07_real_world",
+      "advanced",
+      "multi_agent",
+      "02_research_team"
+    ],
     "params": [
       {
         "name": "depth",
@@ -6569,6 +7873,12 @@
     "description": "Category: advanced/multi_agent\nDESCRIPTION: Multiple specialized reviewers analyze code for different quality aspects",
     "path": "07_real_world/advanced/multi_agent/03_code_review_team/main.py",
     "dir": "07_real_world/advanced/multi_agent/03_code_review_team",
+    "path_parts": [
+      "07_real_world",
+      "advanced",
+      "multi_agent",
+      "03_code_review_team"
+    ],
     "params": [
       {
         "name": "strictness",
@@ -6592,6 +7902,12 @@
     "description": "Category: advanced/multi_agent\nDESCRIPTION: Content creation pipeline with writer, editor, and SEO specialist agents",
     "path": "07_real_world/advanced/multi_agent/04_content_pipeline/main.py",
     "dir": "07_real_world/advanced/multi_agent/04_content_pipeline",
+    "path_parts": [
+      "07_real_world",
+      "advanced",
+      "multi_agent",
+      "04_content_pipeline"
+    ],
     "params": [
       {
         "name": "content_type",
@@ -6615,6 +7931,12 @@
     "description": "Category: advanced/multi_agent\nDESCRIPTION: Tiered support system with frontline, specialist, and supervisor agents",
     "path": "07_real_world/advanced/multi_agent/05_customer_service_escalation/main.py",
     "dir": "07_real_world/advanced/multi_agent/05_customer_service_escalation",
+    "path_parts": [
+      "07_real_world",
+      "advanced",
+      "multi_agent",
+      "05_customer_service_escalation"
+    ],
     "params": [
       {
         "name": "company",
@@ -6639,6 +7961,12 @@
     "description": "Category: advanced/multi_agent\nDESCRIPTION: Multiple interviewers evaluate candidates from different perspectives",
     "path": "07_real_world/advanced/multi_agent/06_hiring_committee/main.py",
     "dir": "07_real_world/advanced/multi_agent/06_hiring_committee",
+    "path_parts": [
+      "07_real_world",
+      "advanced",
+      "multi_agent",
+      "06_hiring_committee"
+    ],
     "params": [
       {
         "name": "role",
@@ -6663,6 +7991,12 @@
     "description": "Category: advanced/multi_agent\nDESCRIPTION: Investment analysis team with analysts and risk assessment",
     "path": "07_real_world/advanced/multi_agent/07_investment_committee/main.py",
     "dir": "07_real_world/advanced/multi_agent/07_investment_committee",
+    "path_parts": [
+      "07_real_world",
+      "advanced",
+      "multi_agent",
+      "07_investment_committee"
+    ],
     "params": [
       {
         "name": "risk_tolerance",
@@ -6686,6 +8020,12 @@
     "description": "Category: advanced/multi_agent\nDESCRIPTION: Publication editorial process with multiple reviewers and editors",
     "path": "07_real_world/advanced/multi_agent/08_editorial_board/main.py",
     "dir": "07_real_world/advanced/multi_agent/08_editorial_board",
+    "path_parts": [
+      "07_real_world",
+      "advanced",
+      "multi_agent",
+      "08_editorial_board"
+    ],
     "params": [
       {
         "name": "publication",
@@ -6709,6 +8049,12 @@
     "description": "Category: advanced/multi_agent\nDESCRIPTION: Cross-functional planning with product, engineering, and design perspectives",
     "path": "07_real_world/advanced/multi_agent/09_project_planning_team/main.py",
     "dir": "07_real_world/advanced/multi_agent/09_project_planning_team",
+    "path_parts": [
+      "07_real_world",
+      "advanced",
+      "multi_agent",
+      "09_project_planning_team"
+    ],
     "params": [
       {
         "name": "methodology",
@@ -6732,6 +8078,12 @@
     "description": "Category: advanced/multi_agent\nDESCRIPTION: Comprehensive QA with functional, performance, and security testing",
     "path": "07_real_world/advanced/multi_agent/10_quality_assurance_team/main.py",
     "dir": "07_real_world/advanced/multi_agent/10_quality_assurance_team",
+    "path_parts": [
+      "07_real_world",
+      "advanced",
+      "multi_agent",
+      "10_quality_assurance_team"
+    ],
     "params": [
       {
         "name": "coverage_target",
@@ -6755,6 +8107,12 @@
     "description": "Category: advanced/patterns\nDESCRIPTION: Demonstrates agents that can use external tools and functions",
     "path": "07_real_world/advanced/patterns/01_tool_using_agent/main.py",
     "dir": "07_real_world/advanced/patterns/01_tool_using_agent",
+    "path_parts": [
+      "07_real_world",
+      "advanced",
+      "patterns",
+      "01_tool_using_agent"
+    ],
     "params": [
       {
         "name": "tools_enabled",
@@ -6776,6 +8134,12 @@
     "description": "Category: advanced/patterns\nDESCRIPTION: Agent that retrieves relevant context before generating responses",
     "path": "07_real_world/advanced/patterns/02_rag_agent/main.py",
     "dir": "07_real_world/advanced/patterns/02_rag_agent",
+    "path_parts": [
+      "07_real_world",
+      "advanced",
+      "patterns",
+      "02_rag_agent"
+    ],
     "params": [
       {
         "name": "knowledge_base",
@@ -6800,6 +8164,12 @@
     "description": "Category: advanced/patterns\nDESCRIPTION: Agent with persistent memory across conversation turns",
     "path": "07_real_world/advanced/patterns/03_memory_agent/main.py",
     "dir": "07_real_world/advanced/patterns/03_memory_agent",
+    "path_parts": [
+      "07_real_world",
+      "advanced",
+      "patterns",
+      "03_memory_agent"
+    ],
     "params": [
       {
         "name": "memory_type",
@@ -6824,6 +8194,12 @@
     "description": "Category: advanced/patterns\nDESCRIPTION: Agent that creates and executes multi-step plans",
     "path": "07_real_world/advanced/patterns/04_planning_agent/main.py",
     "dir": "07_real_world/advanced/patterns/04_planning_agent",
+    "path_parts": [
+      "07_real_world",
+      "advanced",
+      "patterns",
+      "04_planning_agent"
+    ],
     "params": [
       {
         "name": "planning_depth",
@@ -6847,6 +8223,12 @@
     "description": "Category: advanced/patterns\nDESCRIPTION: Agent that reflects on and improves its own outputs",
     "path": "07_real_world/advanced/patterns/05_reflection_agent/main.py",
     "dir": "07_real_world/advanced/patterns/05_reflection_agent",
+    "path_parts": [
+      "07_real_world",
+      "advanced",
+      "patterns",
+      "05_reflection_agent"
+    ],
     "params": [
       {
         "name": "reflection_rounds",
@@ -6870,6 +8252,12 @@
     "description": "Category: advanced/patterns\nDESCRIPTION: Agent that learns from feedback to improve future responses",
     "path": "07_real_world/advanced/patterns/06_self_improving_agent/main.py",
     "dir": "07_real_world/advanced/patterns/06_self_improving_agent",
+    "path_parts": [
+      "07_real_world",
+      "advanced",
+      "patterns",
+      "06_self_improving_agent"
+    ],
     "params": [
       {
         "name": "learning_mode",
@@ -6893,6 +8281,12 @@
     "description": "Category: advanced/patterns\nDESCRIPTION: Manager agent that delegates to specialized sub-agents",
     "path": "07_real_world/advanced/patterns/07_hierarchical_agent/main.py",
     "dir": "07_real_world/advanced/patterns/07_hierarchical_agent",
+    "path_parts": [
+      "07_real_world",
+      "advanced",
+      "patterns",
+      "07_hierarchical_agent"
+    ],
     "params": [
       {
         "name": "delegation_style",
@@ -6916,6 +8310,12 @@
     "description": "Category: advanced/patterns\nDESCRIPTION: Multiple peer agents that collaborate on tasks together",
     "path": "07_real_world/advanced/patterns/08_collaborative_agents/main.py",
     "dir": "07_real_world/advanced/patterns/08_collaborative_agents",
+    "path_parts": [
+      "07_real_world",
+      "advanced",
+      "patterns",
+      "08_collaborative_agents"
+    ],
     "params": [
       {
         "name": "collaboration_style",
@@ -6939,6 +8339,12 @@
     "description": "Category: advanced/patterns\nDESCRIPTION: Agent that streams responses for real-time output",
     "path": "07_real_world/advanced/patterns/09_streaming_agent/main.py",
     "dir": "07_real_world/advanced/patterns/09_streaming_agent",
+    "path_parts": [
+      "07_real_world",
+      "advanced",
+      "patterns",
+      "09_streaming_agent"
+    ],
     "params": [
       {
         "name": "stream_mode",
@@ -6960,6 +8366,12 @@
     "description": "Category: advanced/patterns\nDESCRIPTION: Agent with async execution for concurrent operations",
     "path": "07_real_world/advanced/patterns/10_async_agent/main.py",
     "dir": "07_real_world/advanced/patterns/10_async_agent",
+    "path_parts": [
+      "07_real_world",
+      "advanced",
+      "patterns",
+      "10_async_agent"
+    ],
     "params": [
       {
         "name": "concurrency",
@@ -6981,6 +8393,12 @@
     "description": "Category: advanced/patterns\nDESCRIPTION: Agent with robust error handling and recovery strategies",
     "path": "07_real_world/advanced/patterns/11_error_recovery_agent/main.py",
     "dir": "07_real_world/advanced/patterns/11_error_recovery_agent",
+    "path_parts": [
+      "07_real_world",
+      "advanced",
+      "patterns",
+      "11_error_recovery_agent"
+    ],
     "params": [
       {
         "name": "max_retries",
@@ -7004,6 +8422,12 @@
     "description": "Category: advanced/patterns\nDESCRIPTION: Agent that manages context window efficiently for long conversations",
     "path": "07_real_world/advanced/patterns/12_context_management_agent/main.py",
     "dir": "07_real_world/advanced/patterns/12_context_management_agent",
+    "path_parts": [
+      "07_real_world",
+      "advanced",
+      "patterns",
+      "12_context_management_agent"
+    ],
     "params": [
       {
         "name": "max_context_tokens",
@@ -7027,6 +8451,12 @@
     "description": "Category: advanced/patterns\nDESCRIPTION: Agent that operates as a finite state machine with defined transitions",
     "path": "07_real_world/advanced/patterns/13_state_machine_agent/main.py",
     "dir": "07_real_world/advanced/patterns/13_state_machine_agent",
+    "path_parts": [
+      "07_real_world",
+      "advanced",
+      "patterns",
+      "13_state_machine_agent"
+    ],
     "params": [
       {
         "name": "initial_state",
@@ -7050,6 +8480,12 @@
     "description": "Category: advanced/patterns\nDESCRIPTION: Agent that responds to events and triggers appropriate actions",
     "path": "07_real_world/advanced/patterns/14_event_driven_agent/main.py",
     "dir": "07_real_world/advanced/patterns/14_event_driven_agent",
+    "path_parts": [
+      "07_real_world",
+      "advanced",
+      "patterns",
+      "14_event_driven_agent"
+    ],
     "params": [
       {
         "name": "event_types",
@@ -7073,6 +8509,12 @@
     "description": "Category: advanced/patterns\nDESCRIPTION: Agent combining multiple reasoning strategies for complex problems",
     "path": "07_real_world/advanced/patterns/15_hybrid_reasoning_agent/main.py",
     "dir": "07_real_world/advanced/patterns/15_hybrid_reasoning_agent",
+    "path_parts": [
+      "07_real_world",
+      "advanced",
+      "patterns",
+      "15_hybrid_reasoning_agent"
+    ],
     "params": [
       {
         "name": "reasoning_modes",

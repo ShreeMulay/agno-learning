@@ -1,7 +1,7 @@
 """
 Unified LLM Configuration for Agno Learning Hub.
 
-Supports: OpenRouter, OpenAI, Anthropic, Google, Groq, Ollama
+Supports: OpenRouter, OpenAI, Anthropic, Google, Cerebras, Groq, Ollama, HuggingFace
 
 Usage:
     from shared.model_config import get_model, list_providers
@@ -29,7 +29,7 @@ PROVIDER_CONFIGS = {
     "openrouter": {
         "module": "agno.models.openrouter",
         "class": "OpenRouter",
-        "default_model": "anthropic/claude-3.5-sonnet",
+        "default_model": "anthropic/claude-haiku-4.5",
         "api_key_env": "OPENROUTER_API_KEY",
         "description": "Multi-model access - Claude, GPT, Llama via OpenRouter",
     },
@@ -50,9 +50,16 @@ PROVIDER_CONFIGS = {
     "google": {
         "module": "agno.models.google",
         "class": "Gemini",
-        "default_model": "gemini-2.0-flash",
+        "default_model": "gemini-2.5-flash",
         "api_key_env": "GOOGLE_AI_API_KEY",
         "description": "Google Gemini models",
+    },
+    "cerebras": {
+        "module": "agno.models.cerebras",
+        "class": "Cerebras",
+        "default_model": "zai-glm-4.6",
+        "api_key_env": "CEREBRAS_API_KEY",
+        "description": "Ultra-fast inference via Cerebras",
     },
     "groq": {
         "module": "agno.models.groq",
@@ -67,6 +74,13 @@ PROVIDER_CONFIGS = {
         "default_model": "llama3.2",
         "api_key_env": "OLLAMA_HOST",  # Not really a key, but connection info
         "description": "Local models via Ollama",
+    },
+    "huggingface": {
+        "module": "agno.models.huggingface",
+        "class": "HuggingFace",
+        "default_model": "meta-llama/Llama-3.3-70B-Instruct",
+        "api_key_env": "HUGGINGFACE_API_KEY",
+        "description": "Thousands of open-source models via HuggingFace",
     },
 }
 

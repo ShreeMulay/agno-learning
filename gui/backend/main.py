@@ -2,8 +2,12 @@ import os
 import sys
 import json
 import importlib.util
-import asyncio
 import time
+import logging
+
+# Setup logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 import traceback
 from pathlib import Path
 from typing import Optional, List, Dict, Any
@@ -12,10 +16,16 @@ from fastapi.responses import StreamingResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import httpx
+import tiktoken
 
 # Add project root to path for shared imports
 PROJECT_ROOT = Path(__file__).parent.parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
+
+from shared.model_config import PROVIDER_CONFIGS, check_api_key
+
+# Initialize tokenizer for estimation fallback
+tokenizer = tiktoken.get_encoding("cl100k_base")
 
 app = FastAPI(title="Agno Learning Master GUI")
 
@@ -27,7 +37,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Load Catalog
+# Load Catalog and Pricing data
 CATALOG_PATH = Path(__file__).parent / "data" / "agent_catalog.json"
 PRICING_PATH = Path(__file__).parent / "data" / "pricing.json"
 
@@ -36,6 +46,9 @@ with open(CATALOG_PATH, "r") as f:
 
 with open(PRICING_PATH, "r") as f:
     PRICING_DATA = json.load(f)
+
+# In-memory model cache
+MODEL_CACHE = {}
 
 class AgentRunRequest(BaseModel):
     agent_id: str
@@ -48,22 +61,152 @@ class AgentRunRequest(BaseModel):
 async def get_catalog():
     return AGENT_CATALOG
 
-@app.get("/models/openrouter")
-async def get_openrouter_models():
-    api_key = os.getenv("OPENROUTER_API_KEY")
-    if not api_key:
-        return {"data": []}
+@app.get("/providers")
+async def get_providers():
+    """List available providers and their status."""
+    providers = []
+    for name in PROVIDER_CONFIGS:
+        is_active, env_var = check_api_key(name)
+        providers.append({
+            "id": name,
+            "name": name.capitalize(),
+            "description": PROVIDER_CONFIGS[name]["description"],
+            "is_active": is_active,
+            "env_var": env_var,
+            "default_model": PROVIDER_CONFIGS[name]["default_model"]
+        })
+    return providers
+
+async def fetch_models_for_provider(provider: str):
+    """Fetch models from provider APIs."""
+    if provider == "openrouter":
+        api_key = os.getenv("OPENROUTER_API_KEY")
+        if not api_key: return []
+        async with httpx.AsyncClient() as client:
+            try:
+                resp = await client.get("https://openrouter.ai/api/v1/models", 
+                                      headers={"Authorization": f"Bearer {api_key}"}, timeout=10)
+                return [m["id"] for m in resp.json().get("data", [])]
+            except Exception as e:
+                logger.warning(f"Failed to fetch OpenRouter models: {e}")
+                return []
+            
+    elif provider == "openai":
+        api_key = os.getenv("OPENAI_API_KEY")
+        if not api_key: return ["gpt-4o", "gpt-4o-mini", "gpt-3.5-turbo"]
+        async with httpx.AsyncClient() as client:
+            try:
+                resp = await client.get("https://api.openai.com/v1/models", 
+                                      headers={"Authorization": f"Bearer {api_key}"}, timeout=10)
+                data = resp.json()
+                return sorted([m["id"] for m in data.get("data", []) if any(x in m["id"].lower() for x in ["gpt", "o1", "o3"])])
+            except Exception as e:
+                logger.warning(f"Failed to fetch OpenAI models: {e}")
+                return ["gpt-4o", "gpt-4o-mini", "gpt-3.5-turbo"]
+
+    elif provider == "google":
+        api_key = os.getenv("GOOGLE_AI_API_KEY") or os.getenv("GOOGLE_API_KEY")
+        if not api_key: return ["gemini-2.5-flash", "gemini-2.0-flash"]
+        async with httpx.AsyncClient() as client:
+            try:
+                resp = await client.get(f"https://generativelanguage.googleapis.com/v1/models?key={api_key}", timeout=10)
+                return [m["name"].replace("models/", "") for m in resp.json().get("models", []) if "gemini" in m["name"].lower()]
+            except Exception as e:
+                logger.warning(f"Failed to fetch Google models: {e}")
+                return ["gemini-2.5-flash", "gemini-2.0-flash"]
+
+    elif provider == "cerebras":
+        api_key = os.getenv("CEREBRAS_API_KEY")
+        if not api_key: return ["zai-glm-4.6", "llama-3.3-70b"]
+        async with httpx.AsyncClient() as client:
+            try:
+                resp = await client.get("https://api.cerebras.ai/v1/models", 
+                                      headers={"Authorization": f"Bearer {api_key}"}, timeout=10)
+                data = resp.json()
+                models = data.get("data", data.get("models", []))
+                return [m["id"] if isinstance(m, dict) else m for m in models]
+            except Exception as e:
+                logger.warning(f"Failed to fetch Cerebras models: {e}")
+                return ["zai-glm-4.6", "llama-3.3-70b"]
+            
+    elif provider == "groq":
+        api_key = os.getenv("GROQ_API_KEY")
+        if not api_key: return ["llama-3.3-70b-versatile", "mixtral-8x7b-32768"]
+        async with httpx.AsyncClient() as client:
+            try:
+                resp = await client.get("https://api.groq.com/openai/v1/models", 
+                                      headers={"Authorization": f"Bearer {api_key}"}, timeout=10)
+                return [m["id"] for m in resp.json().get("data", [])]
+            except Exception as e:
+                logger.warning(f"Failed to fetch Groq models: {e}")
+                return ["llama-3.3-70b-versatile", "mixtral-8x7b-32768"]
+
+    elif provider == "anthropic":
+        return ["claude-sonnet-4-5", "claude-3-5-sonnet-20241022", "claude-3-opus-20240229", "claude-3-haiku-20240307"]
+        
+    elif provider == "ollama":
+        async with httpx.AsyncClient() as client:
+            try:
+                host = os.getenv("OLLAMA_HOST", "http://localhost:11434")
+                resp = await client.get(f"{host}/api/tags", timeout=5)
+                return [m["name"] for m in resp.json().get("models", [])]
+            except Exception as e:
+                logger.warning(f"Failed to fetch Ollama models: {e}")
+                return ["llama3.2", "mistral"]
     
-    async with httpx.AsyncClient() as client:
-        try:
-            response = await client.get(
-                "https://openrouter.ai/api/v1/models",
-                headers={"Authorization": f"Bearer {api_key}"},
-                timeout=10.0
-            )
-            return response.json()
-        except Exception as e:
-            return {"data": [], "error": str(e)}
+    elif provider == "huggingface":
+        # HuggingFace has thousands of models - return curated list of popular ones
+        # Full search would require HF API with pagination
+        api_key = os.getenv("HUGGINGFACE_API_KEY") or os.getenv("HF_TOKEN")
+        popular_models = [
+            "meta-llama/Llama-3.3-70B-Instruct",
+            "meta-llama/Llama-3.2-90B-Vision-Instruct",
+            "meta-llama/Llama-3.1-405B-Instruct",
+            "mistralai/Mixtral-8x22B-Instruct-v0.1",
+            "mistralai/Mistral-7B-Instruct-v0.3",
+            "google/gemma-2-27b-it",
+            "Qwen/Qwen2.5-72B-Instruct",
+            "microsoft/Phi-3-medium-128k-instruct",
+            "deepseek-ai/DeepSeek-V3",
+            "NousResearch/Hermes-3-Llama-3.1-70B",
+        ]
+        if not api_key:
+            return popular_models
+        # Could add API search here in future for user-typed queries
+        return popular_models
+            
+    return []
+
+@app.get("/models/reload")
+async def reload_all_models():
+    """Force refresh of all model lists."""
+    MODEL_CACHE.clear()
+    return {"status": "Cache cleared"}
+
+@app.get("/models/{provider}")
+async def get_models(provider: str, reload: bool = False):
+    """Get model list for a provider, with caching."""
+    if not reload and provider in MODEL_CACHE:
+        return MODEL_CACHE[provider]
+    
+    models = await fetch_models_for_provider(provider)
+    if models:
+        MODEL_CACHE[provider] = models
+    return models
+
+@app.get("/agent/{agent_id}/source")
+async def get_agent_source(agent_id: str):
+    """Retrieve the original source code for an agent."""
+    agent_info = next((a for a in AGENT_CATALOG if a["id"] == agent_id), None)
+    if not agent_info:
+        raise HTTPException(status_code=404, detail="Agent not found")
+        
+    path = PROJECT_ROOT / agent_info["path"]
+    if not path.exists():
+        raise HTTPException(status_code=404, detail=f"Source file not found at {agent_info['path']}")
+        
+    with open(path, "r") as f:
+        return {"content": f.read()}
 
 def load_agent(path: Path):
     """Load an agent module from a Path object."""
@@ -142,6 +285,14 @@ async def run_agent(request: AgentRunRequest):
                 end_time = time.time()
                 duration = end_time - start_time
                 
+                # Hybrid Metrics Implementation
+                tokens_estimated = False
+                if ot == 0 and full_content:
+                    # Fallback to tiktoken estimation
+                    ot = len(tokenizer.encode(full_content))
+                    it = len(tokenizer.encode(query))
+                    tokens_estimated = True
+                
                 # Final calculation
                 rate = PRICING_DATA.get(request.provider, {}).get(request.model, {"input": 0, "output": 0})
                 cost = (it * rate["input"] + ot * rate["output"]) / 1_000_000
@@ -154,7 +305,8 @@ async def run_agent(request: AgentRunRequest):
                         'input_tokens': it,
                         'output_tokens': ot,
                         'tps': ot / duration if duration > 0 else 0,
-                        'cost': cost
+                        'cost': cost,
+                        'estimated': tokens_estimated
                     }
                 })}\n\n"
                 

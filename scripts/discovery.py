@@ -18,16 +18,19 @@ def parse_main_py(file_path):
     
     # Extract relative path and info
     rel_path = os.path.relpath(file_path, os.getcwd())
-    parts = rel_path.split(os.sep)
-    
+    parts = Path(rel_path).parent.parts
+    path_parts = list(parts)
+
     # Category extraction from path
     category = "General"
     subcategory = None
-    if len(parts) >= 4:
-        category = parts[1].replace('_', ' ').capitalize()
-        subcategory = parts[2].replace('_', ' ').capitalize()
-    elif len(parts) == 3:
+    if len(path_parts) >= 3:
+        category = path_parts[1].replace('_', ' ').capitalize()
+        subcategory = path_parts[2].replace('_', ' ').capitalize()
+    elif len(path_parts) == 2:
         category = "Root"
+    elif len(path_parts) == 1:
+        category = "Other"
     
     # Find parameters in argparse with DEFAULTS
     params = []
@@ -96,12 +99,13 @@ def parse_main_py(file_path):
 
     return {
         "id": rel_path.replace(os.sep, "__").replace(".py", ""),
-        "name": docstring.split("\n")[0].split(":")[1].strip() if ":" in docstring.split("\n")[0] else parts[-2].replace('_', ' ').title(),
+        "name": docstring.split("\n")[0].split(":")[1].strip() if ":" in docstring.split("\n")[0] else Path(file_path).parent.name.replace('_', ' ').title(),
         "category": category,
         "subcategory": subcategory,
         "description": "\n".join(docstring.split("\n")[1:]).strip(),
         "path": rel_path,
         "dir": os.path.dirname(rel_path),
+        "path_parts": path_parts,
         "params": params,
         "type": agent_type,
         "tools": tools
