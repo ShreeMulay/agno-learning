@@ -24,6 +24,12 @@ except ImportError:
 # Default provider - OpenRouter provides access to all models
 DEFAULT_PROVIDER = "openrouter"
 
+# Provider capability flags
+# - tools: Supports function calling / tool use
+# - structured_output: Supports response_format for JSON schema
+# - streaming: Supports streaming responses
+# - vision: Supports image inputs
+
 # Provider configurations
 PROVIDER_CONFIGS = {
     "openrouter": {
@@ -32,6 +38,7 @@ PROVIDER_CONFIGS = {
         "default_model": "anthropic/claude-haiku-4.5",
         "api_key_env": "OPENROUTER_API_KEY",
         "description": "Multi-model access - Claude, GPT, Llama via OpenRouter",
+        "capabilities": ["tools", "structured_output", "streaming", "vision"],
     },
     "openai": {
         "module": "agno.models.openai",
@@ -39,6 +46,7 @@ PROVIDER_CONFIGS = {
         "default_model": "gpt-4o",
         "api_key_env": "OPENAI_API_KEY",
         "description": "OpenAI GPT models",
+        "capabilities": ["tools", "structured_output", "streaming", "vision"],
     },
     "anthropic": {
         "module": "agno.models.anthropic",
@@ -46,6 +54,7 @@ PROVIDER_CONFIGS = {
         "default_model": "claude-sonnet-4-5",
         "api_key_env": "ANTHROPIC_API_KEY",
         "description": "Anthropic Claude models",
+        "capabilities": ["tools", "structured_output", "streaming", "vision"],
     },
     "google": {
         "module": "agno.models.google",
@@ -53,13 +62,16 @@ PROVIDER_CONFIGS = {
         "default_model": "gemini-2.5-flash",
         "api_key_env": "GOOGLE_AI_API_KEY",
         "description": "Google Gemini models",
+        "capabilities": ["tools", "structured_output", "streaming", "vision"],
     },
     "cerebras": {
         "module": "agno.models.cerebras",
         "class": "Cerebras",
-        "default_model": "zai-glm-4.6",
+        "default_model": "llama-3.3-70b",
         "api_key_env": "CEREBRAS_API_KEY",
-        "description": "Ultra-fast inference via Cerebras",
+        "description": "Ultra-fast inference (chat only, no tools)",
+        "capabilities": ["streaming"],  # No tools or structured_output support
+        "warning": "Cerebras only supports basic chat. Agents with tools will fail.",
     },
     "groq": {
         "module": "agno.models.groq",
@@ -67,6 +79,7 @@ PROVIDER_CONFIGS = {
         "default_model": "llama-3.3-70b-versatile",
         "api_key_env": "GROQ_API_KEY",
         "description": "Fast inference via Groq",
+        "capabilities": ["tools", "streaming"],  # Tools yes, structured_output limited
     },
     "ollama": {
         "module": "agno.models.ollama",
@@ -74,13 +87,16 @@ PROVIDER_CONFIGS = {
         "default_model": "llama3.2",
         "api_key_env": "OLLAMA_HOST",  # Not really a key, but connection info
         "description": "Local models via Ollama",
+        "capabilities": ["tools", "streaming"],  # Depends on model
     },
     "huggingface": {
         "module": "agno.models.huggingface",
         "class": "HuggingFace",
         "default_model": "meta-llama/Llama-3.3-70B-Instruct",
         "api_key_env": "HUGGINGFACE_API_KEY",
-        "description": "Thousands of open-source models via HuggingFace",
+        "description": "Open-source models via HuggingFace",
+        "capabilities": ["streaming"],  # Most HF models don't support tools natively
+        "warning": "Tool support varies by model. Basic chat recommended.",
     },
 }
 

@@ -25,7 +25,8 @@ import {
   FolderOpen,
   Folder,
   Wrench,
-  SortAsc
+  SortAsc,
+  AlertTriangle
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Toaster, toast } from 'sonner';
@@ -51,6 +52,8 @@ interface Provider {
   description: string;
   is_active: boolean;
   default_model: string;
+  capabilities: string[];
+  warning: string | null;
 }
 
 export default function Dashboard() {
@@ -616,6 +619,33 @@ export default function Dashboard() {
                     </div>
                     <p className="text-muted-foreground text-xs leading-relaxed italic">{selectedAgent.description}</p>
                   </div>
+
+                  {/* Provider Capability Warning */}
+                  {(() => {
+                    const currentProvider = providers.find(p => p.id === modelConfig.provider);
+                    const agentHasTools = selectedAgent.tools && selectedAgent.tools.length > 0;
+                    const providerSupportsTools = currentProvider?.capabilities?.includes('tools');
+                    const showWarning = agentHasTools && !providerSupportsTools && currentProvider;
+                    
+                    if (showWarning) {
+                      return (
+                        <div className="mb-8 p-4 bg-amber-500/10 border border-amber-500/30 rounded-xl">
+                          <div className="flex items-start gap-3">
+                            <AlertTriangle size={16} className="shrink-0 text-amber-400 mt-0.5" />
+                            <div className="space-y-1">
+                              <p className="text-amber-300 text-xs font-bold">
+                                {currentProvider.name} may not work with this agent
+                              </p>
+                              <p className="text-amber-200/70 text-[11px] leading-relaxed">
+                                {currentProvider.warning || `This agent uses ${selectedAgent.tools.length} tool(s), but ${currentProvider.name} doesn't support function calling. Consider using OpenRouter, OpenAI, or Anthropic instead.`}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    }
+                    return null;
+                  })()}
 
                   <div className="space-y-8">
                     <div className="flex items-center justify-between border-b border-border pb-2">

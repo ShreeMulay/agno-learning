@@ -67,13 +67,16 @@ async def get_providers():
     providers = []
     for name in PROVIDER_CONFIGS:
         is_active, env_var = check_api_key(name)
+        config = PROVIDER_CONFIGS[name]
         providers.append({
             "id": name,
             "name": name.capitalize(),
-            "description": PROVIDER_CONFIGS[name]["description"],
+            "description": config["description"],
             "is_active": is_active,
             "env_var": env_var,
-            "default_model": PROVIDER_CONFIGS[name]["default_model"]
+            "default_model": config["default_model"],
+            "capabilities": config.get("capabilities", []),
+            "warning": config.get("warning"),
         })
     return providers
 
