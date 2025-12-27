@@ -116,6 +116,17 @@ export default function Dashboard() {
   const [highlightedCode, setHighlightedCode] = useState('');
   const [isSourceLoading, setIsSourceLoading] = useState(false);
 
+  // Live Metrics State
+  const [liveMetrics, setLiveMetrics] = useState({
+    startTime: 0,
+    elapsedTime: 0,
+    tokenCount: 0,
+    tokensPerSecond: 0,
+    chunkCount: 0,
+  });
+  const liveMetricsRef = useRef({ startTime: 0, tokenCount: 0, chunkCount: 0 });
+  const timerRef = useRef<NodeJS.Timeout | null>(null);
+
   const scrollRef = useRef<HTMLDivElement>(null);
   const modelDropdownRef = useRef<HTMLDivElement>(null);
 
@@ -138,6 +149,36 @@ export default function Dashboard() {
       setViewMode('category');
     }
   }, [search]);
+
+  // Live metrics timer during streaming
+  useEffect(() => {
+    if (isRunning) {
+      timerRef.current = setInterval(() => {
+        const now = Date.now();
+        const elapsed = (now - liveMetricsRef.current.startTime) / 1000;
+        const tps = elapsed > 0 ? liveMetricsRef.current.tokenCount / elapsed : 0;
+        
+        setLiveMetrics(prev => ({
+          ...prev,
+          elapsedTime: elapsed,
+          tokensPerSecond: tps,
+          tokenCount: liveMetricsRef.current.tokenCount,
+          chunkCount: liveMetricsRef.current.chunkCount,
+        }));
+      }, 100); // Update every 100ms for smooth animation
+    } else {
+      if (timerRef.current) {
+        clearInterval(timerRef.current);
+        timerRef.current = null;
+      }
+    }
+    
+    return () => {
+      if (timerRef.current) {
+        clearInterval(timerRef.current);
+      }
+    };
+  }, [isRunning]);
 
   // Fetch Catalog & Providers
   useEffect(() => {
@@ -251,11 +292,28 @@ export default function Dashboard() {
     }
   }, [streamedContent]);
 
+  // Simple token estimation (rough approximation)
+  const estimateTokens = (text: string): number => {
+    // Rough estimate: ~4 characters per token for English text
+    return Math.ceil(text.length / 4);
+  };
+
   const handleRun = async () => {
     if (!selectedAgent) return;
     setIsRunning(true);
     setStreamedContent('');
     setMetrics(null);
+    
+    // Initialize live metrics
+    const startTime = Date.now();
+    liveMetricsRef.current = { startTime, tokenCount: 0, chunkCount: 0 };
+    setLiveMetrics({
+      startTime,
+      elapsedTime: 0,
+      tokenCount: 0,
+      tokensPerSecond: 0,
+      chunkCount: 0,
+    });
 
     try {
       const response = await fetch(`${API_BASE}/run`, {
@@ -288,6 +346,9 @@ export default function Dashboard() {
               const data = JSON.parse(line.slice(6));
               if (data.event === 'chunk') {
                 setStreamedContent(prev => prev + data.content);
+                // Update live token count
+                liveMetricsRef.current.chunkCount += 1;
+                liveMetricsRef.current.tokenCount += estimateTokens(data.content);
               } else if (data.event === 'complete') {
                 setMetrics(data.metrics);
                 addHistory({
@@ -995,19 +1056,120 @@ export default function Dashboard() {
                         <>
                            {streamedContent || isRunning || metrics ? (
                               <div className="max-w-4xl mx-auto space-y-8">
-                                 {/* Streamed Output */}
-                                 <div className="bg-background border border-border rounded-3xl shadow-2xl overflow-hidden min-h-[400px] flex flex-col border-t-primary/20 border-t-2">
-                                    <div className="bg-muted/30 px-6 py-4 flex items-center justify-between border-b border-border">
-                                       <div className="flex items-center gap-3">
-                                          <Terminal size={16} className="text-primary" />
-                                          <span className="font-mono text-[10px] font-bold uppercase tracking-[0.3em]">Neural Link Status: {isRunning ? 'Receiving' : 'Complete'}</span>
-                                       </div>
-                                       <div className="flex gap-1.5">
-                                          <div className="w-2.5 h-2.5 rounded-full bg-red-500/20"></div>
-                                          <div className="w-2.5 h-2.5 rounded-full bg-amber-500/20"></div>
-                                          <div className="w-2.5 h-2.5 rounded-full bg-green-500/20"></div>
-                                       </div>
-                                    </div>
+                                  {/* Live Performance HUD - Shows during streaming */}
+                                  <AnimatePresence>
+                                     {isRunning && (
+                                        <motion.div 
+                                           initial={{ opacity: 0, y: -20 }}
+                                           animate={{ opacity: 1, y: 0 }}
+                                           exit={{ opacity: 0, y: -20 }}
+                                           className="bg-gradient-to-r from-primary/10 via-accent/5 to-primary/10 border border-primary/20 rounded-2xl p-4 mb-4 backdrop-blur-sm"
+                                        >
+                                           <div className="flex items-center justify-between">
+                                              <div className="flex items-center gap-3">
+                                                 <div className="relative">
+                                                    <motion.div 
+                                                       animate={{ rotate: 360 }}
+                                                       transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
+                                                       className="w-8 h-8 rounded-full border-2 border-primary/30 border-t-primary"
+                                                    />
+                                                    <Activity size={14} className="absolute inset-0 m-auto text-primary" />
+                                                 </div>
+                                                 <div>
+                                                    <div className="text-[9px] uppercase tracking-widest text-primary font-black">Live Stream</div>
+                                                    <div className="text-xs text-muted-foreground font-mono">{modelConfig.model.split('/').pop()}</div>
+                                                 </div>
+                                              </div>
+                                              
+                                              <div className="flex items-center gap-6">
+                                                 {/* Elapsed Time */}
+                                                 <div className="text-center">
+                                                    <div className="text-[8px] uppercase tracking-widest text-muted-foreground font-bold mb-0.5">Elapsed</div>
+                                                    <motion.div 
+                                                       key={Math.floor(liveMetrics.elapsedTime)}
+                                                       initial={{ scale: 1.1 }}
+                                                       animate={{ scale: 1 }}
+                                                       className="text-lg font-bold font-mono text-foreground tabular-nums"
+                                                    >
+                                                       {liveMetrics.elapsedTime.toFixed(1)}s
+                                                    </motion.div>
+                                                 </div>
+                                                 
+                                                 <div className="h-8 w-px bg-border/50"></div>
+                                                 
+                                                 {/* Tokens */}
+                                                 <div className="text-center">
+                                                    <div className="text-[8px] uppercase tracking-widest text-muted-foreground font-bold mb-0.5">Tokens</div>
+                                                    <motion.div 
+                                                       key={liveMetrics.tokenCount}
+                                                       initial={{ scale: 1.05 }}
+                                                       animate={{ scale: 1 }}
+                                                       className="text-lg font-bold font-mono text-emerald-400 tabular-nums"
+                                                    >
+                                                       ~{liveMetrics.tokenCount}
+                                                    </motion.div>
+                                                 </div>
+                                                 
+                                                 <div className="h-8 w-px bg-border/50"></div>
+                                                 
+                                                 {/* Speed */}
+                                                 <div className="text-center">
+                                                    <div className="text-[8px] uppercase tracking-widest text-muted-foreground font-bold mb-0.5">Speed</div>
+                                                    <div className="flex items-baseline gap-1">
+                                                       <motion.span 
+                                                          key={Math.floor(liveMetrics.tokensPerSecond * 10)}
+                                                          initial={{ scale: 1.1, color: 'rgb(52, 211, 153)' }}
+                                                          animate={{ scale: 1, color: 'rgb(129, 140, 248)' }}
+                                                          className="text-lg font-bold font-mono tabular-nums"
+                                                       >
+                                                          {liveMetrics.tokensPerSecond.toFixed(1)}
+                                                       </motion.span>
+                                                       <span className="text-[10px] text-muted-foreground font-bold">T/s</span>
+                                                    </div>
+                                                 </div>
+                                                 
+                                                 <div className="h-8 w-px bg-border/50"></div>
+                                                 
+                                                 {/* Chunks */}
+                                                 <div className="text-center">
+                                                    <div className="text-[8px] uppercase tracking-widest text-muted-foreground font-bold mb-0.5">Chunks</div>
+                                                    <motion.div 
+                                                       key={liveMetrics.chunkCount}
+                                                       initial={{ scale: 1.2 }}
+                                                       animate={{ scale: 1 }}
+                                                       className="text-lg font-bold font-mono text-amber-400 tabular-nums"
+                                                    >
+                                                       {liveMetrics.chunkCount}
+                                                    </motion.div>
+                                                 </div>
+                                              </div>
+                                           </div>
+                                           
+                                           {/* Progress bar animation */}
+                                           <div className="mt-3 h-1 bg-muted/30 rounded-full overflow-hidden">
+                                              <motion.div 
+                                                 animate={{ x: ['-100%', '100%'] }}
+                                                 transition={{ repeat: Infinity, duration: 1.5, ease: "linear" }}
+                                                 className="h-full w-1/3 bg-gradient-to-r from-transparent via-primary to-transparent"
+                                              />
+                                           </div>
+                                        </motion.div>
+                                     )}
+                                  </AnimatePresence>
+
+                                  {/* Streamed Output */}
+                                  <div className="bg-background border border-border rounded-3xl shadow-2xl overflow-hidden min-h-[400px] flex flex-col border-t-primary/20 border-t-2">
+                                     <div className="bg-muted/30 px-6 py-4 flex items-center justify-between border-b border-border">
+                                        <div className="flex items-center gap-3">
+                                           <Terminal size={16} className="text-primary" />
+                                           <span className="font-mono text-[10px] font-bold uppercase tracking-[0.3em]">Neural Link Status: {isRunning ? 'Receiving' : 'Complete'}</span>
+                                        </div>
+                                        <div className="flex gap-1.5">
+                                           <div className={`w-2.5 h-2.5 rounded-full ${isRunning ? 'bg-red-500 animate-pulse' : 'bg-red-500/20'}`}></div>
+                                           <div className={`w-2.5 h-2.5 rounded-full ${isRunning ? 'bg-amber-500 animate-pulse' : 'bg-amber-500/20'}`}></div>
+                                           <div className={`w-2.5 h-2.5 rounded-full ${isRunning ? 'bg-green-500 animate-pulse' : 'bg-green-500/20'}`}></div>
+                                        </div>
+                                     </div>
                                     <div className="p-10 prose prose-invert prose-indigo max-w-none flex-1">
                                        <pre className="whitespace-pre-wrap font-sans text-[15px] leading-[1.8] text-foreground/90 font-light selection:bg-primary/30 antialiased">
                                           {streamedContent}
