@@ -34,16 +34,41 @@ import { codeToHtml } from 'shiki';
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || '/api/py';
 
+interface AgentParam {
+  name: string;
+  type: string;
+  required: boolean;
+  is_positional: boolean;
+  default: string;
+  description: string;
+  ui_type: 'text' | 'textarea' | 'checkbox' | 'number' | 'email' | 'url' | 'file_pdf' | 'file_csv' | 'file_any' | 'select';
+}
+
+interface OutputSchemaField {
+  name: string;
+  type: string;
+  description: string;
+}
+
+interface OutputSchema {
+  name: string;
+  docstring: string;
+  fields: OutputSchemaField[];
+}
+
 interface Agent {
   id: string;
   name: string;
   category: string;
   subcategory: string | null;
   description: string;
-  params: any[];
+  params: AgentParam[];
   tools: string[];
   type: string;
   path_parts?: string[];
+  patterns?: string[];
+  output_schemas?: OutputSchema[];
+  example_number?: number;
 }
 
 interface Provider {
@@ -612,13 +637,28 @@ export default function Dashboard() {
             <div className="flex-1 overflow-hidden flex">
                {/* Controls */}
                <div className="w-96 border-r border-border p-8 overflow-y-auto bg-muted/10">
-                  <div className="mb-10 p-5 bg-primary/5 border border-primary/10 rounded-2xl">
-                    <div className="flex items-center gap-2 mb-3 text-primary text-xs font-bold uppercase tracking-widest">
-                      <LayoutDashboard size={14} />
-                      Mission Brief
-                    </div>
-                    <p className="text-muted-foreground text-xs leading-relaxed italic">{selectedAgent.description}</p>
-                  </div>
+                   <div className="mb-10 p-5 bg-primary/5 border border-primary/10 rounded-2xl">
+                     <div className="flex items-center gap-2 mb-3 text-primary text-xs font-bold uppercase tracking-widest">
+                       <LayoutDashboard size={14} />
+                       Mission Brief
+                     </div>
+                     <p className="text-muted-foreground text-xs leading-relaxed italic mb-4">{selectedAgent.description}</p>
+                     
+                     {/* Patterns & Tools */}
+                     <div className="flex flex-wrap gap-2">
+                       {selectedAgent.patterns && selectedAgent.patterns.map(pattern => (
+                         <span key={pattern} className="text-[9px] bg-accent/20 text-accent-foreground px-2 py-1 rounded-full font-bold uppercase tracking-wider">
+                           {pattern}
+                         </span>
+                       ))}
+                       {selectedAgent.tools.map(tool => (
+                         <span key={tool} className="text-[9px] bg-muted text-muted-foreground px-2 py-1 rounded-full font-medium flex items-center gap-1">
+                           {renderToolIcon(tool)}
+                           {tool}
+                         </span>
+                       ))}
+                     </div>
+                   </div>
 
                   {/* Provider Capability Warning */}
                   {(() => {
@@ -653,23 +693,90 @@ export default function Dashboard() {
                       <Zap size={12} className="text-primary" />
                     </div>
                     {selectedAgent.params.map(param => (
-                      <div key={param.name} className="space-y-3">
+                      <div key={param.name} className="space-y-2">
                         <div className="flex items-center justify-between">
-                          <label className="text-[10px] font-bold text-foreground/80 uppercase tracking-widest">{param.name}</label>
+                          <label className="text-[10px] font-bold text-foreground/80 uppercase tracking-widest flex items-center gap-2">
+                            {param.name.replace(/_/g, ' ')}
+                            {param.default && (
+                              <span className="text-[8px] bg-muted text-muted-foreground px-1.5 py-0.5 rounded font-normal normal-case tracking-normal" title="Has default value">
+                                default
+                              </span>
+                            )}
+                          </label>
                           {param.required && <span className="text-[8px] bg-primary/20 text-primary px-1.5 py-0.5 rounded uppercase font-black">Required</span>}
                         </div>
+                        
+                        {/* Description hint */}
+                        {param.description && (
+                          <p className="text-[10px] text-muted-foreground/70 leading-relaxed">{param.description}</p>
+                        )}
+                        
+                        {/* Render based on ui_type */}
                         {param.ui_type === 'textarea' ? (
                           <textarea 
-                            className="w-full bg-background border border-border rounded-xl p-4 text-xs min-h-[160px] focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all font-sans shadow-sm"
-                            placeholder={`Enter ${param.name}...`}
+                            className="w-full bg-background border border-border rounded-xl p-4 text-xs min-h-[140px] focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all font-sans shadow-sm"
+                            placeholder={param.default || `Enter ${param.name.replace(/_/g, ' ')}...`}
                             value={params[param.name] || ''}
                             onChange={e => setParams({...params, [param.name]: e.target.value})}
                           />
+                        ) : param.ui_type === 'checkbox' ? (
+                          <label className="flex items-center gap-3 cursor-pointer group">
+                            <div className="relative">
+                              <input 
+                                type="checkbox"
+                                className="sr-only peer"
+                                checked={params[param.name] === 'true'}
+                                onChange={e => setParams({...params, [param.name]: e.target.checked ? 'true' : 'false'})}
+                              />
+                              <div className="w-10 h-6 bg-muted rounded-full peer-checked:bg-primary transition-colors"></div>
+                              <div className="absolute top-0.5 left-0.5 w-5 h-5 bg-background rounded-full shadow-md transition-transform peer-checked:translate-x-4"></div>
+                            </div>
+                            <span className="text-xs text-muted-foreground group-hover:text-foreground transition-colors">
+                              {params[param.name] === 'true' ? 'Enabled' : 'Disabled'}
+                            </span>
+                          </label>
+                        ) : param.ui_type === 'number' ? (
+                          <input 
+                            type="number"
+                            className="w-full bg-background border border-border rounded-xl p-4 text-xs focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all shadow-sm font-mono"
+                            placeholder={param.default || '0'}
+                            value={params[param.name] || ''}
+                            onChange={e => setParams({...params, [param.name]: e.target.value})}
+                          />
+                        ) : param.ui_type === 'email' ? (
+                          <input 
+                            type="email"
+                            className="w-full bg-background border border-border rounded-xl p-4 text-xs focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all shadow-sm"
+                            placeholder={param.default || 'email@example.com'}
+                            value={params[param.name] || ''}
+                            onChange={e => setParams({...params, [param.name]: e.target.value})}
+                          />
+                        ) : param.ui_type === 'url' ? (
+                          <input 
+                            type="url"
+                            className="w-full bg-background border border-border rounded-xl p-4 text-xs focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all shadow-sm font-mono"
+                            placeholder={param.default || 'https://...'}
+                            value={params[param.name] || ''}
+                            onChange={e => setParams({...params, [param.name]: e.target.value})}
+                          />
+                        ) : param.ui_type?.startsWith('file') ? (
+                          <div className="space-y-2">
+                            <input 
+                              type="text"
+                              className="w-full bg-background border border-border rounded-xl p-4 text-xs focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all shadow-sm font-mono"
+                              placeholder={`Path to ${param.ui_type === 'file_pdf' ? 'PDF' : param.ui_type === 'file_csv' ? 'CSV' : 'file'}...`}
+                              value={params[param.name] || ''}
+                              onChange={e => setParams({...params, [param.name]: e.target.value})}
+                            />
+                            <p className="text-[9px] text-muted-foreground/50">
+                              {param.ui_type === 'file_pdf' ? 'Accepts: .pdf' : param.ui_type === 'file_csv' ? 'Accepts: .csv' : 'Enter file path'}
+                            </p>
+                          </div>
                         ) : (
                           <input 
                             type="text"
                             className="w-full bg-background border border-border rounded-xl p-4 text-xs focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all shadow-sm"
-                            placeholder={`Enter ${param.name}...`}
+                            placeholder={param.default || `Enter ${param.name.replace(/_/g, ' ')}...`}
                             value={params[param.name] || ''}
                             onChange={e => setParams({...params, [param.name]: e.target.value})}
                           />
