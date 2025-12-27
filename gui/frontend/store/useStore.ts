@@ -21,6 +21,9 @@ interface DashboardState {
   clearHistory: () => void;
   apiKeys: Record<string, string>;
   setApiKey: (provider: string, key: string) => void;
+  expandedCategories: Record<string, boolean>;
+  setExpandedCategories: (expanded: Record<string, boolean>) => void;
+  toggleExpanded: (key: string) => void;
 }
 
 export const useStore = create<DashboardState>()(
@@ -36,6 +39,11 @@ export const useStore = create<DashboardState>()(
       apiKeys: {},
       setApiKey: (provider, key) => set((state) => ({ 
         apiKeys: { ...state.apiKeys, [provider]: key } 
+      })),
+      expandedCategories: {},
+      setExpandedCategories: (expanded) => set({ expandedCategories: expanded }),
+      toggleExpanded: (key) => set((state) => ({
+        expandedCategories: { ...state.expandedCategories, [key]: !state.expandedCategories[key] }
       })),
     }),
     {

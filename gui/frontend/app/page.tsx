@@ -82,7 +82,7 @@ interface Provider {
 }
 
 export default function Dashboard() {
-  const { theme, setTheme, selectedAgentId, setSelectedAgentId, addHistory } = useStore();
+  const { theme, setTheme, selectedAgentId, setSelectedAgentId, addHistory, expandedCategories, toggleExpanded, setExpandedCategories } = useStore();
   
   // Data State
   const [catalog, setCatalog] = useState<Agent[]>([]);
@@ -95,7 +95,6 @@ export default function Dashboard() {
   const [streamedContent, setStreamedContent] = useState('');
   const [metrics, setMetrics] = useState<any>(null);
   const [params, setParams] = useState<Record<string, string>>({});
-  const [expandedCategories, setCollapsedCategories] = useState<Record<string, boolean>>({});
   const [viewMode, setViewMode] = useState('category');
   
   // Model Config State
@@ -144,9 +143,12 @@ export default function Dashboard() {
   useEffect(() => {
     axios.get(`${API_BASE}/catalog`).then(res => {
       setCatalog(res.data);
-      const cats: Record<string, boolean> = {};
-      res.data.slice(0, 5).forEach((a: Agent) => cats[a.category] = true);
-      setCollapsedCategories(cats);
+      // Initialize first few categories as expanded if not already set
+      if (Object.keys(expandedCategories).length === 0) {
+        const cats: Record<string, boolean> = {};
+        res.data.slice(0, 5).forEach((a: Agent) => cats[a.category] = true);
+        setExpandedCategories(cats);
+      }
     });
 
     axios.get(`${API_BASE}/providers`).then(res => {
@@ -315,7 +317,7 @@ export default function Dashboard() {
   };
 
   const toggleCategory = (cat: string) => {
-    setCollapsedCategories(prev => ({ ...prev, [cat]: !prev[cat] }));
+    toggleExpanded(cat);
   };
 
   const getGroupedCatalog = () => {
@@ -376,14 +378,58 @@ export default function Dashboard() {
 
   const filteredGroups = getGroupedCatalog();
 
-  const renderToolIcon = (tool: string) => {
+  const renderToolIcon = (tool: string, size: number = 10) => {
     switch (tool) {
-      case 'web': return <Globe size={10} className="text-blue-400" />;
-      case 'rag': return <Database size={10} className="text-amber-400" />;
-      case 'team': return <Users size={10} className="text-purple-400" />;
-      case 'structured': return <Code size={10} className="text-green-400" />;
-      default: return null;
+      case 'web': return <Globe size={size} className="text-blue-400" />;
+      case 'rag': return <Database size={size} className="text-amber-400" />;
+      case 'team': return <Users size={size} className="text-purple-400" />;
+      case 'structured': return <Code size={size} className="text-green-400" />;
+      case 'memory': return <Database size={size} className="text-pink-400" />;
+      case 'reasoning': return <Cpu size={size} className="text-cyan-400" />;
+      case 'files': return <FileText size={size} className="text-orange-400" />;
+      case 'code': return <Terminal size={size} className="text-emerald-400" />;
+      case 'api': return <Globe size={size} className="text-indigo-400" />;
+      default: return <Box size={size} className="text-muted-foreground" />;
     }
+  };
+
+  // Build hierarchical structure for category view
+  interface HierarchyNode {
+    agents: Agent[];
+    subcategories: Record<string, Agent[]>;
+  }
+
+  const getHierarchicalCatalog = (): Record<string, HierarchyNode> => {
+    const filtered = catalog.filter(a => 
+      a.name.toLowerCase().includes(search.toLowerCase()) || 
+      (a.description && a.description.toLowerCase().includes(search.toLowerCase()))
+    );
+    
+    const hierarchy: Record<string, HierarchyNode> = {};
+    
+    filtered.forEach(agent => {
+      const cat = agent.category || 'General';
+      if (!hierarchy[cat]) {
+        hierarchy[cat] = { agents: [], subcategories: {} };
+      }
+      
+      const node = hierarchy[cat];
+      const subcat = agent.subcategory;
+      if (subcat) {
+        if (!node.subcategories[subcat]) {
+          node.subcategories[subcat] = [];
+        }
+        node.subcategories[subcat]!.push(agent);
+      } else {
+        node.agents.push(agent);
+      }
+    });
+    
+    return hierarchy;
+  };
+
+  const toggleSubcategory = (key: string) => {
+    toggleExpanded(key);
   };
 
   return (
@@ -435,51 +481,185 @@ export default function Dashboard() {
           </div>
         </div>
 
-        <div className="flex-1 overflow-y-auto p-3 scrollbar-hide space-y-2">
-          {Object.keys(filteredGroups).sort().map(cat => (
-            <div key={cat} className="space-y-1">
-              <button 
-                onClick={() => toggleCategory(cat)}
-                className="w-full flex items-center justify-between p-2 rounded-lg hover:bg-muted text-muted-foreground font-semibold text-[11px] uppercase tracking-widest transition-colors"
-              >
-                <span>{cat}</span>
-                {expandedCategories[cat] ? <ChevronDown size={14} /> : <ChevronRight size={14} />}
-              </button>
+        <div className="flex-1 overflow-y-auto p-3 scrollbar-hide space-y-1">
+          {viewMode === 'category' ? (
+            // Hierarchical Category View
+            (() => {
+              const hierarchicalCatalog = getHierarchicalCatalog();
+              return Object.keys(hierarchicalCatalog).sort().map(cat => {
+                const node = hierarchicalCatalog[cat];
+                if (!node) return null;
+                const totalAgents = node.agents.length + Object.values(node.subcategories).reduce((sum, arr) => sum + arr.length, 0);
+                const hasSubcategories = Object.keys(node.subcategories).length > 0;
               
-              <AnimatePresence initial={false}>
-                {expandedCategories[cat] && (
-                  <motion.div 
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: 'auto', opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    className="overflow-hidden space-y-0.5 ml-1 border-l border-border/50"
+              return (
+                <div key={cat} className="space-y-0.5">
+                  {/* Category Header */}
+                  <button 
+                    onClick={() => toggleCategory(cat)}
+                    className="w-full flex items-center justify-between p-2 rounded-lg hover:bg-muted text-muted-foreground font-semibold text-[11px] uppercase tracking-widest transition-colors group"
                   >
-                    {filteredGroups[cat].map((agent: Agent) => (
-                      <button
-                        key={agent.id}
-                        onClick={() => setSelectedAgentId(agent.id)}
-                        className={`w-full text-left p-2.5 pl-4 rounded-lg transition-all flex items-center gap-2 group relative ${
-                          selectedAgentId === agent.id ? 'bg-primary/15 text-primary' : 'hover:bg-muted/60 text-muted-foreground hover:text-foreground'
-                        }`}
+                    <div className="flex items-center gap-2">
+                      <Folder size={14} className={`transition-colors ${expandedCategories[cat] ? 'text-primary' : ''}`} />
+                      <span>{cat}</span>
+                      <span className="text-[9px] bg-muted px-1.5 py-0.5 rounded-full font-bold text-muted-foreground/70">{totalAgents}</span>
+                    </div>
+                    {expandedCategories[cat] ? <ChevronDown size={14} /> : <ChevronRight size={14} />}
+                  </button>
+                  
+                  <AnimatePresence initial={false}>
+                    {expandedCategories[cat] && (
+                      <motion.div 
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        className="overflow-hidden space-y-0.5 ml-2 border-l-2 border-border/30"
                       >
-                        <div className="flex-1 min-w-0">
-                          <div className="truncate font-medium text-xs">{agent.name}</div>
-                        </div>
-                        <div className="flex gap-1">
-                          {agent.tools.map(t => (
-                            <div key={t} title={t}>{renderToolIcon(t)}</div>
-                          ))}
-                        </div>
-                        {selectedAgentId === agent.id && (
-                          <motion.div layoutId="active-pill" className="absolute left-0 w-1 h-4 bg-primary rounded-full" />
-                        )}
-                      </button>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          ))}
+                        {/* Subcategories */}
+                        {Object.entries(node.subcategories).sort(([a], [b]) => a.localeCompare(b)).map(([subcat, subcatAgents]) => {
+                          const subcatKey = `${cat}:${subcat}`;
+                          
+                          return (
+                            <div key={subcatKey} className="space-y-0.5">
+                              <button 
+                                onClick={() => toggleSubcategory(subcatKey)}
+                                className="w-full flex items-center justify-between p-2 pl-3 rounded-lg hover:bg-muted/60 text-muted-foreground text-[10px] uppercase tracking-wider transition-colors"
+                              >
+                                <div className="flex items-center gap-2">
+                                  <FolderOpen size={12} className={`transition-colors ${expandedCategories[subcatKey] ? 'text-primary/70' : ''}`} />
+                                  <span className="font-medium">{subcat}</span>
+                                  <span className="text-[8px] bg-muted/50 px-1 py-0.5 rounded font-bold text-muted-foreground/50">{subcatAgents.length}</span>
+                                </div>
+                                {expandedCategories[subcatKey] ? <ChevronDown size={12} /> : <ChevronRight size={12} />}
+                              </button>
+                              
+                              <AnimatePresence initial={false}>
+                                {expandedCategories[subcatKey] && (
+                                  <motion.div 
+                                    initial={{ height: 0, opacity: 0 }}
+                                    animate={{ height: 'auto', opacity: 1 }}
+                                    exit={{ height: 0, opacity: 0 }}
+                                    className="overflow-hidden space-y-0.5 ml-3 border-l border-border/20"
+                                  >
+                                    {subcatAgents.map((agent: Agent) => (
+                                      <button
+                                        key={agent.id}
+                                        onClick={() => setSelectedAgentId(agent.id)}
+                                        className={`w-full text-left p-2 pl-3 rounded-lg transition-all flex items-center gap-2 group relative ${
+                                          selectedAgentId === agent.id ? 'bg-primary/15 text-primary' : 'hover:bg-muted/40 text-muted-foreground hover:text-foreground'
+                                        }`}
+                                      >
+                                        <div className="flex-1 min-w-0">
+                                          <div className="truncate font-medium text-[11px]">{agent.name}</div>
+                                        </div>
+                                        <div className="flex gap-0.5 shrink-0">
+                                          {agent.tools.slice(0, 3).map(t => (
+                                            <div key={t} title={t} className="opacity-60 group-hover:opacity-100 transition-opacity">{renderToolIcon(t, 9)}</div>
+                                          ))}
+                                          {agent.tools.length > 3 && (
+                                            <span className="text-[8px] text-muted-foreground">+{agent.tools.length - 3}</span>
+                                          )}
+                                        </div>
+                                        {selectedAgentId === agent.id && (
+                                          <motion.div layoutId="active-pill" className="absolute left-0 w-0.5 h-3 bg-primary rounded-full" />
+                                        )}
+                                      </button>
+                                    ))}
+                                  </motion.div>
+                                )}
+                              </AnimatePresence>
+                            </div>
+                          );
+                        })}
+                        
+                        {/* Root-level agents (no subcategory) */}
+                        {node.agents.map((agent: Agent) => (
+                          <button
+                            key={agent.id}
+                            onClick={() => setSelectedAgentId(agent.id)}
+                            className={`w-full text-left p-2 pl-3 rounded-lg transition-all flex items-center gap-2 group relative ${
+                              selectedAgentId === agent.id ? 'bg-primary/15 text-primary' : 'hover:bg-muted/40 text-muted-foreground hover:text-foreground'
+                            }`}
+                          >
+                            <div className="flex-1 min-w-0">
+                              <div className="truncate font-medium text-[11px]">{agent.name}</div>
+                            </div>
+                            <div className="flex gap-0.5 shrink-0">
+                              {agent.tools.slice(0, 3).map(t => (
+                                <div key={t} title={t} className="opacity-60 group-hover:opacity-100 transition-opacity">{renderToolIcon(t, 9)}</div>
+                              ))}
+                              {agent.tools.length > 3 && (
+                                <span className="text-[8px] text-muted-foreground">+{agent.tools.length - 3}</span>
+                              )}
+                            </div>
+                            {selectedAgentId === agent.id && (
+                              <motion.div layoutId="active-pill" className="absolute left-0 w-0.5 h-3 bg-primary rounded-full" />
+                            )}
+                          </button>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            });
+            })()
+          ) : (
+            // Flat grouped views (directory, tools, az, search)
+            Object.keys(filteredGroups).sort().map(cat => (
+              <div key={cat} className="space-y-0.5">
+                <button 
+                  onClick={() => toggleCategory(cat)}
+                  className="w-full flex items-center justify-between p-2 rounded-lg hover:bg-muted text-muted-foreground font-semibold text-[11px] uppercase tracking-widest transition-colors"
+                >
+                  <div className="flex items-center gap-2">
+                    <span>{cat}</span>
+                    <span className="text-[9px] bg-muted px-1.5 py-0.5 rounded-full font-bold text-muted-foreground/70">{filteredGroups[cat].length}</span>
+                  </div>
+                  {expandedCategories[cat] ? <ChevronDown size={14} /> : <ChevronRight size={14} />}
+                </button>
+                
+                <AnimatePresence initial={false}>
+                  {expandedCategories[cat] && (
+                    <motion.div 
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      className="overflow-hidden space-y-0.5 ml-2 border-l-2 border-border/30"
+                    >
+                      {filteredGroups[cat].map((agent: Agent) => (
+                        <button
+                          key={agent.id}
+                          onClick={() => setSelectedAgentId(agent.id)}
+                          className={`w-full text-left p-2 pl-3 rounded-lg transition-all flex items-center gap-2 group relative ${
+                            selectedAgentId === agent.id ? 'bg-primary/15 text-primary' : 'hover:bg-muted/40 text-muted-foreground hover:text-foreground'
+                          }`}
+                        >
+                          <div className="flex-1 min-w-0">
+                            <div className="truncate font-medium text-[11px]">{agent.name}</div>
+                            {viewMode === 'tools' && agent.subcategory && (
+                              <div className="text-[9px] text-muted-foreground/50 truncate">{agent.category} &rsaquo; {agent.subcategory}</div>
+                            )}
+                          </div>
+                          <div className="flex gap-0.5 shrink-0">
+                            {agent.tools.slice(0, 3).map(t => (
+                              <div key={t} title={t} className="opacity-60 group-hover:opacity-100 transition-opacity">{renderToolIcon(t, 9)}</div>
+                            ))}
+                            {agent.tools.length > 3 && (
+                              <span className="text-[8px] text-muted-foreground">+{agent.tools.length - 3}</span>
+                            )}
+                          </div>
+                          {selectedAgentId === agent.id && (
+                            <motion.div layoutId="active-pill" className="absolute left-0 w-0.5 h-3 bg-primary rounded-full" />
+                          )}
+                        </button>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            ))
+          )}
         </div>
 
         <div className="p-4 border-t border-border bg-background/40 flex items-center justify-between">
