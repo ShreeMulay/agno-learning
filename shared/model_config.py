@@ -12,9 +12,53 @@ Usage:
 """
 
 import os
+from pathlib import Path
 from typing import Optional
 
-# Try to load .env file if python-dotenv is available
+
+def load_bash_secrets() -> int:
+    """
+    Load API keys from ~/.bash_secrets if not already in environment.
+    
+    This is the preferred way to manage API keys - they're loaded once
+    at module import and available to all examples.
+    
+    File format (standard bash exports):
+        export OPENROUTER_API_KEY="sk-or-v1-..."
+        export ANTHROPIC_API_KEY="sk-ant-..."
+    
+    Returns:
+        Number of keys loaded
+    """
+    secrets_file = Path.home() / ".bash_secrets"
+    loaded = 0
+    
+    if not secrets_file.exists():
+        return 0
+    
+    try:
+        for line in secrets_file.read_text().splitlines():
+            line = line.strip()
+            if not line or line.startswith('#'):
+                continue
+            if line.startswith("export "):
+                key_val = line[7:].split("=", 1)
+                if len(key_val) == 2:
+                    key = key_val[0].strip()
+                    val = key_val[1].strip()
+                    if (val.startswith('"') and val.endswith('"')) or \
+                       (val.startswith("'") and val.endswith("'")):
+                        val = val[1:-1]
+                    if key and key not in os.environ:
+                        os.environ[key] = val
+                        loaded += 1
+    except Exception:
+        pass
+    
+    return loaded
+
+
+_secrets_loaded = load_bash_secrets()
 try:
     from dotenv import load_dotenv
     load_dotenv()

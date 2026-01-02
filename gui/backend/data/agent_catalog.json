@@ -67,17 +67,17 @@
     ],
     "imports": {
       "agno_features": [
-        "Agent",
-        "pydantic"
+        "pydantic",
+        "Agent"
       ],
       "tools": [
         "DuckDuckGoTools"
       ],
       "external": [
         "shared",
+        "argparse",
         "pathlib",
-        "sys",
-        "argparse"
+        "sys"
       ]
     },
     "example_number": 1
@@ -224,16 +224,16 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [
         "DuckDuckGoTools"
       ],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 1
@@ -280,15 +280,15 @@
     "imports": {
       "agno_features": [
         "Knowledge",
-        "LanceDb",
-        "Agent"
+        "Agent",
+        "LanceDb"
       ],
       "tools": [],
       "external": [
         "shared",
+        "argparse",
         "pathlib",
-        "sys",
-        "argparse"
+        "sys"
       ]
     },
     "example_number": 2
@@ -417,17 +417,17 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
         "SqliteDb",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [
         "DuckDuckGoTools"
       ],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 2
@@ -458,11 +458,11 @@
       ],
       "tools": [],
       "external": [
-        "shared",
         "argparse",
-        "datetime",
+        "shared",
         "pathlib",
-        "sys"
+        "sys",
+        "datetime"
       ]
     },
     "example_number": 3
@@ -632,16 +632,16 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [
         "DuckDuckGoTools"
       ],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 3
@@ -758,15 +758,15 @@
     ],
     "imports": {
       "agno_features": [
-        "Agent",
-        "pydantic"
+        "pydantic",
+        "Agent"
       ],
       "tools": [],
       "external": [
         "shared",
+        "argparse",
         "pathlib",
-        "sys",
-        "argparse"
+        "sys"
       ]
     },
     "example_number": 4
@@ -935,14 +935,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 4
@@ -1056,17 +1056,17 @@
     ],
     "imports": {
       "agno_features": [
-        "Agent",
-        "pydantic"
+        "pydantic",
+        "Agent"
       ],
       "tools": [
         "DuckDuckGoTools"
       ],
       "external": [
         "shared",
+        "argparse",
         "pathlib",
-        "sys",
-        "argparse"
+        "sys"
       ]
     },
     "example_number": 5
@@ -1243,16 +1243,16 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [
         "DuckDuckGoTools"
       ],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 5
@@ -1360,17 +1360,17 @@
     ],
     "imports": {
       "agno_features": [
-        "Agent",
-        "pydantic"
+        "pydantic",
+        "Agent"
       ],
       "tools": [],
       "external": [
-        "shared",
         "argparse",
-        "csv",
-        "json",
         "pathlib",
-        "sys"
+        "shared",
+        "sys",
+        "json",
+        "csv"
       ]
     },
     "example_number": 6
@@ -1544,16 +1544,16 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [
         "DuckDuckGoTools"
       ],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 6
@@ -1594,8 +1594,8 @@
       ],
       "tools": [],
       "external": [
-        "shared",
         "argparse",
+        "shared",
         "pathlib",
         "sys",
         "uuid"
@@ -1782,14 +1782,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 7
@@ -1888,15 +1888,15 @@
     ],
     "imports": {
       "agno_features": [
-        "Agent",
-        "pydantic"
+        "pydantic",
+        "Agent"
       ],
       "tools": [],
       "external": [
         "shared",
+        "argparse",
         "pathlib",
-        "sys",
-        "argparse"
+        "sys"
       ]
     },
     "example_number": 8
@@ -2067,14 +2067,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 8
@@ -2280,14 +2280,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 9
@@ -2506,14 +2506,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 10
@@ -2678,17 +2678,17 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [
         "DuckDuckGoTools"
       ],
       "external": [
+        "argparse",
         "typing",
-        "datetime",
-        "argparse"
+        "datetime"
       ]
     },
     "example_number": 11
@@ -2885,16 +2885,16 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [
         "DuckDuckGoTools"
       ],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 12
@@ -3086,14 +3086,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 13
@@ -3322,14 +3322,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 14
@@ -3558,16 +3558,16 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [
         "DuckDuckGoTools"
       ],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 15
@@ -3830,16 +3830,16 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [
         "DuckDuckGoTools"
       ],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 16
@@ -4068,14 +4068,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 17
@@ -4316,14 +4316,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 18
@@ -4543,14 +4543,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 19
@@ -4779,16 +4779,16 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [
         "DuckDuckGoTools"
       ],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 20
@@ -5033,14 +5033,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 21
@@ -5205,14 +5205,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 22
@@ -5387,14 +5387,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 23
@@ -5600,14 +5600,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 24
@@ -5856,14 +5856,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 25
@@ -6061,14 +6061,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 26
@@ -6306,14 +6306,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 27
@@ -6515,14 +6515,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 28
@@ -6735,14 +6735,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 29
@@ -6969,14 +6969,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 30
@@ -7137,14 +7137,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 31
@@ -7298,14 +7298,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 32
@@ -7455,14 +7455,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 33
@@ -7561,14 +7561,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 34
@@ -7687,14 +7687,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 35
@@ -7814,14 +7814,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 36
@@ -7946,14 +7946,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 37
@@ -8078,14 +8078,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 38
@@ -8205,14 +8205,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 39
@@ -8358,14 +8358,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 40
@@ -8515,14 +8515,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 41
@@ -8669,14 +8669,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 42
@@ -8841,14 +8841,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 43
@@ -8957,14 +8957,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 44
@@ -9137,14 +9137,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 45
@@ -9303,14 +9303,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 46
@@ -9409,14 +9409,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 47
@@ -9555,14 +9555,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 48
@@ -9694,14 +9694,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 49
@@ -9847,14 +9847,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 50
@@ -9986,14 +9986,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 51
@@ -10152,14 +10152,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 52
@@ -10309,14 +10309,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 53
@@ -10458,14 +10458,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 54
@@ -10630,14 +10630,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 55
@@ -10772,14 +10772,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 56
@@ -10913,14 +10913,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 57
@@ -11039,14 +11039,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 58
@@ -11181,14 +11181,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 59
@@ -11316,14 +11316,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 60
@@ -11439,14 +11439,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 61
@@ -11542,14 +11542,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 62
@@ -11640,14 +11640,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 63
@@ -11748,14 +11748,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 64
@@ -11865,14 +11865,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 65
@@ -11956,14 +11956,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 66
@@ -12079,14 +12079,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 67
@@ -12206,14 +12206,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 68
@@ -12319,14 +12319,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 69
@@ -12427,14 +12427,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 70
@@ -12509,14 +12509,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 71
@@ -12586,14 +12586,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 72
@@ -12668,14 +12668,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 73
@@ -12761,14 +12761,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 74
@@ -12838,14 +12838,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 75
@@ -12931,14 +12931,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 76
@@ -13029,14 +13029,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 77
@@ -13122,14 +13122,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 78
@@ -13204,14 +13204,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 79
@@ -13302,14 +13302,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 80
@@ -13419,14 +13419,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 81
@@ -13543,14 +13543,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 82
@@ -13665,14 +13665,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 83
@@ -13773,14 +13773,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 84
@@ -13901,14 +13901,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 85
@@ -14024,14 +14024,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 86
@@ -14158,14 +14158,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 87
@@ -14287,14 +14287,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 88
@@ -14431,14 +14431,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 89
@@ -14565,14 +14565,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 90
@@ -14688,14 +14688,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 91
@@ -14801,14 +14801,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 92
@@ -14930,14 +14930,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 93
@@ -15048,14 +15048,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 94
@@ -15182,14 +15182,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 95
@@ -15300,14 +15300,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 96
@@ -15439,14 +15439,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 97
@@ -15562,14 +15562,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 98
@@ -15675,14 +15675,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 99
@@ -15793,14 +15793,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 100
@@ -15906,14 +15906,118 @@
     ],
     "imports": {
       "agno_features": [
+        "pydantic",
         "OpenRouter",
+        "Agent"
+      ],
+      "tools": [],
+      "external": [
+        "argparse",
+        "typing"
+      ]
+    },
+    "example_number": 101
+  },
+  {
+    "id": "07_real_world__outskill_cohort3__movie_script_generator__main",
+    "name": "Movie Script Generator",
+    "category": "Outskill Cohort3",
+    "subcategory": "Structured Output",
+    "description": "Generates creative movie scripts with structured output using Pydantic models.\nGiven a setting or theme, the agent creates a complete movie concept including\ncharacters, storyline, genre, and ending.",
+    "path": "07_real_world/outskill_cohort3/movie_script_generator/main.py",
+    "dir": "07_real_world/outskill_cohort3/movie_script_generator",
+    "path_parts": [
+      "07_real_world",
+      "outskill_cohort3",
+      "movie_script_generator"
+    ],
+    "params": [
+      {
+        "name": "setting",
+        "type": "str",
+        "required": false,
+        "is_positional": false,
+        "default": "New York",
+        "description": "The movie setting or theme",
+        "ui_type": "text"
+      },
+      {
+        "name": "genre",
+        "type": "str",
+        "required": false,
+        "is_positional": false,
+        "default": "",
+        "description": "Preferred genre hint",
+        "ui_type": "text"
+      },
+      {
+        "name": "num_characters",
+        "type": "int",
+        "required": false,
+        "is_positional": false,
+        "default": "5",
+        "description": "Number of main characters",
+        "ui_type": "text"
+      }
+    ],
+    "type": "Agent",
+    "tools": [
+      "structured"
+    ],
+    "patterns": [
+      "Structured Output",
+      "Creative Writing"
+    ],
+    "output_schemas": [
+      {
+        "name": "MovieScript",
+        "docstring": "Structured movie script output.",
+        "fields": [
+          {
+            "name": "name",
+            "type": "str",
+            "description": "Creative movie title"
+          },
+          {
+            "name": "setting",
+            "type": "str",
+            "description": "Detailed setting for the movie"
+          },
+          {
+            "name": "genre",
+            "type": "str",
+            "description": "Movie genre (action, thriller, comedy, drama, etc.)"
+          },
+          {
+            "name": "characters",
+            "type": "list[str]",
+            "description": "List of main character names"
+          },
+          {
+            "name": "storyline",
+            "type": "str",
+            "description": "3-5 sentence compelling storyline"
+          },
+          {
+            "name": "ending",
+            "type": "str",
+            "description": "How the movie ends"
+          }
+        ]
+      }
+    ],
+    "imports": {
+      "agno_features": [
         "pydantic",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "shared",
+        "pathlib",
+        "sys",
+        "typing"
       ]
     },
     "example_number": 101
@@ -16034,14 +16138,84 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
+      ]
+    },
+    "example_number": 102
+  },
+  {
+    "id": "07_real_world__outskill_cohort3__csv_data_analyst__main",
+    "name": "CSV Data Analyst",
+    "category": "Outskill Cohort3",
+    "subcategory": "Data Analysis",
+    "description": "Analyzes CSV files using natural language queries. The agent can read CSV files,\nunderstand their structure, and answer questions about the data using SQL-like\noperations under the hood.",
+    "path": "07_real_world/outskill_cohort3/csv_data_analyst/main.py",
+    "dir": "07_real_world/outskill_cohort3/csv_data_analyst",
+    "path_parts": [
+      "07_real_world",
+      "outskill_cohort3",
+      "csv_data_analyst"
+    ],
+    "params": [
+      {
+        "name": "csv_url",
+        "type": "str",
+        "required": false,
+        "is_positional": false,
+        "default": "IMDB movie dataset",
+        "description": "URL to a CSV file",
+        "ui_type": "file_csv"
+      },
+      {
+        "name": "query",
+        "type": "str",
+        "required": false,
+        "is_positional": false,
+        "default": "Which year had the most movies?",
+        "description": "Natural language question about the data",
+        "ui_type": "textarea"
+      },
+      {
+        "name": "stream",
+        "type": "boolean",
+        "required": false,
+        "is_positional": false,
+        "default": "",
+        "description": "Enable streaming output",
+        "ui_type": "checkbox"
+      }
+    ],
+    "type": "Agent",
+    "tools": [
+      "api",
+      "files",
+      "web"
+    ],
+    "patterns": [
+      "Tools",
+      "Data Analysis"
+    ],
+    "output_schemas": [],
+    "imports": {
+      "agno_features": [
+        "Agent"
+      ],
+      "tools": [
+        "CsvTools"
+      ],
+      "external": [
+        "argparse",
+        "shared",
+        "pathlib",
+        "sys",
+        "httpx"
       ]
     },
     "example_number": 102
@@ -16167,14 +16341,92 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
+      ]
+    },
+    "example_number": 103
+  },
+  {
+    "id": "07_real_world__outskill_cohort3__eda_visualization_agent__main",
+    "name": "EDA Visualization Agent",
+    "category": "Outskill Cohort3",
+    "subcategory": "Data Analysis",
+    "description": "Performs exploratory data analysis (EDA) on datasets and creates visualizations.\nThe agent can write and execute Python code to analyze data, generate statistics,\nand create charts using matplotlib, seaborn, or plotly.",
+    "path": "07_real_world/outskill_cohort3/eda_visualization_agent/main.py",
+    "dir": "07_real_world/outskill_cohort3/eda_visualization_agent",
+    "path_parts": [
+      "07_real_world",
+      "outskill_cohort3",
+      "eda_visualization_agent"
+    ],
+    "params": [
+      {
+        "name": "dataset_url",
+        "type": "str",
+        "required": false,
+        "is_positional": false,
+        "default": "IMDB movie dataset",
+        "description": "URL to a CSV dataset",
+        "ui_type": "file_csv"
+      },
+      {
+        "name": "analysis_type",
+        "type": "str",
+        "required": false,
+        "is_positional": false,
+        "default": "overview",
+        "description": "Type of analysis (overview, distribution, correlation)",
+        "ui_type": "text"
+      },
+      {
+        "name": "output_dir",
+        "type": "str",
+        "required": false,
+        "is_positional": false,
+        "default": "./output",
+        "description": "Directory to save generated plots",
+        "ui_type": "text"
+      },
+      {
+        "name": "stream",
+        "type": "boolean",
+        "required": false,
+        "is_positional": false,
+        "default": "",
+        "description": "Enable streaming output",
+        "ui_type": "checkbox"
+      }
+    ],
+    "type": "Agent",
+    "tools": [
+      "code",
+      "web"
+    ],
+    "patterns": [
+      "Tools",
+      "Code Generation",
+      "Data Visualization"
+    ],
+    "output_schemas": [],
+    "imports": {
+      "agno_features": [
+        "Agent"
+      ],
+      "tools": [
+        "PythonTools"
+      ],
+      "external": [
+        "shared",
+        "argparse",
+        "pathlib",
+        "sys"
       ]
     },
     "example_number": 103
@@ -16290,14 +16542,92 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
+      ]
+    },
+    "example_number": 104
+  },
+  {
+    "id": "07_real_world__outskill_cohort3__code_to_diagram__main",
+    "name": "Code to Diagram Generator",
+    "category": "Outskill Cohort3",
+    "subcategory": "Code Analysis",
+    "description": "Analyzes Python source code and generates UML diagrams (PlantUML or Mermaid format).\nThe agent reads code files, understands the structure (classes, functions, relationships),\nand creates visual diagrams representing the code architecture.",
+    "path": "07_real_world/outskill_cohort3/code_to_diagram/main.py",
+    "dir": "07_real_world/outskill_cohort3/code_to_diagram",
+    "path_parts": [
+      "07_real_world",
+      "outskill_cohort3",
+      "code_to_diagram"
+    ],
+    "params": [
+      {
+        "name": "file_path",
+        "type": "str",
+        "required": false,
+        "is_positional": false,
+        "default": "example.py",
+        "description": "Path to Python file to analyze",
+        "ui_type": "file_any"
+      },
+      {
+        "name": "diagram_type",
+        "type": "str",
+        "required": false,
+        "is_positional": false,
+        "default": "class",
+        "description": "Type of diagram (class, sequence, flowchart)",
+        "ui_type": "text"
+      },
+      {
+        "name": "output_format",
+        "type": "str",
+        "required": false,
+        "is_positional": false,
+        "default": "mermaid",
+        "description": "Output format (plantuml, mermaid)",
+        "ui_type": "text"
+      },
+      {
+        "name": "stream",
+        "type": "boolean",
+        "required": false,
+        "is_positional": false,
+        "default": "",
+        "description": "Enable streaming output",
+        "ui_type": "checkbox"
+      }
+    ],
+    "type": "Agent",
+    "tools": [
+      "files",
+      "web"
+    ],
+    "patterns": [
+      "Tools",
+      "Code Analysis",
+      "Diagram Generation"
+    ],
+    "output_schemas": [],
+    "imports": {
+      "agno_features": [
+        "Agent"
+      ],
+      "tools": [
+        "FileTools"
+      ],
+      "external": [
+        "shared",
+        "argparse",
+        "pathlib",
+        "sys"
       ]
     },
     "example_number": 104
@@ -16382,14 +16712,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 105
@@ -16505,14 +16835,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 106
@@ -16643,14 +16973,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 107
@@ -16771,14 +17101,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 108
@@ -16894,14 +17224,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 109
@@ -17022,14 +17352,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 110
@@ -17159,14 +17489,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 111
@@ -17296,14 +17626,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 112
@@ -17424,14 +17754,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 113
@@ -17541,14 +17871,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 114
@@ -17678,14 +18008,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 115
@@ -17801,14 +18131,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 116
@@ -17902,14 +18232,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 117
@@ -17994,14 +18324,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 118
@@ -18116,14 +18446,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 119
@@ -18244,14 +18574,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 120
@@ -18336,14 +18666,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 121
@@ -18439,14 +18769,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 122
@@ -18536,14 +18866,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 123
@@ -18623,14 +18953,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 124
@@ -18731,14 +19061,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 125
@@ -18839,14 +19169,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 126
@@ -18947,14 +19277,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 127
@@ -19060,14 +19390,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 128
@@ -19178,14 +19508,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 129
@@ -19291,14 +19621,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 130
@@ -19458,14 +19788,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 131
@@ -19599,14 +19929,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 132
@@ -19748,14 +20078,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 133
@@ -19893,14 +20223,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 134
@@ -20024,14 +20354,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 135
@@ -20183,14 +20513,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 136
@@ -20356,14 +20686,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 137
@@ -20529,14 +20859,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 138
@@ -20676,14 +21006,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 139
@@ -20840,14 +21170,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 140
@@ -20950,14 +21280,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 141
@@ -21095,14 +21425,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 142
@@ -21259,14 +21589,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 143
@@ -21404,14 +21734,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 144
@@ -21545,14 +21875,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 145
@@ -21685,14 +22015,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 146
@@ -21848,14 +22178,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 147
@@ -22007,14 +22337,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 148
@@ -22164,14 +22494,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 149
@@ -22319,14 +22649,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 150
@@ -22496,14 +22826,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 151
@@ -22679,14 +23009,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 152
@@ -22847,14 +23177,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 153
@@ -22998,14 +23328,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 154
@@ -23171,14 +23501,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 155
@@ -23330,14 +23660,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 156
@@ -23485,14 +23815,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 157
@@ -23663,14 +23993,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 158
@@ -23800,14 +24130,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 159
@@ -23969,14 +24299,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 160
@@ -24123,14 +24453,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 161
@@ -24259,14 +24589,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 162
@@ -24369,14 +24699,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 163
@@ -24510,14 +24840,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 164
@@ -24660,14 +24990,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 165
@@ -24796,14 +25126,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 166
@@ -24947,14 +25277,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 167
@@ -25107,14 +25437,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 168
@@ -25271,14 +25601,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 169
@@ -25426,14 +25756,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 170
@@ -25572,14 +25902,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 171
@@ -25718,14 +26048,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 172
@@ -25848,14 +26178,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 173
@@ -26021,14 +26351,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 174
@@ -26169,14 +26499,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 175
@@ -26319,14 +26649,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 176
@@ -26474,14 +26804,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 177
@@ -26638,14 +26968,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 178
@@ -26811,14 +27141,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 179
@@ -26947,14 +27277,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 180
@@ -27055,14 +27385,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 181
@@ -27158,14 +27488,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 182
@@ -27266,14 +27596,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 183
@@ -27374,14 +27704,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 184
@@ -27482,14 +27812,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 185
@@ -27600,14 +27930,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 186
@@ -27713,14 +28043,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 187
@@ -27821,14 +28151,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 188
@@ -27934,14 +28264,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 189
@@ -28026,14 +28356,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 190
@@ -28134,14 +28464,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 191
@@ -28247,14 +28577,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 192
@@ -28355,14 +28685,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 193
@@ -28478,14 +28808,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 194
@@ -28601,14 +28931,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 195
@@ -28719,14 +29049,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 196
@@ -28858,14 +29188,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 197
@@ -28981,14 +29311,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 198
@@ -29099,14 +29429,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 199
@@ -29227,14 +29557,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 200
@@ -29319,14 +29649,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 201
@@ -29411,14 +29741,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 202
@@ -29498,14 +29828,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 203
@@ -29606,14 +29936,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 204
@@ -29714,14 +30044,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 205
@@ -29806,14 +30136,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 206
@@ -29918,14 +30248,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 207
@@ -30041,14 +30371,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 208
@@ -30149,14 +30479,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 209
@@ -30262,14 +30592,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 210
@@ -30370,14 +30700,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 211
@@ -30483,14 +30813,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 212
@@ -30601,14 +30931,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 213
@@ -30693,14 +31023,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 214
@@ -30780,14 +31110,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 215
@@ -30898,14 +31228,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 216
@@ -31021,14 +31351,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 217
@@ -31139,14 +31469,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 218
@@ -31262,14 +31592,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 219
@@ -31385,14 +31715,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 220
@@ -31457,17 +31787,17 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [
         "tool"
       ],
       "external": [
+        "argparse",
         "typing",
-        "datetime",
-        "argparse"
+        "datetime"
       ]
     },
     "example_number": 221
@@ -31537,14 +31867,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 222
@@ -31635,14 +31965,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 223
@@ -31748,14 +32078,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 224
@@ -31851,14 +32181,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 225
@@ -31954,14 +32284,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 226
@@ -32047,14 +32377,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 227
@@ -32150,14 +32480,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 228
@@ -32222,14 +32552,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 229
@@ -32320,16 +32650,16 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
+        "argparse",
         "time",
-        "asyncio",
         "typing",
-        "argparse"
+        "asyncio"
       ]
     },
     "example_number": 230
@@ -32420,14 +32750,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 231
@@ -32513,14 +32843,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 232
@@ -32616,15 +32946,15 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
+        "argparse",
         "enum",
-        "argparse"
+        "typing"
       ]
     },
     "example_number": 233
@@ -32746,15 +33076,15 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
+        "argparse",
         "typing",
-        "datetime",
-        "argparse"
+        "datetime"
       ]
     },
     "example_number": 234
@@ -32860,14 +33190,14 @@
     ],
     "imports": {
       "agno_features": [
-        "OpenRouter",
         "pydantic",
+        "OpenRouter",
         "Agent"
       ],
       "tools": [],
       "external": [
-        "typing",
-        "argparse"
+        "argparse",
+        "typing"
       ]
     },
     "example_number": 235
