@@ -47,7 +47,6 @@ def create_agent(model, csv_path: str):
             "Finally, run queries to answer the user's question.",
             "Always explain your findings clearly.",
         ],
-        show_tool_calls=True,
         markdown=True,
     )
 

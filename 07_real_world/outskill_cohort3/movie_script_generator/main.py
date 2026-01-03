@@ -61,7 +61,6 @@ def create_agent(model):
             "Match the genre to the setting appropriately.",
             "Endings should be satisfying and fit the genre.",
         ],
-        response_model=MovieScript,
         markdown=True,
     )
 
@@ -120,7 +119,7 @@ def main():
     print_section("Generating...")
     
     try:
-        response = agent.run(prompt)
+        response = agent.run(prompt, output_schema=MovieScript)
         script = response.content
         
         print_section(f"🎬 {script.name}")

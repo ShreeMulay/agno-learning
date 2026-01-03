@@ -54,7 +54,6 @@ def create_agent(model, base_dir: str):
             "For Mermaid: Use appropriate diagram type declaration",
             "Always save the generated diagram to a file.",
         ],
-        show_tool_calls=True,
         markdown=True,
     )
 

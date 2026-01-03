@@ -61,7 +61,6 @@ def create_agent(model, output_dir: str):
             "Use pandas, matplotlib, and seaborn for analysis.",
             "Always provide clear interpretations of your findings.",
         ],
-        show_tool_calls=True,
         markdown=True,
     )
 

@@ -27,6 +27,7 @@ dependencies = [
     # Tools support
     "ddgs>=9.0.0",  # DuckDuckGo search
     "mcp>=1.0.0",   # Model Context Protocol
+    "duckdb>=1.0.0",  # SQL analytics for CsvTools
     
     # Utilities
     "python-dotenv>=1.0.0",
