@@ -122,19 +122,25 @@ def main():
         response = agent.run(prompt, output_schema=MovieScript)
         script = response.content
         
-        print_section(f"🎬 {script.name}")
-        print(f"\n  Genre: {script.genre}")
-        print(f"  Setting: {script.setting}")
-        
-        print_section("Characters")
-        for i, char in enumerate(script.characters, 1):
-            print(f"  {i}. {char}")
-        
-        print_section("Storyline")
-        print(f"  {script.storyline}")
-        
-        print_section("Ending")
-        print(f"  {script.ending}")
+        if isinstance(script, MovieScript):
+            print_section(f"🎬 {script.name}")
+            print(f"\n  Genre: {script.genre}")
+            print(f"  Setting: {script.setting}")
+            
+            print_section("Characters")
+            for i, char in enumerate(script.characters, 1):
+                print(f"  {i}. {char}")
+            
+            print_section("Storyline")
+            print(f"  {script.storyline}")
+            
+            print_section("Ending")
+            print(f"  {script.ending}")
+        else:
+            print_section("Response (unstructured)")
+            print(f"  {script}")
+            print("\n  Note: Model did not return structured output.")
+            print("  Try: --provider openai or --provider anthropic")
         
     except Exception as e:
         print(f"\n  Error: {e}")
