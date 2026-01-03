@@ -67,16 +67,16 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
-        "Agent"
+        "Agent",
+        "pydantic"
       ],
       "tools": [
         "DuckDuckGoTools"
       ],
       "external": [
+        "pathlib",
         "shared",
         "argparse",
-        "pathlib",
         "sys"
       ]
     },
@@ -224,9 +224,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [
         "DuckDuckGoTools"
@@ -285,9 +285,9 @@
       ],
       "tools": [],
       "external": [
+        "pathlib",
         "shared",
         "argparse",
-        "pathlib",
         "sys"
       ]
     },
@@ -417,10 +417,10 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
-        "SqliteDb",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "SqliteDb",
+        "pydantic"
       ],
       "tools": [
         "DuckDuckGoTools"
@@ -453,16 +453,16 @@
     "output_schemas": [],
     "imports": {
       "agno_features": [
-        "Team",
-        "Agent"
+        "Agent",
+        "Team"
       ],
       "tools": [],
       "external": [
-        "argparse",
+        "datetime",
         "shared",
-        "pathlib",
+        "argparse",
         "sys",
-        "datetime"
+        "pathlib"
       ]
     },
     "example_number": 3
@@ -632,9 +632,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [
         "DuckDuckGoTools"
@@ -758,14 +758,14 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
-        "Agent"
+        "Agent",
+        "pydantic"
       ],
       "tools": [],
       "external": [
+        "pathlib",
         "shared",
         "argparse",
-        "pathlib",
         "sys"
       ]
     },
@@ -935,9 +935,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -1056,16 +1056,16 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
-        "Agent"
+        "Agent",
+        "pydantic"
       ],
       "tools": [
         "DuckDuckGoTools"
       ],
       "external": [
+        "pathlib",
         "shared",
         "argparse",
-        "pathlib",
         "sys"
       ]
     },
@@ -1243,9 +1243,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [
         "DuckDuckGoTools"
@@ -1360,17 +1360,17 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
-        "Agent"
+        "Agent",
+        "pydantic"
       ],
       "tools": [],
       "external": [
-        "argparse",
-        "pathlib",
+        "csv",
         "shared",
+        "argparse",
         "sys",
-        "json",
-        "csv"
+        "pathlib",
+        "json"
       ]
     },
     "example_number": 6
@@ -1544,9 +1544,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [
         "DuckDuckGoTools"
@@ -1589,16 +1589,16 @@
     "output_schemas": [],
     "imports": {
       "agno_features": [
-        "SqliteDb",
-        "Agent"
+        "Agent",
+        "SqliteDb"
       ],
       "tools": [],
       "external": [
-        "argparse",
+        "uuid",
         "shared",
-        "pathlib",
+        "argparse",
         "sys",
-        "uuid"
+        "pathlib"
       ]
     },
     "example_number": 7
@@ -1782,9 +1782,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -1888,14 +1888,14 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
-        "Agent"
+        "Agent",
+        "pydantic"
       ],
       "tools": [],
       "external": [
+        "pathlib",
         "shared",
         "argparse",
-        "pathlib",
         "sys"
       ]
     },
@@ -2067,9 +2067,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -2280,9 +2280,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -2506,9 +2506,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -2678,17 +2678,17 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [
         "DuckDuckGoTools"
       ],
       "external": [
         "argparse",
-        "typing",
-        "datetime"
+        "datetime",
+        "typing"
       ]
     },
     "example_number": 11
@@ -2885,9 +2885,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [
         "DuckDuckGoTools"
@@ -3086,9 +3086,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -3322,9 +3322,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -3558,9 +3558,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [
         "DuckDuckGoTools"
@@ -3830,9 +3830,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [
         "DuckDuckGoTools"
@@ -4068,9 +4068,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -4316,9 +4316,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -4543,9 +4543,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -4779,9 +4779,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [
         "DuckDuckGoTools"
@@ -5033,9 +5033,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -5205,9 +5205,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -5387,9 +5387,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -5600,9 +5600,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -5856,9 +5856,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -6061,9 +6061,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -6306,9 +6306,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -6515,9 +6515,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -6735,9 +6735,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -6969,9 +6969,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -7137,9 +7137,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -7298,9 +7298,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -7455,9 +7455,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -7561,9 +7561,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -7687,9 +7687,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -7814,9 +7814,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -7946,9 +7946,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -8078,9 +8078,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -8205,9 +8205,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -8358,9 +8358,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -8515,9 +8515,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -8669,9 +8669,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -8841,9 +8841,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -8957,9 +8957,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -9137,9 +9137,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -9303,9 +9303,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -9409,9 +9409,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -9555,9 +9555,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -9694,9 +9694,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -9847,9 +9847,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -9986,9 +9986,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -10152,9 +10152,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -10309,9 +10309,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -10458,9 +10458,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -10630,9 +10630,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -10772,9 +10772,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -10913,9 +10913,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -11039,9 +11039,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -11181,9 +11181,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -11316,9 +11316,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -11439,9 +11439,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -11542,9 +11542,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -11640,9 +11640,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -11748,9 +11748,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -11865,9 +11865,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -11956,9 +11956,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -12079,9 +12079,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -12206,9 +12206,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -12319,9 +12319,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -12427,9 +12427,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -12509,9 +12509,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -12586,9 +12586,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -12668,9 +12668,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -12761,9 +12761,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -12838,9 +12838,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -12931,9 +12931,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -13029,9 +13029,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -13122,9 +13122,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -13204,9 +13204,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -13302,9 +13302,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -13419,9 +13419,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -13543,9 +13543,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -13665,9 +13665,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -13773,9 +13773,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -13901,9 +13901,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -14024,9 +14024,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -14158,9 +14158,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -14287,9 +14287,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -14431,9 +14431,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -14565,9 +14565,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -14688,9 +14688,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -14801,9 +14801,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -14930,9 +14930,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -15048,9 +15048,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -15182,9 +15182,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -15300,9 +15300,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -15439,9 +15439,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -15562,9 +15562,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -15675,9 +15675,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -15793,9 +15793,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -15906,9 +15906,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -16008,16 +16008,16 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
-        "Agent"
+        "Agent",
+        "pydantic"
       ],
       "tools": [],
       "external": [
-        "argparse",
+        "typing",
         "shared",
-        "pathlib",
+        "argparse",
         "sys",
-        "typing"
+        "pathlib"
       ]
     },
     "example_number": 101
@@ -16138,9 +16138,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -16211,10 +16211,10 @@
         "CsvTools"
       ],
       "external": [
-        "argparse",
         "shared",
-        "pathlib",
+        "argparse",
         "sys",
+        "pathlib",
         "httpx"
       ]
     },
@@ -16341,9 +16341,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -16423,9 +16423,9 @@
         "PythonTools"
       ],
       "external": [
+        "pathlib",
         "shared",
         "argparse",
-        "pathlib",
         "sys"
       ]
     },
@@ -16542,9 +16542,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -16624,9 +16624,9 @@
         "FileTools"
       ],
       "external": [
+        "pathlib",
         "shared",
         "argparse",
-        "pathlib",
         "sys"
       ]
     },
@@ -16712,9 +16712,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -16835,9 +16835,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -16973,9 +16973,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -17101,9 +17101,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -17224,9 +17224,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -17352,9 +17352,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -17489,9 +17489,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -17626,9 +17626,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -17754,9 +17754,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -17871,9 +17871,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -18008,9 +18008,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -18131,9 +18131,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -18232,9 +18232,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -18324,9 +18324,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -18446,9 +18446,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -18574,9 +18574,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -18666,9 +18666,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -18769,9 +18769,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -18866,9 +18866,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -18953,9 +18953,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -19061,9 +19061,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -19169,9 +19169,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -19277,9 +19277,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -19390,9 +19390,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -19508,9 +19508,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -19621,9 +19621,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -19788,9 +19788,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -19929,9 +19929,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -20078,9 +20078,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -20223,9 +20223,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -20354,9 +20354,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -20513,9 +20513,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -20686,9 +20686,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -20859,9 +20859,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -21006,9 +21006,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -21170,9 +21170,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -21280,9 +21280,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -21425,9 +21425,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -21589,9 +21589,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -21734,9 +21734,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -21875,9 +21875,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -22015,9 +22015,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -22178,9 +22178,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -22337,9 +22337,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -22494,9 +22494,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -22649,9 +22649,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -22826,9 +22826,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -23009,9 +23009,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -23177,9 +23177,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -23328,9 +23328,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -23501,9 +23501,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -23660,9 +23660,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -23815,9 +23815,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -23993,9 +23993,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -24130,9 +24130,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -24299,9 +24299,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -24453,9 +24453,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -24589,9 +24589,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -24699,9 +24699,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -24840,9 +24840,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -24990,9 +24990,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -25126,9 +25126,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -25277,9 +25277,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -25437,9 +25437,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -25601,9 +25601,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -25756,9 +25756,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -25902,9 +25902,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -26048,9 +26048,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -26178,9 +26178,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -26351,9 +26351,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -26499,9 +26499,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -26649,9 +26649,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -26804,9 +26804,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -26968,9 +26968,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -27141,9 +27141,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -27277,9 +27277,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -27385,9 +27385,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -27488,9 +27488,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -27596,9 +27596,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -27704,9 +27704,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -27812,9 +27812,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -27930,9 +27930,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -28043,9 +28043,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -28151,9 +28151,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -28264,9 +28264,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -28356,9 +28356,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -28464,9 +28464,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -28577,9 +28577,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -28685,9 +28685,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -28808,9 +28808,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -28931,9 +28931,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -29049,9 +29049,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -29188,9 +29188,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -29311,9 +29311,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -29429,9 +29429,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -29557,9 +29557,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -29649,9 +29649,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -29741,9 +29741,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -29828,9 +29828,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -29936,9 +29936,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -30044,9 +30044,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -30136,9 +30136,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -30248,9 +30248,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -30371,9 +30371,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -30479,9 +30479,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -30592,9 +30592,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -30700,9 +30700,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -30813,9 +30813,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -30931,9 +30931,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -31023,9 +31023,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -31110,9 +31110,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -31228,9 +31228,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -31351,9 +31351,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -31469,9 +31469,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -31592,9 +31592,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -31715,9 +31715,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -31787,17 +31787,17 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [
         "tool"
       ],
       "external": [
         "argparse",
-        "typing",
-        "datetime"
+        "datetime",
+        "typing"
       ]
     },
     "example_number": 221
@@ -31867,9 +31867,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -31965,9 +31965,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -32078,9 +32078,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -32181,9 +32181,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -32284,9 +32284,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -32377,9 +32377,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -32480,9 +32480,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -32552,9 +32552,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -32650,14 +32650,14 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
-        "argparse",
         "time",
+        "argparse",
         "typing",
         "asyncio"
       ]
@@ -32750,9 +32750,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -32843,9 +32843,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -32946,9 +32946,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -33076,15 +33076,15 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
         "argparse",
-        "typing",
-        "datetime"
+        "datetime",
+        "typing"
       ]
     },
     "example_number": 234
@@ -33190,9 +33190,9 @@
     ],
     "imports": {
       "agno_features": [
-        "pydantic",
+        "Agent",
         "OpenRouter",
-        "Agent"
+        "pydantic"
       ],
       "tools": [],
       "external": [
@@ -33201,5 +33201,382 @@
       ]
     },
     "example_number": 235
+  },
+  {
+    "id": "07_real_world__outskill_cohort3__agent_team__main",
+    "name": "Agent Team",
+    "category": "Outskill Cohort3",
+    "subcategory": "Teams",
+    "description": "Category: outskill_cohort3/teams\n\nCombine multiple specialized agents to handle complex queries.\nA web search agent and finance agent work together.",
+    "path": "07_real_world/outskill_cohort3/agent_team/main.py",
+    "dir": "07_real_world/outskill_cohort3/agent_team",
+    "path_parts": [
+      "07_real_world",
+      "outskill_cohort3",
+      "agent_team"
+    ],
+    "params": [
+      {
+        "name": "query",
+        "type": "string",
+        "required": false,
+        "is_positional": false,
+        "default": "What's the latest news about NVDA and summarize analyst recommendations?",
+        "description": "Query for the agent team",
+        "ui_type": "textarea"
+      }
+    ],
+    "type": "Team",
+    "tools": [
+      "team",
+      "web"
+    ],
+    "patterns": [],
+    "output_schemas": [],
+    "imports": {
+      "agno_features": [
+        "Agent",
+        "Team"
+      ],
+      "tools": [
+        "DuckDuckGoTools",
+        "YFinanceTools"
+      ],
+      "external": [
+        "pathlib",
+        "shared",
+        "argparse",
+        "sys"
+      ]
+    },
+    "example_number": null
+  },
+  {
+    "id": "07_real_world__outskill_cohort3__finance_agent__main",
+    "name": "Finance Agent",
+    "category": "Outskill Cohort3",
+    "subcategory": "Tools",
+    "description": "Category: outskill_cohort3/tools\n\nGet stock prices, analyst recommendations, and company news using YFinance.",
+    "path": "07_real_world/outskill_cohort3/finance_agent/main.py",
+    "dir": "07_real_world/outskill_cohort3/finance_agent",
+    "path_parts": [
+      "07_real_world",
+      "outskill_cohort3",
+      "finance_agent"
+    ],
+    "params": [
+      {
+        "name": "symbol",
+        "type": "string",
+        "required": false,
+        "is_positional": false,
+        "default": "NVDA",
+        "description": "",
+        "ui_type": "text"
+      },
+      {
+        "name": "analysis",
+        "type": "string",
+        "required": false,
+        "is_positional": false,
+        "default": "full",
+        "description": "Type of analysis to perform",
+        "ui_type": "text"
+      }
+    ],
+    "type": "Agent",
+    "tools": [],
+    "patterns": [],
+    "output_schemas": [],
+    "imports": {
+      "agno_features": [
+        "Agent"
+      ],
+      "tools": [
+        "YFinanceTools"
+      ],
+      "external": [
+        "pathlib",
+        "shared",
+        "argparse",
+        "sys"
+      ]
+    },
+    "example_number": null
+  },
+  {
+    "id": "07_real_world__outskill_cohort3__hackernews_agent__main",
+    "name": "HackerNews Agent",
+    "category": "Outskill Cohort3",
+    "subcategory": "Custom Tools",
+    "description": "Category: outskill_cohort3/custom_tools\n\nDemonstrates creating a custom function tool that the agent can call.\nFetches and summarizes top stories from Hacker News.",
+    "path": "07_real_world/outskill_cohort3/hackernews_agent/main.py",
+    "dir": "07_real_world/outskill_cohort3/hackernews_agent",
+    "path_parts": [
+      "07_real_world",
+      "outskill_cohort3",
+      "hackernews_agent"
+    ],
+    "params": [
+      {
+        "name": "num_stories",
+        "type": "integer",
+        "required": false,
+        "is_positional": false,
+        "default": "5",
+        "description": "Number of stories to fetch",
+        "ui_type": "number"
+      },
+      {
+        "name": "topic",
+        "type": "string",
+        "required": false,
+        "is_positional": false,
+        "default": "",
+        "description": "Optional: filter for specific topic",
+        "ui_type": "textarea"
+      }
+    ],
+    "type": "Agent",
+    "tools": [
+      "api"
+    ],
+    "patterns": [],
+    "output_schemas": [],
+    "imports": {
+      "agno_features": [
+        "Agent"
+      ],
+      "tools": [],
+      "external": [
+        "argparse",
+        "shared",
+        "sys",
+        "pathlib",
+        "json",
+        "httpx"
+      ]
+    },
+    "example_number": null
+  },
+  {
+    "id": "07_real_world__outskill_cohort3__pdf_rag_agent__main",
+    "name": "PDF RAG Agent",
+    "category": "Outskill Cohort3",
+    "subcategory": "Rag",
+    "description": "Category: outskill_cohort3/rag\n\nRAG with PDF documents using LanceDB for vector storage.\nDownloads a sample PDF and creates a searchable knowledge base.",
+    "path": "07_real_world/outskill_cohort3/pdf_rag_agent/main.py",
+    "dir": "07_real_world/outskill_cohort3/pdf_rag_agent",
+    "path_parts": [
+      "07_real_world",
+      "outskill_cohort3",
+      "pdf_rag_agent"
+    ],
+    "params": [
+      {
+        "name": "pdf_url",
+        "type": "string",
+        "required": false,
+        "is_positional": false,
+        "default": "https://phi-public.s3.amazonaws.com/recipes/ThaiRecipes.pdf",
+        "description": "URL of PDF to download and index",
+        "ui_type": "file_pdf"
+      },
+      {
+        "name": "pdf_path",
+        "type": "string",
+        "required": false,
+        "is_positional": false,
+        "default": "",
+        "description": "",
+        "ui_type": "file_pdf"
+      },
+      {
+        "name": "query",
+        "type": "string",
+        "required": false,
+        "is_positional": false,
+        "default": "How do I make chicken and galangal in coconut milk soup?",
+        "description": "Question to ask about the PDF",
+        "ui_type": "file_pdf"
+      },
+      {
+        "name": "reload",
+        "type": "boolean",
+        "required": false,
+        "is_positional": false,
+        "default": "",
+        "description": "Force reload the PDF into the knowledge base",
+        "ui_type": "checkbox"
+      }
+    ],
+    "type": "Agent",
+    "tools": [
+      "api",
+      "rag"
+    ],
+    "patterns": [],
+    "output_schemas": [],
+    "imports": {
+      "agno_features": [
+        "Knowledge",
+        "Agent",
+        "LanceDb"
+      ],
+      "tools": [],
+      "external": [
+        "shared",
+        "argparse",
+        "sys",
+        "pathlib",
+        "httpx"
+      ]
+    },
+    "example_number": null
+  },
+  {
+    "id": "07_real_world__outskill_cohort3__reasoning_agent__main",
+    "name": "Reasoning Agent",
+    "category": "Outskill Cohort3",
+    "subcategory": "Reasoning",
+    "description": "Category: outskill_cohort3/reasoning\n\nDemonstrates Agno's reasoning mode for solving complex logic puzzles.\nThe agent shows its step-by-step thinking process when solving problems.",
+    "path": "07_real_world/outskill_cohort3/reasoning_agent/main.py",
+    "dir": "07_real_world/outskill_cohort3/reasoning_agent",
+    "path_parts": [
+      "07_real_world",
+      "outskill_cohort3",
+      "reasoning_agent"
+    ],
+    "params": [
+      {
+        "name": "puzzle",
+        "type": "string",
+        "required": false,
+        "is_positional": false,
+        "default": "",
+        "description": "",
+        "ui_type": "text"
+      },
+      {
+        "name": "custom",
+        "type": "string",
+        "required": false,
+        "is_positional": false,
+        "default": "",
+        "description": "",
+        "ui_type": "text"
+      }
+    ],
+    "type": "Agent",
+    "tools": [
+      "reasoning"
+    ],
+    "patterns": [],
+    "output_schemas": [],
+    "imports": {
+      "agno_features": [
+        "Agent"
+      ],
+      "tools": [],
+      "external": [
+        "pathlib",
+        "shared",
+        "argparse",
+        "sys"
+      ]
+    },
+    "example_number": null
+  },
+  {
+    "id": "07_real_world__outskill_cohort3__research_workflow__main",
+    "name": "Research Workflow",
+    "category": "Outskill Cohort3",
+    "subcategory": "Workflows",
+    "description": "Category: outskill_cohort3/workflows\n\nTwo-agent workflow: Researcher gathers information, Writer creates summary.\nDemonstrates manual workflow orchestration with sequential agent calls.",
+    "path": "07_real_world/outskill_cohort3/research_workflow/main.py",
+    "dir": "07_real_world/outskill_cohort3/research_workflow",
+    "path_parts": [
+      "07_real_world",
+      "outskill_cohort3",
+      "research_workflow"
+    ],
+    "params": [
+      {
+        "name": "topic",
+        "type": "string",
+        "required": false,
+        "is_positional": false,
+        "default": "electric vehicles",
+        "description": "Topic to research and write about",
+        "ui_type": "textarea"
+      }
+    ],
+    "type": "Agent",
+    "tools": [
+      "web"
+    ],
+    "patterns": [],
+    "output_schemas": [],
+    "imports": {
+      "agno_features": [
+        "Agent"
+      ],
+      "tools": [
+        "DuckDuckGoTools"
+      ],
+      "external": [
+        "pathlib",
+        "shared",
+        "argparse",
+        "sys"
+      ]
+    },
+    "example_number": null
+  },
+  {
+    "id": "07_real_world__outskill_cohort3__web_search_agent__main",
+    "name": "Web Search Agent",
+    "category": "Outskill Cohort3",
+    "subcategory": "Tools",
+    "description": "Category: outskill_cohort3/tools\n\nSearch the web using DuckDuckGo and get answers with source citations.",
+    "path": "07_real_world/outskill_cohort3/web_search_agent/main.py",
+    "dir": "07_real_world/outskill_cohort3/web_search_agent",
+    "path_parts": [
+      "07_real_world",
+      "outskill_cohort3",
+      "web_search_agent"
+    ],
+    "params": [
+      {
+        "name": "query",
+        "type": "string",
+        "required": false,
+        "is_positional": false,
+        "default": "What are the latest developments in AI?",
+        "description": "Search query",
+        "ui_type": "textarea"
+      }
+    ],
+    "type": "Agent",
+    "tools": [
+      "web"
+    ],
+    "patterns": [],
+    "output_schemas": [],
+    "imports": {
+      "agno_features": [
+        "Agent"
+      ],
+      "tools": [
+        "DuckDuckGoTools"
+      ],
+      "external": [
+        "pathlib",
+        "shared",
+        "argparse",
+        "sys"
+      ]
+    },
+    "example_number": null
   }
 ]
